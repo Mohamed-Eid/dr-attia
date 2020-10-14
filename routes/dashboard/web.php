@@ -38,6 +38,11 @@ Route::group(
                 Route::delete('/pages/{page}/delete_image/{id}','PageController@delete_image')->name('pages.delete_image');
 
 
+                Route::resource('/settings','SettingController');
+
+                Route::get('aaaaa','SettingController@all')->name('settings.all_settings');
+
+
                 Route::get('profile','ProfileController@edit')->name('profiles.edit');
                 Route::put('profile','ProfileController@update')->name('profiles.update');
                 

@@ -52,11 +52,6 @@
                 <a href="{{ route('dashboard.blog.index') }}"><i class="fa fa-pencil"></i><span>@lang('site.blog')</span></a>
             </li>
 
-            {{-- <li class="{{ route('dashboard.blog.index')==url()->current() ? 'active' : '' }}">
-                <a href="{{ route('dashboard.blog.index') }}"><i class="fa fa-file-code-o"></i><span>@lang('site.pages')</span></a>
-            </li> --}}
-
-
             <li class="treeview">
                 <a href="#">
                   <i class="fa fa-share"></i> 
@@ -78,6 +73,29 @@
                         </a>
                     </li>
                     @endforeach
+                </ul>
+              </li>
+
+
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-share"></i> 
+                  <span>@lang('site.sittings')</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-folder pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="page-list {{route('dashboard.settings.index')==url()->current() ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.index') }}">
+                            <i class="fa fa-folder-open"></i> @lang('site.pages_index')
+                        </a>
+                    </li>
+                    <li class="page-list {{route('dashboard.settings.index')==url()->current() ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.all_settings') }}">
+                            <i class="fa fa-folder-open"></i> @lang('site.pages_index')
+                        </a>
+                    </li>
                 </ul>
               </li>
 
