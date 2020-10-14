@@ -234,5 +234,5 @@ return [
     'question_answer' => 'اسئله واجوبه',
     'videos'          => 'فيديوهات',
     'surgery'        => 'العملية',
-    
+    'pages'         => 'الصفحات',
 ];

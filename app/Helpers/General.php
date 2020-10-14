@@ -7,10 +7,10 @@
  * @param  $request->image
  * @return string name
  */
-function upload_image($path, $image)
+function upload_image($path , $image , $width=300 , $height=null)
 {
     // $image must be a $request->image 
-    Intervention\Image\Facades\Image::make($image)->resize(300, null, function ($constraint) {
+    Intervention\Image\Facades\Image::make($image)->resize($width, $height, function ($constraint) {
         $constraint->aspectRatio();
     })
         ->save(public_path('uploads/'.$path .'/'. $image->hashName()));

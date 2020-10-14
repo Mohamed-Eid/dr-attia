@@ -32,9 +32,9 @@
 
                         <div class="form-group">
                             <label>@lang('site.categories')</label>
-                            <select name="surgery_id" class="form-control">
-                                @foreach ($surgeries as $surgery)
-                                <option value="{{ $surgery->id }}">{{ $surgery->name }}</option>
+                            <select name="category_id" class="form-control">
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -58,14 +58,28 @@
 
 
                         <div class="row">
-                            <div class="form-group">
-                                <label>@lang('site.image')</label>
-                                <input type="file" name="image" class="form-control image-ar">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('site.image')</label>
+                                    <input type="file" name="image" class="form-control image-ar">
+                                </div>
+        
+                                <div class="form-group">
+                                    <img src="{{ asset('uploads/category_images/default.png') }}"
+                                         class="img-thumbnail image-preview-ar" style="width: 100px;">
+                                </div>
                             </div>
-    
-                            <div class="form-group">
-                                <img src="{{ asset('uploads/category_images/default.png') }}"
-                                        class="img-thumbnail image-preview-ar" style="width: 100px;">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('site.icon')</label>
+                                    <input type="file" name="icon" class="form-control image-en">
+                                </div>
+        
+                                <div class="form-group">
+                                    <img src="{{ asset('uploads/category_images/default.png') }}"
+                                         class="img-thumbnail image-preview-en" style="width: 100px;">
+                                </div>
                             </div>
                         </div>
 

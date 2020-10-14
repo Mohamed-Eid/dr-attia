@@ -49,14 +49,14 @@
                     <!-- Page Content -->
                     <div class="container">
                     
-                        <div class="row text-center text-lg-left img-boxer">
+                        <div class="row">
                             @foreach ($images as $image)
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div  class="d-block mb-4 h-100" style="position: relative;">
                                     <form action="{{route('dashboard.image_album.destroy' , $image)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <img class="img-fluid img-thumbnail" width="400px" height="400px" src="{{ $image->image_path }}" alt="">
+                                    <img class="img-fluid img-thumbnail img-album"src="{{ $image->image_path }}" alt="">
                                     <button type="submit" class="delete" style="background:transparent; border:none; position: absolute; left: 5%; margin-top: 3%">
                                         <i class="fa fa-trash fa-2x text-danger" ></i>
                                     </button>
@@ -80,6 +80,14 @@
         </section><!-- end of content -->
 
     </div><!-- end of content wrapper -->
-
 @endsection
 
+@push('styles')
+    <style>
+        .img-album{
+            height: 200px;
+            width: 300px;
+            margin-bottom: 5px;
+        }
+    </style>
+@endpush

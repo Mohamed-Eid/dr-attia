@@ -31,6 +31,7 @@ Route::group(
                 Route::resource('/videos','VideoController');
  
                 Route::resource('/blog','PostController');
+                Route::resource('/pages','PageController');
 
 
 
