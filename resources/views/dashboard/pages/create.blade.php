@@ -27,7 +27,7 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.surgery.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.pages.store') }}" method="post" enctype="multipart/form-data">
 
                         @csrf
                         <div class="row">
@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label>@lang('site.'.$locale.'.description')</label>
                                     <textarea id="editor{{$index}}" name="{{$locale}}[body]" rows="10" cols="80">
-                                        {{ old($locale.'.name') }}
+                                        {{ old($locale.'.body') }}
                                     </textarea>
                                 </div>
                                 @endforeach

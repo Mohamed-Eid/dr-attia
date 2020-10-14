@@ -33,6 +33,9 @@ Route::group(
                 Route::resource('/blog','PostController');
                 Route::resource('/pages','PageController');
 
+                Route::post('/pages/{page}/upload_images','PageController@upload_images')->name('pages.upload_images');
+
+                Route::delete('/pages/{page}/delete_image/{id}','PageController@delete_image')->name('pages.delete_image');
 
 
                 Route::get('profile','ProfileController@edit')->name('profiles.edit');

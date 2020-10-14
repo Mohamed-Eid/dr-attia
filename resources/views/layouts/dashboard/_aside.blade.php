@@ -52,11 +52,34 @@
                 <a href="{{ route('dashboard.blog.index') }}"><i class="fa fa-pencil"></i><span>@lang('site.blog')</span></a>
             </li>
 
-            <li class="{{ route('dashboard.blog.index')==url()->current() ? 'active' : '' }}">
+            {{-- <li class="{{ route('dashboard.blog.index')==url()->current() ? 'active' : '' }}">
                 <a href="{{ route('dashboard.blog.index') }}"><i class="fa fa-file-code-o"></i><span>@lang('site.pages')</span></a>
-            </li>
+            </li> --}}
 
 
+            <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-share"></i> 
+                  <span>@lang('site.pages')</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-folder pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="page-list {{route('dashboard.pages.index')==url()->current() ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.pages.index') }}">
+                            <i class="fa fa-folder-open"></i> @lang('site.pages_index')
+                        </a>
+                    </li>
+                    @foreach (pages() as $page)
+                    <li class="page-list {{route('dashboard.pages.edit',$page->id)==url()->current() ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.pages.edit',$page->id) }}">
+                            <i class="fa fa-file-code-o"></i> {{ $page->name }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+              </li>
 
         </ul>
 
@@ -64,3 +87,13 @@
 
 </aside>
 
+@push('scripts')
+    <script>
+        // $('.treeview').click(function(){
+        //     $(this).addClass('active').siblings().removeClass('active');
+        // });
+        if($('.page-list').hasClass('active')){
+            $('.treeview').addClass('active');
+        }
+    </script>
+@endpush

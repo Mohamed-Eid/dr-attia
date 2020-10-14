@@ -235,4 +235,6 @@ return [
     'videos'          => 'فيديوهات',
     'surgery'        => 'العملية',
     'pages'         => 'الصفحات',
+    'view_images'   => 'عرض الصور',
+    'pages_index'   => 'كل الصفحات',
 ];
