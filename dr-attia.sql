@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 02:03 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Oct 14, 2020 at 04:53 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dr-attia`
+-- Database: `dr-attia2`
 --
 
 -- --------------------------------------------------------
@@ -138,7 +137,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (84, '2020_10_12_130505_create_posts_table', 6),
 (85, '2020_10_12_130518_create_post_translations_table', 6),
 (88, '2020_10_14_013113_create_pages_table', 7),
-(89, '2020_10_14_013650_create_page_translations_table', 7);
+(89, '2020_10_14_013650_create_page_translations_table', 7),
+(90, '2020_10_14_113808_create_page_images_table', 8),
+(92, '2020_10_14_133815_create_settings_table', 9);
 
 -- --------------------------------------------------------
 
@@ -149,10 +150,45 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `pages` (
   `id` int(10) UNSIGNED NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `images` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'DQx9ZevQw3dyxZRLYYD0dD95r6bche1INuwAHVOs.png', '2020-10-14 07:54:02', '2020-10-14 10:11:34'),
+(3, 'E3h7YkALKrGfvyZr8vwa8NaHly90GsQjUmvTFXMs.jpeg', '2020-10-14 07:59:35', '2020-10-14 09:55:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_images`
+--
+
+CREATE TABLE `page_images` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `page_images`
+--
+
+INSERT INTO `page_images` (`id`, `image`, `page_id`, `created_at`, `updated_at`) VALUES
+(1, 'YP4jmUiyXmYrtFPte3nr7p14lOyJznzaUcE4yZ0h.jpeg', 3, '2020-10-14 09:45:57', '2020-10-14 09:45:57'),
+(2, 'G8sLCEj8ZjHonc6xR94rj7Xlx574WYnvTw6ZuwCy.png', 3, '2020-10-14 09:45:57', '2020-10-14 09:45:57'),
+(3, 'xUy4ZdAnjad1OFUVr2HXf4aLRUKCdGiGWu81RbHL.jpeg', 3, '2020-10-14 09:45:57', '2020-10-14 09:45:57'),
+(4, 'Mkxu7ddoqiy4q0oprMulySeb3GkqGBnwYVib8Vcg.jpeg', 3, '2020-10-14 09:46:10', '2020-10-14 09:46:10'),
+(5, '7d7lZNLBRaU9iWG9VJkHCXV0qXQ9TjgMdwoPoOgS.jpeg', 3, '2020-10-14 09:46:10', '2020-10-14 09:46:10'),
+(6, 'ug25uD6RANpOp7hnexhyhmxhzwTxlkH7G6CcZvty.jpeg', 3, '2020-10-14 09:46:11', '2020-10-14 09:46:11'),
+(7, 'mqJWv7bujD33tU1qssiuF3mvEQStKAiDAzn31sNH.jpeg', 3, '2020-10-14 09:46:11', '2020-10-14 09:46:11'),
+(8, 'tmuucmFiV3k87zI1Mv1uZQf2Y8taODl2scMImESD.jpeg', 3, '2020-10-14 09:46:11', '2020-10-14 09:46:11');
 
 -- --------------------------------------------------------
 
@@ -167,6 +203,16 @@ CREATE TABLE `page_translations` (
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `page_translations`
+--
+
+INSERT INTO `page_translations` (`id`, `page_id`, `name`, `body`, `locale`) VALUES
+(1, 1, 'من نحن', '<p>&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;</p>', 'ar'),
+(2, 1, 'About Us', '<p>&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;</p>', 'en'),
+(5, 3, 'تست 3a33', '<p>dstgset3333</p>', 'ar'),
+(6, 3, 'test 3233', '<p>sdrtsdtsdt333</p>', 'en');
 
 -- --------------------------------------------------------
 
@@ -520,6 +566,35 @@ INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `type`, `class`, `key`, `value`, `data`, `parent_id`, `created_at`, `updated_at`) VALUES
+(1, 'text', 'social_links', 'fb_link', 'https://ar-ar.facebook.com/', NULL, NULL, '2020-10-14 13:42:49', '2020-10-14 13:42:49'),
+(2, 'location', NULL, 'location', '31.0181953,31.383654900000003', NULL, NULL, '2020-10-14 13:43:48', '2020-10-14 13:43:48'),
+(3, 'image', 'slider', 'slider_image_1', '3SGVWPMameycfY3PsZjlAcSvQGyqmpQHn6QdT348.jpeg', NULL, NULL, '2020-10-14 13:45:36', '2020-10-14 13:45:36'),
+(4, 'text', 'slider', 'text_ar', 'سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر', NULL, 3, '2020-10-14 13:47:49', '2020-10-14 13:47:49'),
+(5, 'text', 'slider', 'text_en', 'Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider', NULL, 3, '2020-10-14 13:48:52', '2020-10-14 13:48:52');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `surgeries`
 --
 
@@ -698,6 +773,13 @@ ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `page_images`
+--
+ALTER TABLE `page_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_images_page_id_foreign` (`page_id`);
+
+--
 -- Indexes for table `page_translations`
 --
 ALTER TABLE `page_translations`
@@ -777,6 +859,13 @@ ALTER TABLE `role_user`
   ADD KEY `role_user_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `settings_parent_id_foreign` (`parent_id`);
+
+--
 -- Indexes for table `surgeries`
 --
 ALTER TABLE `surgeries`
@@ -839,19 +928,25 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `page_images`
+--
+ALTER TABLE `page_images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `page_translations`
 --
 ALTER TABLE `page_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -888,6 +983,12 @@ ALTER TABLE `question_answer_translations`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `surgeries`
@@ -934,6 +1035,12 @@ ALTER TABLE `category_translations`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_surgery_id_foreign` FOREIGN KEY (`surgery_id`) REFERENCES `surgeries` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `page_images`
+--
+ALTER TABLE `page_images`
+  ADD CONSTRAINT `page_images_page_id_foreign` FOREIGN KEY (`page_id`) REFERENCES `pages` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `page_translations`
@@ -983,6 +1090,12 @@ ALTER TABLE `question_answer_translations`
 --
 ALTER TABLE `role_user`
   ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `settings`
+--
+ALTER TABLE `settings`
+  ADD CONSTRAINT `settings_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `settings` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `surgeries`
