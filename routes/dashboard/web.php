@@ -38,12 +38,12 @@ Route::group(
                 Route::delete('/pages/{page}/delete_image/{id}','PageController@delete_image')->name('pages.delete_image');
 
 
+                Route::get('settings/all','SettingController@all')->name('settings.all_settings');
+
                 Route::resource('/settings','SettingController');
 
-                Route::get('aaaaa','SettingController@all')->name('settings.all_settings');
-
-
-                Route::resource('/contact_messages','ContactMessageController')->only(['index' , 'show' ,'destroy']);
+                Route::get('/contact_messages','ContactMessageController@index')->name('contact.index');
+                Route::delete('/contact_messages/{message}','ContactMessageController@destroy')->name('contact.destroy');
 
 
                 Route::get('profile','ProfileController@edit')->name('profiles.edit');

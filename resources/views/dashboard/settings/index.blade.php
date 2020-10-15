@@ -49,6 +49,7 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
+                                <th>@lang('site.name')</th>
                                 <th>@lang('site.key')</th>
                                 <th>@lang('site.class')</th>
                                 <th>@lang('site.type')</th>
@@ -60,6 +61,7 @@
                             @foreach($settings as $index => $setting)
                                 <tr>
                                     <td>{{ $index +1 }}</td>
+                                    <td>{{ $setting->name }}</td>
                                     <td>{{ $setting->key }}</td>
                                     <td>{{ $setting->class }}</td>
                                     <td>{{ $setting->type }}</td>

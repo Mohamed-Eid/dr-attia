@@ -52,6 +52,10 @@
                 <a href="{{ route('dashboard.blog.index') }}"><i class="fa fa-pencil"></i><span>@lang('site.blog')</span></a>
             </li>
 
+            <li class="{{ route('dashboard.contact.index')==url()->current() ? 'active' : '' }}">
+                <a href="{{ route('dashboard.contact.index') }}"><i class="fa fa-pencil"></i><span>@lang('site.contact')</span></a>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                   <i class="fa fa-share"></i> 

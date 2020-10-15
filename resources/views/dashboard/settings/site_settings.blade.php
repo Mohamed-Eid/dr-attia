@@ -31,18 +31,18 @@
                           <!-- Custom Tabs -->
                           <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                @foreach ($data as $key=>$item)
+                                @foreach ($data as $name=>$item)
 
-                                @if ($key=="social_links_settings")
-                                <li class="active"><a href="#tab_{{$key}}" data-toggle="tab">{{ $key}}</a></li>               
+                                @if ($name=="social_links_settings")
+                                <li class="active"><a href="#tab_{{$name}}" data-toggle="tab">{{ $name}}</a></li>               
                                 @else
-                                <li><a href="#tab_{{$key}}" data-toggle="tab">{{ $key }}</a></li>
+                                <li><a href="#tab_{{$name}}" data-toggle="tab">{{ $name }}</a></li>
                                 @endif
                                 @endforeach
                             </ul>
                             <div class="tab-content">
-                                @foreach ($data as $key=>$items)
-                                <div class="tab-pane {{ $key=="social_links_settings" ? 'active' : '' }}" id="tab_{{$key}}">
+                                @foreach ($data as $name=>$items)
+                                <div class="tab-pane {{ $name=="social_links_settings" ? 'active' : '' }}" id="tab_{{$name}}">
                                     @foreach ($items as $item)
                                     @if ($item->type == "text")
                                     <form action="{{ route('dashboard.settings.update',$item) }}" method="POST" enctype="multipart/form-data">
@@ -52,7 +52,7 @@
 
                                         @foreach(config('translatable.locales') as $locale)                             
                                         <div class="form-group">
-                                            <label>{{ $item->translate($locale)->key }}</label>
+                                            <label>{{ $item->translate($locale)->name }}</label>
                                             <input type="text" name="{{$locale}}[value]" class="form-control" value="{{$item->translate($locale)->value}}" >
                                         </div>
                                         @endforeach
@@ -67,7 +67,7 @@
                                         @csrf
                                         @method('put')                                     
                                         <div class="form-group">
-                                            <label>{{ $item->key }}</label>
+                                            <label>{{ $item->name }}</label>
                                             <input type="file" name="image" class="form-control" id="image-{{$item->id}}">
                                             <div class="form-group">
                                                 <img src="{{ asset('uploads/setting_images/'.$item->image)}}"

@@ -35,10 +35,14 @@
                             <select name="type" class="form-control type">
                                 <option value="text">text</option>
                                 <option value="image">image</option>
-                                {{-- <option value="location" selected>location</option> --}}
+                                <option value="location" selected>location</option>
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label>@lang('site.key')</label>
+                            <input type="text" name="key" class="form-control" value="{{ old('key') }}" >
+                        </div>
 
                         <div class="form-group">
                             <label>@lang('site.class')</label>
@@ -47,8 +51,8 @@
 
                         @foreach(config('translatable.locales') as $locale)
                         <div class="form-group">
-                            <label>@lang('site.'.$locale.'.key')</label>
-                            <input type="text" name="{{$locale}}[key]" class="form-control" value="{{ old($locale.'.key') }}" >
+                            <label>@lang('site.'.$locale.'.name')</label>
+                            <input type="text" name="{{$locale}}[name]" class="form-control" value="{{ old($locale.'.name') }}" >
                         </div>
                         @endforeach
 

@@ -17,6 +17,13 @@ function upload_image($path , $image , $width=300 , $height=null)
     return $image->hashName();
 }
 
+function upload_image_without_resize($path , $image )
+{
+    // $image must be a $request->image 
+    Intervention\Image\Facades\Image::make($image)->save(public_path('uploads/'.$path .'/'. $image->hashName()));
+    return $image->hashName();
+}
+
 function delete_image($folder , $image)
 {
     Illuminate\Support\Facades\Storage::disk('public_uploads')->delete('/'.$folder.'/' . $image);
@@ -29,6 +36,34 @@ function get_video_id($link){
 
 function pages(){
     return \App\Page::all();
+}
+
+function get_snippts($text , $wordCount = 30){
+    $text = strip_tags($text);
+    return $text;
+    // return implode( 
+    //     '', 
+    //     array_slice( 
+    //       preg_split(
+    //         '/([\s,\.;\?\!]+)/', 
+    //         $text, 
+    //         $wordCount*2+1, 
+    //         PREG_SPLIT_DELIM_CAPTURE
+    //       ),
+    //       0,
+    //       $wordCount*2-1
+    //     )
+    //   );
+}
+
+
+//setings helpers
+function get_settings_by_class($class){
+    return \App\Setting::where('class',$class)->get();
+}
+
+function get_setting_by_key($key){
+    return \App\Setting::where('key',$key)->first();
 }
 
 ?>

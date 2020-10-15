@@ -66,10 +66,11 @@ class SettingController extends Controller
         $rules = [
             //'lat' => 'required',
             'type' => 'required',
+            'key' => 'required|unique:settings',
         ];
 
         foreach (config('translatable.locales') as $locale){
-            $rules += [$locale.'.key' => ['required' ,Rule::unique('setting_translations','key')]];
+            $rules += [$locale.'.name' => ['required' ,Rule::unique('setting_translations','name')]];
             // $rules += [$locale.'.value' => ['required' ,Rule::unique('setting_translations','value')]];
         }
 
@@ -82,6 +83,7 @@ class SettingController extends Controller
         $data['ar'] = $request->ar;
         $data['en'] = $request->en;
         $data['class'] = $request->class;
+        $data['key'] = $request->key;
 
         
 
@@ -89,7 +91,7 @@ class SettingController extends Controller
             $data['type'] = 'text';
         }elseif($request->type == 'image'){
             $data['type'] = 'image';
-            $data['image'] = upload_image('setting_images',$request->value);
+            $data['image'] = upload_image_without_resize('setting_images',$request->value,null,null);
         }else{
             $data['type'] = 'location';
             $data['value'] = $request->location;
@@ -110,7 +112,6 @@ class SettingController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -149,7 +150,7 @@ class SettingController extends Controller
         $data = $request->all();
   
         if( isset($request->image)) {
-            $data['image'] = upload_image('setting_images',$request->image);
+            $data['image'] = upload_image_without_resize('setting_images',$request->image,null,null);
        }
 
         $setting->update($data);
