@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 04:53 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Oct 15, 2020 at 02:38 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dr-attia2`
+-- Database: `dr-attia`
 --
 
 -- --------------------------------------------------------
@@ -67,6 +68,22 @@ INSERT INTO `category_translations` (`id`, `category_id`, `name`, `locale`) VALU
 (6, 3, 'test 311', 'en'),
 (7, 4, 'تست', 'ar'),
 (8, 4, 'test', 'en');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_messages`
+--
+
+CREATE TABLE `contact_messages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -139,7 +156,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (88, '2020_10_14_013113_create_pages_table', 7),
 (89, '2020_10_14_013650_create_page_translations_table', 7),
 (90, '2020_10_14_113808_create_page_images_table', 8),
-(92, '2020_10_14_133815_create_settings_table', 9);
+(93, '2020_10_14_133815_create_settings_table', 9),
+(94, '2020_10_15_010316_create_setting_translations_table', 9),
+(95, '2020_10_15_023103_create_contact_messages_table', 10);
 
 -- --------------------------------------------------------
 
@@ -573,10 +592,7 @@ CREATE TABLE `settings` (
   `id` int(10) UNSIGNED NOT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parent_id` int(10) UNSIGNED DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -585,12 +601,45 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `type`, `class`, `key`, `value`, `data`, `parent_id`, `created_at`, `updated_at`) VALUES
-(1, 'text', 'social_links', 'fb_link', 'https://ar-ar.facebook.com/', NULL, NULL, '2020-10-14 13:42:49', '2020-10-14 13:42:49'),
-(2, 'location', NULL, 'location', '31.0181953,31.383654900000003', NULL, NULL, '2020-10-14 13:43:48', '2020-10-14 13:43:48'),
-(3, 'image', 'slider', 'slider_image_1', '3SGVWPMameycfY3PsZjlAcSvQGyqmpQHn6QdT348.jpeg', NULL, NULL, '2020-10-14 13:45:36', '2020-10-14 13:45:36'),
-(4, 'text', 'slider', 'text_ar', 'سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر سلايدر', NULL, 3, '2020-10-14 13:47:49', '2020-10-14 13:47:49'),
-(5, 'text', 'slider', 'text_en', 'Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider Slider', NULL, 3, '2020-10-14 13:48:52', '2020-10-14 13:48:52');
+INSERT INTO `settings` (`id`, `type`, `class`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'text', 'social_links', NULL, '2020-10-14 23:25:48', '2020-10-14 23:25:48'),
+(2, 'text', 'social_links', NULL, '2020-10-14 23:27:14', '2020-10-14 23:27:14'),
+(3, 'image', 'slider', '3VWzplvExwhcCea3xeLQ6MPy6CZlIiZSl4nGy65T.jpeg', '2020-10-14 23:28:58', '2020-10-15 00:13:03'),
+(4, 'image', 'slider', 'ToFjssKOApJa4rPxPAWsvAtE2eUnUtnDg8i7mcBI.jpeg', '2020-10-14 23:29:53', '2020-10-14 23:29:53'),
+(5, 'image', 'slider', 'M9mfHUhPwtPOmbsC5hcngDZ1VdnRTO446y7DLMeq.jpeg', '2020-10-14 23:30:27', '2020-10-14 23:30:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting_translations`
+--
+
+CREATE TABLE `setting_translations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `setting_id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `setting_translations`
+--
+
+INSERT INTO `setting_translations` (`id`, `setting_id`, `key`, `value`, `title`, `description`, `link`, `locale`) VALUES
+(1, 1, 'fb', 'asdasfasdfasdfqwawrqwr', NULL, NULL, NULL, 'ar'),
+(2, 1, 'فيسبوك لينك', 'asasfas://www.youtube.com/watch?v=ASbnLcr1Umk', NULL, NULL, NULL, 'en'),
+(3, 2, 'tw', 'twitterlink', NULL, NULL, NULL, 'ar'),
+(4, 2, 'tw', 'twitterllll', NULL, NULL, NULL, 'en'),
+(5, 3, 'slider_image', 'قييممممهه', 'title123', 'وصف وصفوصفوصفوصف', 'link/ar123', 'ar'),
+(6, 3, 'slider_image', 'vallluuee', 'عنوان', 'desc desc desc desc', 'link/en', 'en'),
+(7, 4, 'slider_image_1', NULL, NULL, NULL, NULL, 'ar'),
+(8, 4, 'slider_image_1', NULL, NULL, NULL, NULL, 'en'),
+(9, 5, 'slider_image_2', NULL, NULL, NULL, NULL, 'ar'),
+(10, 5, 'slider_image_2', NULL, NULL, NULL, NULL, 'en');
 
 -- --------------------------------------------------------
 
@@ -754,6 +803,12 @@ ALTER TABLE `category_translations`
   ADD KEY `category_translations_locale_index` (`locale`);
 
 --
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
@@ -862,8 +917,15 @@ ALTER TABLE `role_user`
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `setting_translations`
+--
+ALTER TABLE `setting_translations`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `settings_parent_id_foreign` (`parent_id`);
+  ADD UNIQUE KEY `setting_translations_setting_id_locale_unique` (`setting_id`,`locale`),
+  ADD KEY `setting_translations_locale_index` (`locale`);
 
 --
 -- Indexes for table `surgeries`
@@ -919,6 +981,12 @@ ALTER TABLE `category_translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
@@ -928,7 +996,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -989,6 +1057,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `setting_translations`
+--
+ALTER TABLE `setting_translations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `surgeries`
@@ -1092,10 +1166,10 @@ ALTER TABLE `role_user`
   ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `settings`
+-- Constraints for table `setting_translations`
 --
-ALTER TABLE `settings`
-  ADD CONSTRAINT `settings_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `settings` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `setting_translations`
+  ADD CONSTRAINT `setting_translations_setting_id_foreign` FOREIGN KEY (`setting_id`) REFERENCES `settings` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `surgeries`
