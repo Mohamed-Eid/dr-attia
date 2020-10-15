@@ -43,6 +43,9 @@ Route::group(
                 Route::get('aaaaa','SettingController@all')->name('settings.all_settings');
 
 
+                Route::resource('/contact_messages','ContactMessageController')->only(['index' , 'show' ,'destroy']);
+
+
                 Route::get('profile','ProfileController@edit')->name('profiles.edit');
                 Route::put('profile','ProfileController@update')->name('profiles.update');
                 
