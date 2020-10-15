@@ -26,72 +26,109 @@
                 <div class="box-body">
 
                     @include('partials._errors')
-                    <form action="{{ route('dashboard.settings.store') }}" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-12">
+                          <!-- Custom Tabs -->
+                          <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                @foreach ($data as $key=>$item)
 
-                        @csrf
-
-                        <div class="form-group">
-                            <label>@lang('site.type')</label>
-                            <select name="type" class="form-control type">
-                                <option value="text">text</option>
-                                <option value="image">image</option>
-                                {{-- <option value="location" selected>location</option> --}}
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>@lang('site.class')</label>
-                            <input type="text" name="class" class="form-control" value="{{ old('class') }}" >
-                        </div>
-
-                        @foreach(config('translatable.locales') as $locale)
-                        <div class="form-group">
-                            <label>@lang('site.'.$locale.'.key')</label>
-                            <input type="text" name="{{$locale}}[key]" class="form-control" value="{{ old($locale.'.key') }}" >
-                        </div>
-                        @endforeach
-
-                        @foreach(config('translatable.locales') as $locale)
-                        <div class="form-group setting-text">
-                            <label>@lang('site.'.$locale.'.value')</label>
-                            <input type="text" name="{{$locale}}[value]" class="form-control" value="{{ old($locale.'.value') }}" >
-                        </div>
-                        @endforeach
-
-                        <div class="form-group setting-image">
-                            <label>@lang('site.image')</label>
-                            <input type="file" name="value" class="form-control image" value="{{ old('value') }}" >
-                            <div class="form-group">
-                                <img src=""
-                                     class="img-thumbnail image-preview" style="width: 100px;">
-                            </div>
-                        </div>
+                                @if ($key=="social_links_settings")
+                                <li class="active"><a href="#tab_{{$key}}" data-toggle="tab">{{ $key}}</a></li>               
+                                @else
+                                <li><a href="#tab_{{$key}}" data-toggle="tab">{{ $key }}</a></li>
+                                @endif
+                                @endforeach
+                            </ul>
+                            <div class="tab-content">
+                                @foreach ($data as $key=>$items)
+                                <div class="tab-pane {{ $key=="social_links_settings" ? 'active' : '' }}" id="tab_{{$key}}">
+                                    @foreach ($items as $item)
+                                    @if ($item->type == "text")
+                                    <form action="{{ route('dashboard.settings.update',$item) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('put')    
 
 
-                        <div class="form-group setting-location">
-                            <label>@lang('site.location')</label>
-                            {{-- <input type="text" name="value" class="form-control" value="{{ old('value') }}" > --}}
-                            <div class="map">
-                                <div class="form-group">
-                                    {{-- <label>@lang('site.address')</label> --}}
-                                    <input type="text" id="pac-input" class="form-control" placeholder="" name="address" value="{{ old('address') }}" >
-                                    <input type="hidden" id="latitude" name="lat" class="form-control" value="{{ old('lat') }}" required>
-                                    <input type="hidden" id="longitude" name="lng" class="form-control" value="{{ old('lng') }}" required>
+                                        @foreach(config('translatable.locales') as $locale)                             
+                                        <div class="form-group">
+                                            <label>{{ $item->translate($locale)->key }}</label>
+                                            <input type="text" name="{{$locale}}[value]" class="form-control" value="{{$item->translate($locale)->value}}" >
+                                        </div>
+                                        @endforeach
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>@lang('site.save')
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    @elseif($item->type == "image")
+                                    <form action="{{ route('dashboard.settings.update',$item) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('put')                                     
+                                        <div class="form-group">
+                                            <label>{{ $item->key }}</label>
+                                            <input type="file" name="image" class="form-control" id="image-{{$item->id}}">
+                                            <div class="form-group">
+                                                <img src="{{ asset('uploads/setting_images/'.$item->image)}}"
+                                                    class="img-thumbnail" id="image-preview-{{$item->id}}" style="width: 100px;">
+                                            </div>
+                                            @push('scripts')
+                                            <script>
+                                                $("#image-{{$item->id}}").change(function() {
+                                                    if (this.files && this.files[0]) {
+                                                        var reader = new FileReader();
+                                        
+                                                        reader.onload = function(e) {
+                                                            $('#image-preview-{{$item->id}}').attr('src', e.target.result);
+                                                        }
+                                        
+                                                        reader.readAsDataURL(this.files[0]); // convert to base64 string
+                                                    }
+                                                });
+                                            </script>
+                                        @endpush
+                                        </div>
+                                        @foreach(config('translatable.locales') as $locale)                             
+                                        <div class="form-group">
+                                            <label>@lang('site.'.$locale.'.description')</label>
+                                            <input type="text" name="{{$locale}}[description]" class="form-control" value="{{$item->translate($locale)->description}}" >
+                                        </div>
+                                        @endforeach
+                                        <div class="form-group">
+                                            <label>@lang('site.title')</label>
+                                            <input type="text" name="title" class="form-control" value="{{$item->title}}" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>@lang('site.link')</label>
+                                            <input type="text" name="link" class="form-control" value="{{$item->link}}" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>@lang('site.save')
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <hr/>
+                                    
+                                    @elseif($item->type == "location")
+
+
+                                    @endif
+                                    @endforeach
                                 </div>
+    
+                                  <!-- /.tab-pane -->
+    
+                                @endforeach
                             </div>
-                            <div class="form-group">
-                                <div id="map" style="height: 300px;width: 100%;"></div>
-                            </div>
+                            <!-- /.tab-content -->
+                          </div>
+                          <!-- nav-tabs-custom -->
                         </div>
-
-                        <div class="form-group">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>@lang('site.add')
-                            </button>
-                        </div>
-
-
-                    </form>
+                        <!-- /.col -->
+                    </div>
                 </div>
             </div>
 
@@ -336,5 +373,5 @@
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjuzA2dGe0KgLeVzjTGh9W6bvixhrjsQs&libraries=places&callback=initAutocomplete&language=ar&region=EG
-     async defer"></script> 
+     async defer"></script>
 @endpush 

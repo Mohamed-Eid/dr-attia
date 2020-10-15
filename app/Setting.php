@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
+    use \Dimsav\Translatable\Translatable;
+
+    public $translatedAttributes = ['key','value','title','description','link'];
+
     public $guarded = [];
 
 }

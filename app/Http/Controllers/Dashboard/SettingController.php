@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Setting;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class SettingController extends Controller
 {
@@ -22,6 +23,7 @@ class SettingController extends Controller
 
     public function all()
     {
+
         $settings_classes = DB::table('settings')
             ->select(DB::raw('count(*) as setting_count, class'))
             ->groupBy('class')->get();
@@ -33,12 +35,12 @@ class SettingController extends Controller
             //$data['dd'][] = $setting;
             foreach ($settings_classes as $class) {
                 if($class->class == $setting->class){
-                    $class!=null ? $data[$class->class][] = $setting : $data['others'][] = $setting; 
+                    $setting->class!="" ? $data[$class->class."_settings"][] = $setting : $data["other_settings"][] = $setting; 
                 }
             } 
         }
-        dd($data);
-        //return view('dashboard.settings.index',compact('settings'));
+        //dd($data);
+        return view('dashboard.settings.site_settings',compact('data'));
     }
 
 
@@ -49,8 +51,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        $settings = Setting::all();
-        return view('dashboard.settings.create',compact('settings'));
+        return view('dashboard.settings.create');
     }
 
     /**
@@ -63,35 +64,37 @@ class SettingController extends Controller
     {
         $request->location = $request->lat.','.$request->lng;
         $rules = [
-            'lat' => 'required',
-            'key' => 'required|unique:settings',
+            //'lat' => 'required',
             'type' => 'required',
         ];
 
+        foreach (config('translatable.locales') as $locale){
+            $rules += [$locale.'.key' => ['required' ,Rule::unique('setting_translations','key')]];
+            // $rules += [$locale.'.value' => ['required' ,Rule::unique('setting_translations','value')]];
+        }
+
         $request->validate($rules);    
         $data = [
-            'key' => '',
-            'value' => '',
             'type' => '',
             'class' => '',
-            'parent_id' => null,
         ];
 
-        $data['key'] = $request->key;
+        $data['ar'] = $request->ar;
+        $data['en'] = $request->en;
         $data['class'] = $request->class;
-        $data['parent_id'] = $request->parent_id;
+
+        
 
         if($request->type == 'text'){
             $data['type'] = 'text';
-            $data['value'] = $request->value;
         }elseif($request->type == 'image'){
             $data['type'] = 'image';
-            $data['value'] = upload_image('setting_images',$request->value);
+            $data['image'] = upload_image('setting_images',$request->value);
         }else{
             $data['type'] = 'location';
             $data['value'] = $request->location;
         }
-    
+
         Setting::create($data);
         
         session()->flash('success', __('site.added_successfully'));
@@ -128,9 +131,32 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Setting $setting)
     {
-        //
+        $request->location = $request->lat.','.$request->lng;
+        $rules = [
+            //'lat' => 'required',
+            'type' => 'required',
+        ];
+
+        foreach (config('translatable.locales') as $locale){
+            //$rules += [$locale.'.key' => ['required' ,Rule::unique('setting_translations','key')]];
+            // $rules += [$locale.'.value' => ['required' ,Rule::unique('setting_translations','value')]];
+        }
+
+        // $request->validate($rules);    
+
+        $data = $request->all();
+  
+        if( isset($request->image)) {
+            $data['image'] = upload_image('setting_images',$request->image);
+       }
+
+        $setting->update($data);
+
+        session()->flash('success', __('site.updated_successfully'));
+
+        return redirect()->back();
     }
 
     /**

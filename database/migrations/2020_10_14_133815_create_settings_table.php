@@ -17,12 +17,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('class')->nullable();
-            $table->string('key');
-            $table->string('value')->nullable();
-            $table->text('data');
-            
-            $table->integer('parent_id')->unsigned()->nullable();
-            $table->foreign('parent_id')->references('id')->on('settings')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('image')->nullable();            
     
             $table->timestamps();
         });
