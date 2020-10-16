@@ -56,7 +56,7 @@ class CategoryController extends Controller
 
         $request->validate($rules);
         
-        $data = $request->all();
+        $data = $request->except(['expectation']);
 
         $data['image'] = 'default.png';
 
@@ -69,7 +69,15 @@ class CategoryController extends Controller
         }
         
 
-        Category::create($data);
+        $category = Category::create($data);
+
+        foreach(request()->expectation as $expectation){
+            $additional_data = $expectation;
+            if( isset($expectation['image'])) {
+                $additional_data['image'] = upload_image_without_resize('category_images',$additional_data['image']);
+            }
+            $category->expectations()->create($additional_data);
+        }
 
         session()->flash('success', __('site.added_successfully'));
 
@@ -116,7 +124,7 @@ class CategoryController extends Controller
 
         $request->validate($rules);
 
-        $data = $request->all();
+        $data = $request->except(['expectation']);
 
         if( isset($request->image)) {
             Image::make($request->image)->resize(300, null, function ($constraint) {
@@ -130,6 +138,18 @@ class CategoryController extends Controller
 
         
         $category->update($data);
+
+        foreach(request()->expectation as $request_expectation){
+            $additional_data = $request_expectation;
+            
+            if(isset($request_expectation['image'])) {
+                delete_image('surgery_images',$request_expectation['image']);
+                $additional_data['image'] = upload_image_without_resize('surgery_images',$additional_data['image']);
+            } 
+            $expectation = Expectation::find($request_expectation['key']);
+            unset($additional_data['key']);
+            $expectation->update($additional_data);
+        }
 
         session()->flash('success', __('site.updated_successfully'));
 

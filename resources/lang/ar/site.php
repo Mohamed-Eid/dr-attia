@@ -237,4 +237,18 @@ return [
     'pages'         => 'الصفحات',
     'view_images'   => 'عرض الصور',
     'pages_index'   => 'كل الصفحات',
+
+    'contact'      => 'تواصل معنا',
+    'before_after'      => 'قبل وبعد',
+    'center_profile'      => 'عن السنتر',
+    'video_library'      => 'مكتبة الفيديوهات',
+    'services'      => 'الخدمات',
+    'read_more'     => 'أقرأ المزيد',
+    'articles'      => 'المقالات',
+    'related_articles' => 'المقالات المشابهه',
+    'patients' => 'المرضى',
+    'our_services' => 'خدماتنا',
+    'view_more_of' => 'عرض المزيد من ',
+    'videos'      => 'الفيديوهات', 
+    'view'        => 'عرض', 
 ];

@@ -19,7 +19,7 @@
                             </p>
                         </div>
                         @if ($setting->link)
-                        <a href="#" class="btn btn-site m-t-20 text-white wow rotateInUpRight" data-wow-duration="1s" data-wow-delay="2.5s">Read More</a>
+                        <a href="{{$setting->link}}" class="btn btn-site m-t-20 text-white wow rotateInUpRight" data-wow-duration="1s" data-wow-delay="2.5s">Read More</a>
                         @endif
                     </div>
                 </div>

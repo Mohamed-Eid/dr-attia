@@ -17,8 +17,13 @@ class ImageAlbumController extends Controller
      */
     public function index()
     {
+        $images = Image::when(request()->surgery_id, function ($q){
+
+            return $q->where('surgery_id', request()->surgery_id);
+        })->paginate(10);
+        
         $surgeries = Surgery::all();
-        $images = Image::paginate(10);
+        //$images = Image::paginate(10);
         return view('dashboard.images.index',compact('images','surgeries'));
     }
 

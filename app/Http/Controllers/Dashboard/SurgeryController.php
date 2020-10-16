@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Category;
+use App\Expectation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Surgery;
@@ -49,19 +50,20 @@ class SurgeryController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules = [
             'category_id' => 'required',
         ];
 
         foreach (config('translatable.locales') as $locale){
             $rules += [$locale.'.name' => ['required' ,Rule::unique('surgery_translations','name')]];
-            $rules += [$locale.'.body' => ['required' ,Rule::unique('surgery_translations','name')]];
+            $rules += [$locale.'.body' => ['required']];
 
         }
 
         $request->validate($rules);
-        
-        $data = $request->all();
+
+        $data = $request->except(['expectation']);
 
         $data['image'] = 'default.png';
         $data['icon'] = 'default.png';
@@ -73,8 +75,18 @@ class SurgeryController extends Controller
         if( isset($request->icon)) {
             $data['icon'] = upload_image('surgery_images',$request->icon);
         }
-        
-        Surgery::create($data);
+        //dd($data);
+
+        $surgery = Surgery::create($data);
+
+        //dd(request()->expectation);
+        foreach(request()->expectation as $expectation){
+            $additional_data = $expectation;
+            if( isset($expectation['image'])) {
+                $additional_data['image'] = upload_image_without_resize('surgery_images',$additional_data['image']);
+            }
+            $surgery->expectations()->create($additional_data);
+        }
 
         session()->flash('success', __('site.added_successfully'));
 
@@ -112,7 +124,7 @@ class SurgeryController extends Controller
 
         $request->validate($rules);
 
-        $data = $request->all();
+        $data = $request->except(['expectation']);
 
         if( isset($request->image)) {
             $data['image'] = upload_image('surgery_images',$request->image);
@@ -123,8 +135,19 @@ class SurgeryController extends Controller
         }
         
         
-        
         $surgery->update($data);
+
+        foreach(request()->expectation as $request_expectation){
+            $additional_data = $request_expectation;
+            
+            if(isset($request_expectation['image'])) {
+                delete_image('surgery_images',$request_expectation['image']);
+                $additional_data['image'] = upload_image_without_resize('surgery_images',$additional_data['image']);
+            } 
+            $expectation = Expectation::find($request_expectation['key']);
+            unset($additional_data['key']);
+            $expectation->update($additional_data);
+        }
 
         session()->flash('success', __('site.updated_successfully'));
 

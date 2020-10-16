@@ -22,4 +22,8 @@ class Category extends Model
     public function surgeries(){
         return $this->hasMany(Surgery::class);
     }
+
+    public function expectations(){
+        return $this->hasMany(Expectation::class);
+    }
 }

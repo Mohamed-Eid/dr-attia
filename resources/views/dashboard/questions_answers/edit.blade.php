@@ -34,7 +34,7 @@
                             <label>@lang('site.surgery')</label>
                             <select name="surgery_id" class="form-control">
                                 @foreach ($surgeries as $surgery)
-                                <option value="{{ $surgery->id }} {{ $surgery->id == $question->surgery_id ? 'selected' : '' }} ">{{ $surgery->name }}</option>
+                                <option value="{{ $surgery->id }}" {{ $surgery->id == $question->surgery_id ? 'selected' : '' }}>{{ $surgery->name }}</option>
                                 @endforeach
                             </select>
                         </div>

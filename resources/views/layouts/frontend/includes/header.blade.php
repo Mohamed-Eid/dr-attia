@@ -60,7 +60,7 @@
                         <i class="fa fa-bars primary-color"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav {{ app()->getLocale() == 'ar' ? 'ml-auto' : 'mr-auto'}}">
                             <li class="nav-item {{ route('frontend.index')==url()->current() ? 'active' : ''  }}">
                                 <a class="nav-link" href="{{ route('frontend.index') }}">@lang('site.home')</a>
                             </li>

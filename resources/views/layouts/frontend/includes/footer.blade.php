@@ -69,6 +69,9 @@
     <script src="{{asset('frontend/Technomasr/bootstrap4/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/Technomasr/js/script.js')}}"></script>
     
+    <!-- include Owl Carousel plugin js-->
+    <script src="{{asset('frontend/Technomasr/owl-carousel/owl.carousel.min.js')}}"></script>
+    
     <script>
         //TODO : download owl carsoul v 2
         //------------- Owl Carousel  ------------
@@ -137,10 +140,7 @@
 
 
     </script>
-
-    <!-- include Owl Carousel plugin js-->
-    <script src="{{asset('frontend/Technomasr/owl-carousel/owl.carousel.min.js')}}"></script>
-
+    
     <!-- Before&After Gallery -->
     <script src="{{asset('frontend/Technomasr/lightbox2/src/js/lightbox.js')}}"></script>
     <script>

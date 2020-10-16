@@ -46,8 +46,8 @@ class QuestionAnswerController extends Controller
         ];
 
         foreach (config('translatable.locales') as $locale){
-            $rules += [$locale.'.question' => ['required' ,Rule::unique('question_answer_translations','question')]];
-            $rules += [$locale.'.answer' => ['required' ,Rule::unique('question_answer_translations','answer')]];
+            $rules += [$locale.'.question' => ['required' ]];
+            $rules += [$locale.'.answer' => ['required' ]];
 
         }
 
@@ -110,6 +110,7 @@ class QuestionAnswerController extends Controller
 
         $request->validate($rules);
         
+        //dd($request->all());
         $data = $request->all();
        
 

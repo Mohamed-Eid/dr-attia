@@ -31,4 +31,20 @@ class Surgery extends Model
         return $this->hasMany(Image::class);
     } 
 
+    public function question_answers(){
+        return $this->hasMany(QuestionAnswer::class);
+    }
+
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function expectations(){
+        return $this->hasMany(Expectation::class);
+    }
+
 }
