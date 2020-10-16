@@ -32,6 +32,15 @@
                             </div>
 
                             <div class="col-md-4">
+                                <select name="category_id" class="form-control">
+                                    <option value="">@lang('site.categories')</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $category->id == request()->category_id ? 'selected' : '' }}>{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i
                                             class="fa fa-search"></i>@lang('site.search')</button>
                                 <a href="{{ route('dashboard.surgery.create') }}" class="btn btn-primary"><i

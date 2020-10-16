@@ -24,10 +24,12 @@ class SurgeryController extends Controller
         //dd('test');
         $surgeries = Surgery::when($request->search , function ($q) use ($request){
             return $q->whereTranslationLike('name','%'.$request->search.'%');
+        })->when(request()->category_id, function ($q){
+            return $q->where('category_id', request()->category_id);
         })->latest()->paginate(10);
 
-
-        return view('dashboard.surgeries.index' , compact('surgeries'));
+        $categories = Category::all();
+        return view('dashboard.surgeries.index' , compact('surgeries','categories'));
     }
 
     /**

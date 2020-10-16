@@ -18,7 +18,9 @@ class QuestionAnswerController extends Controller
     public function index()
     {
         $surgeries = Surgery::all();
-        $questions = QuestionAnswer::paginate(10);
+        $questions = QuestionAnswer::when(request()->surgery_id, function ($q){
+            return $q->where('surgery_id', request()->surgery_id);
+        })->latest()->paginate(10);
         return view('dashboard.questions_answers.index',compact('surgeries','questions'));
     } 
 

@@ -17,7 +17,10 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::paginate(8);
+        $videos = Video::when(request()->surgery_id, function ($q){
+
+            return $q->where('surgery_id', request()->surgery_id);
+        })->latest()->paginate(10);
         $surgeries = Surgery::all();
         return view('dashboard.videos.index',compact('surgeries','videos'));
     }

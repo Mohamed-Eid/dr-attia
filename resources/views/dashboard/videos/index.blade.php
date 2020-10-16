@@ -32,6 +32,15 @@
                             </div>
 
                             <div class="col-md-4">
+                                <select name="surgery_id" class="form-control">
+                                    <option value="">@lang('site.surgeries')</option>
+                                    @foreach($surgeries as $surgery)
+                                    <option value="{{ $surgery->id }}" {{ $surgery->id == request()->surgery_id ? 'selected' : '' }}>{{$surgery->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i
                                             class="fa fa-search"></i>@lang('site.search')</button>
                                 <a href="{{ route('dashboard.videos.create') }}" class="btn btn-primary"><i
