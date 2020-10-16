@@ -34,12 +34,12 @@
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i
                                             class="fa fa-search"></i>@lang('site.search')</button>
-                                @if(auth()->user()->hasPermission('create_categories'))
+                                {{-- @if(auth()->user()->hasPermission('create_categories')) --}}
                                     <a href="{{ route('dashboard.categories.create') }}" class="btn btn-primary"><i
                                                 class="fa fa-plus"></i>@lang('site.add')</a>
-                                @else
+                                {{-- @else
                                     <a class="btn btn-info" href="#" disabled>@lang('site.add')</a>
-                                @endif
+                                @endif --}}
 
                             </div>
                         </div>
@@ -68,15 +68,15 @@
                                         <img src="{{ $category->image_path }}" class="img-thumbnail" style="width: 50px;">
                                     </td>
                                     <td>
-                                        @if(auth()->user()->hasPermission('update_categories'))
+                                        {{-- @if(auth()->user()->hasPermission('update_categories')) --}}
                                             <a class="btn btn-info btn-sm"
                                                href="{{route('dashboard.categories.edit' , $category->id)}}"><i
                                                         class="fa fa-edit"></i>@lang('site.edit')</a>
-                                        @else
+                                        {{-- @else
                                             <a class="btn btn-info btn-sm" href="#" disabled><i
                                                         class="fa fa-edit"></i>@lang('site.edit')</a>
-                                        @endif
-                                        @if(auth()->user()->hasPermission('delete_categories'))
+                                        @endif --}}
+                                        {{-- @if(auth()->user()->hasPermission('delete_categories')) --}}
                                             <form method="post"
                                                   action="{{route('dashboard.categories.destroy' , $category->id)}}"
                                                   style="display: inline-block">
@@ -85,10 +85,10 @@
                                                 <button type="submit" class="btn btn-danger btn-sm delete"><i
                                                             class="fa fa-trash"></i>@lang('site.delete')</button>
                                             </form>
-                                        @else
+                                        {{-- @else
                                             <button type="submit" class="btn btn-danger btn-sm" disabled><i
                                                         class="fa fa-trash"></i>@lang('site.delete')</button>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                             @endforeach

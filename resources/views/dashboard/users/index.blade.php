@@ -35,12 +35,12 @@
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i
                                             class="fa fa-search"></i>@lang('site.search')</button>
-                                @if(auth()->user()->hasPermission('create_users'))
+                                {{-- @if(auth()->user()->hasPermission('create_users')) --}}
                                     <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary"><i
                                                 class="fa fa-plus"></i>@lang('site.add')</a>
-                                @else
+                                {{-- @else
                                     <a class="btn btn-info" href="#" disabled>@lang('site.add')</a>
-                                @endif
+                                @endif --}}
 
                             </div>
                         </div>
@@ -72,15 +72,15 @@
                                     <td><img src="{{ $user->image_path }}" class="img-thumbnail" style="width: 50px;">
                                     </td>
                                     <td>
-                                        @if(auth()->user()->hasPermission('update_users'))
+                                        {{-- @if(auth()->user()->hasPermission('update_users')) --}}
                                             <a class="btn btn-info btn-sm"
                                                href="{{route('dashboard.users.edit' , $user->id)}}"><i
                                                         class="fa fa-edit"></i>@lang('site.edit')</a>
-                                        @else
+                                        {{-- @else
                                             <a class="btn btn-info btn-sm" href="#" disabled><i
                                                         class="fa fa-edit"></i>@lang('site.edit')</a>
-                                        @endif
-                                        @if(auth()->user()->hasPermission('delete_users'))
+                                        @endif --}}
+                                        {{-- @if(auth()->user()->hasPermission('delete_users')) --}}
                                             <form method="post"
                                                   action="{{route('dashboard.users.destroy' , $user->id)}}"
                                                   style="display: inline-block">
@@ -89,10 +89,10 @@
                                                 <button type="submit" class="btn btn-danger btn-sm delete"><i
                                                             class="fa fa-trash"></i>@lang('site.delete')</button>
                                             </form>
-                                        @else
+                                        {{-- @else
                                             <button type="submit" class="btn btn-danger btn-sm" disabled><i
                                                         class="fa fa-trash"></i>@lang('site.delete')</button>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                             @endforeach

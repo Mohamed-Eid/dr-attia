@@ -19,18 +19,18 @@
                 <a href="{{ route('dashboard.index') }}" ><i class="fa fa-th"></i><span>@lang('site.dashboard')</span></a>
             </li>
 
-            @if(auth()->user()->hasPermission('read_users'))
+            {{-- @if(auth()->user()->hasPermission('read_users')) --}}
             <li class="{{ route('dashboard.users.index')==url()->current() ? 'active' : '' }}">
                 <a href="{{ route('dashboard.users.index') }}">
                 <i class="fa fa-users"></i><span>@lang('site.users')</span></a>
             </li>
-            @endif
+            {{-- @endif --}}
 
-            @if(auth()->user()->hasPermission('read_categories'))
+            {{-- @if(auth()->user()->hasPermission('read_categories')) --}}
             <li class="{{ route('dashboard.categories.index')==url()->current() ? 'active' : '' }}">
                 <a href="{{ route('dashboard.categories.index') }}"><i class="fa  fa-cube"></i><span>@lang('site.categories')</span></a>
             </li>
-            @endif
+            {{-- @endif --}}
     
             <li class="{{ route('dashboard.surgery.index')==url()->current() ? 'active' : '' }}">
                 <a href="{{ route('dashboard.surgery.index') }}"><i class="fa  fa-heartbeat"></i><span>@lang('site.surgeries')</span></a>

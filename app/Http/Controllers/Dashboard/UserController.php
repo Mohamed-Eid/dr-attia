@@ -16,10 +16,10 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['permission:read_users'])->only('index');
-        $this->middleware(['permission:create_users'])->only('create');
-        $this->middleware(['permission:update_users'])->only('edit');
-        $this->middleware(['permission:delete_users'])->only('destroy');
+        // $this->middleware(['permission:read_users'])->only('index');
+        // $this->middleware(['permission:create_users'])->only('create');
+        // $this->middleware(['permission:update_users'])->only('edit');
+        // $this->middleware(['permission:delete_users'])->only('destroy');
 
     }
 
@@ -148,6 +148,7 @@ class UserController extends Controller
         }
 
         $user->update($data);
+        //dd($request->permissions);
         $user->syncPermissions($request->permissions);
 
         session()->flash('success', __('site.updated_successfully'));

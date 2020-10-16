@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 04:59 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Oct 16, 2020 at 11:59 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dr-attia2`
+-- Database: `dr-attia`
 --
 
 -- --------------------------------------------------------
@@ -43,7 +44,8 @@ INSERT INTO `categories` (`id`, `image`, `created_at`, `updated_at`) VALUES
 (3, 'koeu1h43le2K57zfwI17xH2fZQpDurqE2Z2MeCTC.jpeg', '2020-10-11 13:16:12', '2020-10-11 13:16:12'),
 (4, 'j7rJ7iejxLjtOluYUYxk5coU5mlX7w4LpG4IFPC4.png', '2020-10-13 23:11:07', '2020-10-13 23:11:07'),
 (5, 'x8N2xirJJ0BThyW9b9x8vD6rpFVRUssT8wXWB2Wo.jpeg', '2020-10-15 10:20:09', '2020-10-15 10:20:09'),
-(6, 'oFXrYQzKhRFwf3FKNDEw5mMionkxLJQVHJQrP6Tu.jpeg', '2020-10-15 10:20:28', '2020-10-15 10:20:28');
+(6, 'oFXrYQzKhRFwf3FKNDEw5mMionkxLJQVHJQrP6Tu.jpeg', '2020-10-15 10:20:28', '2020-10-15 10:20:28'),
+(7, 'BeZPuaeu2XrKNzy4g2Dt8ygHqyqz2ymbZyQ08APd.jpeg', '2020-10-16 20:18:44', '2020-10-16 20:18:44');
 
 -- --------------------------------------------------------
 
@@ -72,7 +74,9 @@ INSERT INTO `category_translations` (`id`, `category_id`, `name`, `locale`) VALU
 (9, 5, 'سييرفيس', 'ar'),
 (10, 5, 'service', 'en'),
 (11, 6, 'تست 32asd', 'ar'),
-(12, 6, 'asfasdfasdf', 'en');
+(12, 6, 'asfasdfasdf', 'en'),
+(13, 7, 'قسم', 'ar'),
+(14, 7, 'category', 'en');
 
 -- --------------------------------------------------------
 
@@ -89,6 +93,70 @@ CREATE TABLE `contact_messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expectations`
+--
+
+CREATE TABLE `expectations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `surgery_id` int(10) UNSIGNED DEFAULT NULL,
+  `category_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `expectations`
+--
+
+INSERT INTO `expectations` (`id`, `image`, `surgery_id`, `category_id`, `created_at`, `updated_at`) VALUES
+(1, '6tRju2xy0ETsQriztQetQSNE7NxpHaiscKeioUqb.png', 10, NULL, '2020-10-16 19:47:19', '2020-10-16 20:09:44'),
+(2, 'Bo2F7nqrfFNbYoHgLqIzjQaI89yYERlxbXUuX7d2.png', 10, NULL, '2020-10-16 19:47:20', '2020-10-16 19:47:20'),
+(3, 'tf6wcDTMVcM5BAaNhwJGHAJGuxCNoiemY96BdBdB.png', 10, NULL, '2020-10-16 19:47:20', '2020-10-16 19:47:20'),
+(4, 'rEnBz9lDYXLUutWl3MYmUx9h3gaGSLLeRJrlq6zE.png', 10, NULL, '2020-10-16 19:47:21', '2020-10-16 20:09:21'),
+(12, 'YLzNMsLNzKASR86w9DxJQ8GjODLw64jBUln9FBUJ.png', NULL, 7, '2020-10-16 20:18:45', '2020-10-16 20:18:45'),
+(13, 'WCuD3q0TTwSZLs9L02OvV4x9WvRONGmE1cy59RbU.png', NULL, 7, '2020-10-16 20:18:45', '2020-10-16 20:18:45'),
+(14, 'fKbUm7nEcyU3y9JXV331XyMnRCXKq9mid9jtHLST.png', NULL, 7, '2020-10-16 20:18:46', '2020-10-16 20:18:46'),
+(15, 'bFMTOTGQPRplLGpRe3p6WUyXM30FZkEDGgijRIlM.png', NULL, 7, '2020-10-16 20:18:46', '2020-10-16 20:18:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expectation_translations`
+--
+
+CREATE TABLE `expectation_translations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `expectation_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `expectation_translations`
+--
+
+INSERT INTO `expectation_translations` (`id`, `expectation_id`, `name`, `locale`) VALUES
+(1, 1, 'تس 2', 'ar'),
+(2, 1, 'test', 'en'),
+(3, 2, 'Sheila Sheppard', 'ar'),
+(4, 2, 'Meredith Morse', 'en'),
+(5, 3, 'Tiger Robbins', 'ar'),
+(6, 3, 'Aidan Larson', 'en'),
+(7, 4, 'تست', 'ar'),
+(8, 4, 'test', 'en'),
+(23, 12, 'تست1', 'ar'),
+(24, 12, 'test 1', 'en'),
+(25, 13, 'تست3', 'ar'),
+(26, 13, 'test 3', 'en'),
+(27, 14, 'تست4', 'ar'),
+(28, 14, 'test 4', 'en'),
+(29, 15, 'تست2', 'ar'),
+(30, 15, 'test 2', 'en');
 
 -- --------------------------------------------------------
 
@@ -125,7 +193,26 @@ INSERT INTO `images` (`id`, `image`, `surgery_id`, `created_at`, `updated_at`) V
 (27, '1aGqIQLc656c9VdZEp1UeBYnqbvGWHU21xSx0HDD.png', 1, '2020-10-13 23:15:29', '2020-10-13 23:15:29'),
 (28, '0i7bL5pbP5PLb0huU5sndWMmfaHr1MVhw6Q1jWTX.png', 1, '2020-10-13 23:15:30', '2020-10-13 23:15:30'),
 (29, 'vnjb7HzcEH3hk1jV5fkWG3Pky91wMp5UrvFoqXQQ.jpeg', 1, '2020-10-13 23:15:30', '2020-10-13 23:15:30'),
-(30, 'XA9Nkqb4ZZlMa61hUz4AeVSjamTKu1e2GEb8xCA4.png', 1, '2020-10-13 23:15:31', '2020-10-13 23:15:31');
+(30, 'XA9Nkqb4ZZlMa61hUz4AeVSjamTKu1e2GEb8xCA4.png', 1, '2020-10-13 23:15:31', '2020-10-13 23:15:31'),
+(31, 'sujxyiSLu435K8FvW9xACBGW8Scs3a6gKqg8aEx5.jpeg', 1, '2020-10-16 16:40:38', '2020-10-16 16:40:38'),
+(32, 'rdUaNCvW2Z4NNpyZ1BiN8fIVduK8lR77CEaoRukW.jpeg', 1, '2020-10-16 16:40:44', '2020-10-16 16:40:44'),
+(33, '1TJ99jqQQGaiiQMXIjG7bxzG00EohXAnyE1jqR5h.jpeg', 1, '2020-10-16 16:40:44', '2020-10-16 16:40:44'),
+(34, 'SyoN4a26B5U7f99EdqEYue5hZu8sIYkg8BC2y93V.jpeg', 1, '2020-10-16 16:40:44', '2020-10-16 16:40:44'),
+(35, 'y8RycwGe8PwAgWw2nPlkmcudEb5Y6gXhF0R6CJJi.jpeg', 1, '2020-10-16 16:40:45', '2020-10-16 16:40:45'),
+(36, 'W4yEW3SaiUjATQhaXgf7qC2oKf5r0P1w5XvtrNTq.png', 1, '2020-10-16 16:40:45', '2020-10-16 16:40:45'),
+(37, 'xkRT7ujrPYIGjWj0XLQoUNB5TbOIQ4R8qShDbn0l.jpeg', 1, '2020-10-16 16:40:45', '2020-10-16 16:40:45'),
+(38, 'GNvKhAURBEFAGA8mPMITlAPH0341KDkboxMBWTdK.jpeg', 1, '2020-10-16 16:40:46', '2020-10-16 16:40:46'),
+(41, '5tM67mUOw33vIUOhXqGGkdjzzYRADrA42tDtOJny.jpeg', 9, '2020-10-16 18:53:22', '2020-10-16 18:53:22'),
+(42, 'Co1B0cLc6viCbMTXL30bitF2RzZ25mg2q3cIktjl.png', 9, '2020-10-16 18:53:22', '2020-10-16 18:53:22'),
+(43, 'uLHDuxgs6gXQ7kYq7cGsDPlRiR1HzkMtbUu8JAFR.jpeg', 9, '2020-10-16 18:53:23', '2020-10-16 18:53:23'),
+(44, 'MfCjdTh5a64Myidlhbwm7ADXm3HFNlZWgHMbJyKl.jpeg', 9, '2020-10-16 18:53:23', '2020-10-16 18:53:23'),
+(45, '40bvaRdlEEb8Wani7OMS58Kr7jrbrmJse9gjnZ1x.jpeg', 9, '2020-10-16 18:53:24', '2020-10-16 18:53:24'),
+(46, 'DxjzqEKQ2r0Irfuvz9RgmfhSqnoselz8XHPRruDS.jpeg', 9, '2020-10-16 18:53:24', '2020-10-16 18:53:24'),
+(47, 'RXfkppasq3KeQh4AjE9hZgeNxq7jixMvPRGJo1nX.jpeg', 9, '2020-10-16 18:53:25', '2020-10-16 18:53:25'),
+(48, '7XOoi8yhoIK2pQxSTtwmOY4fXrqgaHDXkVKM786b.png', 9, '2020-10-16 18:53:26', '2020-10-16 18:53:26'),
+(49, 's4A9Y79CafAmoJ8nzubKaGC0lbcJnEnFbQE6tymh.jpeg', 9, '2020-10-16 18:53:26', '2020-10-16 18:53:26'),
+(50, 'P07Bsi5qwpwmuseFYciPfk0pEu8ooFrnETSvFMFS.jpeg', 9, '2020-10-16 18:53:26', '2020-10-16 18:53:26'),
+(51, 'HK10wTOww1kYkbC4DpVEqk1lS6qhuelZuh53kPeh.jpeg', 9, '2020-10-16 18:53:27', '2020-10-16 18:53:27');
 
 -- --------------------------------------------------------
 
@@ -163,7 +250,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (90, '2020_10_14_113808_create_page_images_table', 8),
 (93, '2020_10_14_133815_create_settings_table', 9),
 (94, '2020_10_15_010316_create_setting_translations_table', 9),
-(95, '2020_10_15_023103_create_contact_messages_table', 10);
+(95, '2020_10_15_023103_create_contact_messages_table', 10),
+(100, '2020_10_16_192550_create_expectations_table', 11),
+(101, '2020_10_16_192734_create_expectation_translations_table', 11);
 
 -- --------------------------------------------------------
 
@@ -183,8 +272,7 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'DQx9ZevQw3dyxZRLYYD0dD95r6bche1INuwAHVOs.png', '2020-10-14 07:54:02', '2020-10-14 10:11:34'),
-(3, 'E3h7YkALKrGfvyZr8vwa8NaHly90GsQjUmvTFXMs.jpeg', '2020-10-14 07:59:35', '2020-10-14 09:55:48');
+(1, 'DQx9ZevQw3dyxZRLYYD0dD95r6bche1INuwAHVOs.png', '2020-10-14 07:54:02', '2020-10-14 10:11:34');
 
 -- --------------------------------------------------------
 
@@ -205,14 +293,6 @@ CREATE TABLE `page_images` (
 --
 
 INSERT INTO `page_images` (`id`, `image`, `page_id`, `created_at`, `updated_at`) VALUES
-(1, 'YP4jmUiyXmYrtFPte3nr7p14lOyJznzaUcE4yZ0h.jpeg', 3, '2020-10-14 09:45:57', '2020-10-14 09:45:57'),
-(2, 'G8sLCEj8ZjHonc6xR94rj7Xlx574WYnvTw6ZuwCy.png', 3, '2020-10-14 09:45:57', '2020-10-14 09:45:57'),
-(3, 'xUy4ZdAnjad1OFUVr2HXf4aLRUKCdGiGWu81RbHL.jpeg', 3, '2020-10-14 09:45:57', '2020-10-14 09:45:57'),
-(4, 'Mkxu7ddoqiy4q0oprMulySeb3GkqGBnwYVib8Vcg.jpeg', 3, '2020-10-14 09:46:10', '2020-10-14 09:46:10'),
-(5, '7d7lZNLBRaU9iWG9VJkHCXV0qXQ9TjgMdwoPoOgS.jpeg', 3, '2020-10-14 09:46:10', '2020-10-14 09:46:10'),
-(6, 'ug25uD6RANpOp7hnexhyhmxhzwTxlkH7G6CcZvty.jpeg', 3, '2020-10-14 09:46:11', '2020-10-14 09:46:11'),
-(7, 'mqJWv7bujD33tU1qssiuF3mvEQStKAiDAzn31sNH.jpeg', 3, '2020-10-14 09:46:11', '2020-10-14 09:46:11'),
-(8, 'tmuucmFiV3k87zI1Mv1uZQf2Y8taODl2scMImESD.jpeg', 3, '2020-10-14 09:46:11', '2020-10-14 09:46:11'),
 (12, 'ovJIWE8FnPZZsATrY8sO5pMjJvqfgrODfiQWmXic.jpeg', 1, '2020-10-15 12:14:14', '2020-10-15 12:14:14'),
 (13, 'OEdzPgVduqEI814MWWi9Ehs6jvrOGfQfpOmz81Oj.png', 1, '2020-10-15 12:14:14', '2020-10-15 12:14:14'),
 (14, 'ILi6x4CGZC63UZpJ8FRTQdGp5tODD7nCrHVxvZwF.jpeg', 1, '2020-10-15 12:14:14', '2020-10-15 12:14:14'),
@@ -251,9 +331,7 @@ CREATE TABLE `page_translations` (
 
 INSERT INTO `page_translations` (`id`, `page_id`, `name`, `body`, `locale`) VALUES
 (1, 1, 'من نحن', '<p>&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;&nbsp;من نحن&nbsp;</p>', 'ar'),
-(2, 1, 'About Us', '<p>&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;</p>', 'en'),
-(5, 3, 'تست 3a33', '<p>dstgset3333</p>', 'ar'),
-(6, 3, 'test 3233', '<p>sdrtsdtsdt333</p>', 'en');
+(2, 1, 'About Us', '<p>&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us&nbsp;</p>', 'en');
 
 -- --------------------------------------------------------
 
@@ -282,58 +360,6 @@ CREATE TABLE `permissions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `permissions`
---
-
-INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'create_users', 'Create Users', 'Create Users', '2020-04-13 18:56:17', '2020-04-13 18:56:17'),
-(2, 'read_users', 'Read Users', 'Read Users', '2020-04-13 18:56:17', '2020-04-13 18:56:17'),
-(3, 'update_users', 'Update Users', 'Update Users', '2020-04-13 18:56:17', '2020-04-13 18:56:17'),
-(4, 'delete_users', 'Delete Users', 'Delete Users', '2020-04-13 18:56:17', '2020-04-13 18:56:17'),
-(5, 'create_products', 'Create Products', 'Create Products', '2020-04-13 18:56:18', '2020-04-13 18:56:18'),
-(6, 'read_products', 'Read Products', 'Read Products', '2020-04-13 18:56:18', '2020-04-13 18:56:18'),
-(7, 'update_products', 'Update Products', 'Update Products', '2020-04-13 18:56:18', '2020-04-13 18:56:18'),
-(8, 'delete_products', 'Delete Products', 'Delete Products', '2020-04-13 18:56:18', '2020-04-13 18:56:18'),
-(9, 'create_cities', 'Create Cities', 'Create Cities', '2020-04-13 18:56:18', '2020-04-13 18:56:18'),
-(10, 'read_cities', 'Read Cities', 'Read Cities', '2020-04-13 18:56:18', '2020-04-13 18:56:18'),
-(11, 'update_cities', 'Update Cities', 'Update Cities', '2020-04-13 18:56:19', '2020-04-13 18:56:19'),
-(12, 'delete_cities', 'Delete Cities', 'Delete Cities', '2020-04-13 18:56:19', '2020-04-13 18:56:19'),
-(13, 'create_districts', 'Create Districts', 'Create Districts', '2020-04-13 18:56:19', '2020-04-13 18:56:19'),
-(14, 'read_districts', 'Read Districts', 'Read Districts', '2020-04-13 18:56:19', '2020-04-13 18:56:19'),
-(15, 'update_districts', 'Update Districts', 'Update Districts', '2020-04-13 18:56:19', '2020-04-13 18:56:19'),
-(16, 'delete_districts', 'Delete Districts', 'Delete Districts', '2020-04-13 18:56:19', '2020-04-13 18:56:19'),
-(17, 'read_details', 'Read Details', 'Read Details', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(18, 'create_details', 'Create Details', 'Create Details', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(19, 'update_details', 'Update Details', 'Update Details', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(20, 'delete_details', 'Delete Details', 'Delete Details', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(21, 'create_subdetails', 'Create subdetails', 'Create subdetails', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(22, 'read_subdetails', 'Read subdetails', 'Read subdetails', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(23, 'update_subdetails', 'Update subdetails', 'Update subdetails', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(24, 'delete_subdetails', 'Delete subdetails', 'Delete subdetails', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(25, 'read_sales', 'Read sales', 'Read sales', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(26, 'read_orders', 'Read orders', 'Read orders', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(27, 'update_orders', 'Update orders', 'Update orders', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(28, 'delete_orders', 'Delete orders', 'Delete orders', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(29, 'read_members', 'Read members', 'Read members', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(30, 'read_service_numbers', 'Read service_numbers', 'Read service_numbers', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(31, 'update_service_numbers', 'Update service_numbers', 'Update service_numbers', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(32, 'create_banks', 'Create banks', 'Create banks', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(33, 'read_banks', 'Read banks', 'Read banks', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(34, 'update_banks', 'Update banks', 'Update banks', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(35, 'delete_banks', 'Delete banks', 'Delete banks', '2020-04-13 15:56:17', '2020-04-13 15:56:17'),
-(36, 'read_categories', 'Read Categories', 'Read Categories', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(37, 'create_categories', 'Create Categories', 'Create Categories', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(38, 'update_categories', 'Update Categories', 'Update Categories', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(39, 'delete_categories', 'Delete Categories', 'Delete Categories', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(40, 'create_coupons', 'Create Coupons', 'Create Coupons', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(41, 'read_coupons', 'Read Coupons', 'Read Coupons', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(42, 'update_coupons', 'Update Coupons', 'Update Coupons', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(43, 'delete_coupons', 'Delete Coupons', 'Delete Coupons', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(44, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(45, 'update_about_us', 'Update About Us', 'Update About Us', '2020-04-13 16:56:17', '2020-04-13 16:56:17'),
-(46, 'update_terms', 'Update Terms', 'Update Terms', '2020-04-13 16:56:17', '2020-04-13 16:56:17');
-
 -- --------------------------------------------------------
 
 --
@@ -344,28 +370,6 @@ CREATE TABLE `permission_role` (
   `permission_id` int(10) UNSIGNED NOT NULL,
   `role_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `permission_role`
---
-
-INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1);
 
 -- --------------------------------------------------------
 
@@ -378,117 +382,6 @@ CREATE TABLE `permission_user` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `user_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `permission_user`
---
-
-INSERT INTO `permission_user` (`permission_id`, `user_id`, `user_type`) VALUES
-(1, 4, 'App\\User'),
-(2, 4, 'App\\User'),
-(3, 4, 'App\\User'),
-(5, 4, 'App\\User'),
-(6, 4, 'App\\User'),
-(7, 4, 'App\\User'),
-(8, 4, 'App\\User'),
-(9, 4, 'App\\User'),
-(10, 4, 'App\\User'),
-(11, 4, 'App\\User'),
-(12, 4, 'App\\User'),
-(13, 4, 'App\\User'),
-(14, 4, 'App\\User'),
-(15, 4, 'App\\User'),
-(16, 4, 'App\\User'),
-(17, 4, 'App\\User'),
-(19, 4, 'App\\User'),
-(22, 4, 'App\\User'),
-(23, 4, 'App\\User'),
-(24, 4, 'App\\User'),
-(25, 4, 'App\\User'),
-(26, 4, 'App\\User'),
-(30, 4, 'App\\User'),
-(31, 4, 'App\\User'),
-(33, 4, 'App\\User'),
-(1, 5, 'App\\User'),
-(2, 5, 'App\\User'),
-(3, 5, 'App\\User'),
-(4, 5, 'App\\User'),
-(5, 5, 'App\\User'),
-(6, 5, 'App\\User'),
-(7, 5, 'App\\User'),
-(8, 5, 'App\\User'),
-(9, 5, 'App\\User'),
-(10, 5, 'App\\User'),
-(11, 5, 'App\\User'),
-(12, 5, 'App\\User'),
-(13, 5, 'App\\User'),
-(14, 5, 'App\\User'),
-(15, 5, 'App\\User'),
-(16, 5, 'App\\User'),
-(17, 5, 'App\\User'),
-(18, 5, 'App\\User'),
-(19, 5, 'App\\User'),
-(20, 5, 'App\\User'),
-(21, 5, 'App\\User'),
-(22, 5, 'App\\User'),
-(23, 5, 'App\\User'),
-(24, 5, 'App\\User'),
-(25, 5, 'App\\User'),
-(26, 5, 'App\\User'),
-(27, 5, 'App\\User'),
-(28, 5, 'App\\User'),
-(29, 5, 'App\\User'),
-(30, 5, 'App\\User'),
-(31, 5, 'App\\User'),
-(32, 5, 'App\\User'),
-(33, 5, 'App\\User'),
-(34, 5, 'App\\User'),
-(35, 5, 'App\\User'),
-(1, 7, 'App\\User'),
-(2, 7, 'App\\User'),
-(3, 7, 'App\\User'),
-(4, 7, 'App\\User'),
-(5, 7, 'App\\User'),
-(6, 7, 'App\\User'),
-(7, 7, 'App\\User'),
-(8, 7, 'App\\User'),
-(9, 7, 'App\\User'),
-(10, 7, 'App\\User'),
-(11, 7, 'App\\User'),
-(12, 7, 'App\\User'),
-(13, 7, 'App\\User'),
-(14, 7, 'App\\User'),
-(15, 7, 'App\\User'),
-(16, 7, 'App\\User'),
-(17, 7, 'App\\User'),
-(18, 7, 'App\\User'),
-(19, 7, 'App\\User'),
-(20, 7, 'App\\User'),
-(21, 7, 'App\\User'),
-(22, 7, 'App\\User'),
-(23, 7, 'App\\User'),
-(24, 7, 'App\\User'),
-(26, 7, 'App\\User'),
-(27, 7, 'App\\User'),
-(28, 7, 'App\\User'),
-(29, 7, 'App\\User'),
-(30, 7, 'App\\User'),
-(31, 7, 'App\\User'),
-(32, 7, 'App\\User'),
-(33, 7, 'App\\User'),
-(34, 7, 'App\\User'),
-(35, 7, 'App\\User'),
-(36, 7, 'App\\User'),
-(37, 7, 'App\\User'),
-(38, 7, 'App\\User'),
-(39, 7, 'App\\User'),
-(40, 7, 'App\\User'),
-(41, 7, 'App\\User'),
-(42, 7, 'App\\User'),
-(43, 7, 'App\\User'),
-(44, 7, 'App\\User'),
-(45, 7, 'App\\User'),
-(46, 7, 'App\\User');
 
 -- --------------------------------------------------------
 
@@ -565,6 +458,15 @@ CREATE TABLE `question_answers` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `question_answers`
+--
+
+INSERT INTO `question_answers` (`id`, `surgery_id`, `created_at`, `updated_at`) VALUES
+(2, 1, '2020-10-16 16:34:19', '2020-10-16 16:34:19'),
+(3, 9, '2020-10-16 18:58:33', '2020-10-16 18:58:33'),
+(4, 9, '2020-10-16 18:59:02', '2020-10-16 18:59:02');
+
 -- --------------------------------------------------------
 
 --
@@ -578,6 +480,18 @@ CREATE TABLE `question_answer_translations` (
   `answer` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_answer_translations`
+--
+
+INSERT INTO `question_answer_translations` (`id`, `question_answer_id`, `question`, `answer`, `locale`) VALUES
+(3, 2, '<p>تستتستستتستستست ؟</p>', '<p>اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه</p>\r\n\r\n<p>&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابهه</p>\r\n\r\n<p>ه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجاب</p>\r\n\r\n<p>ههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;</p>\r\n\r\n<p>اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابه</p>\r\n\r\n<p>هه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;اجابههه&nbsp;</p>', 'ar'),
+(4, 2, '<p>test test test test ?</p>', '<p>answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answe</p>\r\n\r\n<p>r&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;ans</p>\r\n\r\n<p>wer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;ans</p>\r\n\r\n<p>wer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;a</p>\r\n\r\n<p>nswer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer</p>\r\n\r\n<p>&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;a</p>\r\n\r\n<p>nswer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;answer&nbsp;</p>', 'en'),
+(5, 3, '<p>تستستتستستتستستتستستتستست</p>', '<p>تستستتستستتستستتستستتستستتستستتستست</p>', 'ar'),
+(6, 3, '<p>تستستتستستتستستتستستتستست</p>', '<p>تستستتستستتستستتستستتستستتستست</p>', 'en'),
+(7, 4, '<p>تستستتستستتستستتستستتستست</p>', '<p>تستستتستستتستستتستست</p>', 'ar'),
+(8, 4, '<p>تستستتستستتستستتستستتستست</p>', '<p>تستستتستستتستستتستست</p>', 'en');
 
 -- --------------------------------------------------------
 
@@ -619,8 +533,6 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
-(2, 4, 'App\\User'),
-(2, 5, 'App\\User'),
 (2, 7, 'App\\User');
 
 -- --------------------------------------------------------
@@ -650,7 +562,10 @@ INSERT INTO `settings` (`id`, `key`, `type`, `class`, `image`, `created_at`, `up
 (4, 'img_2', 'image', 'slider', 'qA0T9r2PZjMUEJognB4tnCIthK9NqUK5qK7KQiVN.jpeg', '2020-10-14 23:29:53', '2020-10-15 13:44:18'),
 (5, 'img_2', 'image', 'slider', '48R9UPtVYZRZPQEcnu4BqKTmjGUh6ymnOsTylNKl.jpeg', '2020-10-14 23:30:27', '2020-10-15 13:44:27'),
 (6, 'yt', 'text', 'social_links', NULL, '2020-10-15 13:05:24', '2020-10-15 13:05:24'),
-(7, 'aaa', 'text', 'social_links', NULL, '2020-10-15 13:11:52', '2020-10-15 13:11:52');
+(7, 'aaa', 'text', 'social_links', NULL, '2020-10-15 13:11:52', '2020-10-15 13:11:52'),
+(8, 'instagram_link', 'text', 'social_links', NULL, '2020-10-16 21:56:51', '2020-10-16 21:56:51'),
+(9, 'email', 'text', 'social_links', NULL, '2020-10-16 21:57:38', '2020-10-16 21:57:38'),
+(10, 'about_center', 'text', 'general', NULL, '2020-10-16 21:58:31', '2020-10-16 21:58:31');
 
 -- --------------------------------------------------------
 
@@ -664,7 +579,7 @@ CREATE TABLE `setting_translations` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
   `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -687,7 +602,13 @@ INSERT INTO `setting_translations` (`id`, `setting_id`, `name`, `value`, `title`
 (11, 6, 'لينك يوتويب', 'https://www.youtube.com/', NULL, NULL, NULL, 'ar'),
 (12, 6, 'youtube link', 'https://www.youtube.com/', NULL, NULL, NULL, 'en'),
 (13, 7, 'تست 3', 'https://www.youtube.com/', NULL, NULL, NULL, 'ar'),
-(14, 7, 'test 3', 'https://www.youtube.com/', NULL, NULL, NULL, 'en');
+(14, 7, 'test 3', 'https://www.youtube.com/', NULL, NULL, NULL, 'en'),
+(15, 8, 'لينك الانستجرام', NULL, NULL, NULL, NULL, 'ar'),
+(16, 8, 'instgram link', NULL, NULL, NULL, NULL, 'en'),
+(17, 9, 'البريد الالكتروني', 'info@yoursite.com', NULL, NULL, NULL, 'ar'),
+(18, 9, 'Email', 'info@yoursite.com', NULL, NULL, NULL, 'en'),
+(19, 10, 'عن السنتر', NULL, NULL, NULL, NULL, 'ar'),
+(20, 10, 'About Center', NULL, NULL, NULL, NULL, 'en');
 
 -- --------------------------------------------------------
 
@@ -711,7 +632,9 @@ CREATE TABLE `surgeries` (
 INSERT INTO `surgeries` (`id`, `icon`, `image`, `category_id`, `created_at`, `updated_at`) VALUES
 (1, 'GySCbeF1omYpmprsUDDB83xV3bErOOuVDsrEdfA5.png', 'JbUuMGBnB31cXXJZH0xBEfVIRvrivRvOEDlD3t4a.png', 2, '2020-10-11 13:18:49', '2020-10-11 13:20:38'),
 (3, 'Lg4W65x7HocY9qO73skllbEXvo3dQMpIx73jme0p.jpeg', 'XiKXWY7Awhl2LgAWspN3v5vvl9DaLLrOwuTgil3Y.jpeg', 3, '2020-10-12 09:17:18', '2020-10-12 09:17:18'),
-(5, 'fqx74cNcVSmbTb7vgMucHnolh25WjrXOlvSY4ysx.jpeg', 'UZyxGWifVwXeYdAIC8RXAqWPz6tLUuP2eJ8DoSH1.png', 2, '2020-10-13 23:29:29', '2020-10-13 23:29:29');
+(5, 'fqx74cNcVSmbTb7vgMucHnolh25WjrXOlvSY4ysx.jpeg', 'UZyxGWifVwXeYdAIC8RXAqWPz6tLUuP2eJ8DoSH1.png', 2, '2020-10-13 23:29:29', '2020-10-13 23:29:29'),
+(9, 'YZqABTocpIBShvAwHkKP06l8iMGGUPFPIhx2so9B.png', 'JRBrmEXnPWsdtBOo4Z7BrmVcF3quKWKHtQvoLfth.jpeg', 6, '2020-10-16 18:48:41', '2020-10-16 18:48:41'),
+(10, 'GCwf0djyUesIXBoguUGDZZ3R68x6Bv4kpixzD2dZ.png', '79Jdn3z8FBsmpYV2M5LXM3VNL9kxlx5tX7mci5OV.png', 6, '2020-10-16 19:47:19', '2020-10-16 19:47:19');
 
 -- --------------------------------------------------------
 
@@ -739,7 +662,11 @@ INSERT INTO `surgery_translations` (`id`, `surgery_id`, `name`, `body`, `locale`
 (5, 3, 'تست 3123', '<p>يبساسيبا</p>', 'ar', NULL, NULL),
 (6, 3, 'test 3123', '<p>sdfgasdg</p>', 'en', NULL, NULL),
 (9, 5, 'تستشش', '<p>شسيبشسيب</p>', 'ar', NULL, NULL),
-(10, 5, 'testشش', '<p>ئْر~ٍ[</p>', 'en', NULL, NULL);
+(10, 5, 'testشش', '<p>ئْر~ٍ[</p>', 'en', NULL, NULL),
+(17, 9, 'Rigel Wiggins', '<p>asfasdfgasd</p>', 'ar', NULL, NULL),
+(18, 9, 'Flynn Donovan', '<p>asdgasdgasdgasdg</p>', 'en', NULL, NULL),
+(19, 10, 'Kenyon Marquez', '<p>asdfasdfgasdg</p>', 'ar', NULL, NULL),
+(20, 10, 'Joelle Moran', '<p>asdgasdgasdg</p>', 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -767,7 +694,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `image`, `email_verified_at`, `password`, `api_token`, `fcm_token`, `remember_token`, `created_at`, `updated_at`) VALUES
-(7, 'Backend', '2Dev', 'test@test.com', 'default.png', NULL, '$2y$10$/m7n9TcXdvca5qhKJev14.oXutvJhSUKMW2GSw9FD/bU.9ba6ayPu', NULL, NULL, '99meiJQIXRJ54wPEgtcllddo8IgxTpf0lYa0wMWc32Z22XKsSxEyKU8ALwfo', '2020-06-16 21:49:58', '2020-06-24 03:47:35');
+(7, 'Backend', 'Dev', 'test@test.com', 'default.png', NULL, '$2y$10$/m7n9TcXdvca5qhKJev14.oXutvJhSUKMW2GSw9FD/bU.9ba6ayPu', NULL, NULL, '99meiJQIXRJ54wPEgtcllddo8IgxTpf0lYa0wMWc32Z22XKsSxEyKU8ALwfo', '2020-06-16 21:49:58', '2020-10-16 21:54:16');
 
 -- --------------------------------------------------------
 
@@ -795,7 +722,8 @@ INSERT INTO `videos` (`id`, `link`, `surgery_id`, `created_at`, `updated_at`) VA
 (5, '0JeJTGjgcco', 3, '2020-10-12 14:27:17', '2020-10-12 14:27:17'),
 (6, '0JeJTGjgcco', 1, '2020-10-12 14:27:24', '2020-10-12 14:27:24'),
 (7, 'VS_hrPBX500', 1, '2020-10-12 14:27:39', '2020-10-12 14:27:39'),
-(8, 'T6Jcl-GqeBA', 1, '2020-10-12 14:27:55', '2020-10-12 14:27:55');
+(8, 'T6Jcl-GqeBA', 1, '2020-10-12 14:27:55', '2020-10-12 14:27:55'),
+(10, '7jx54GcF2T0', 10, '2020-10-16 20:29:14', '2020-10-16 20:29:14');
 
 -- --------------------------------------------------------
 
@@ -830,7 +758,9 @@ INSERT INTO `video_translations` (`id`, `video_id`, `name`, `locale`) VALUES
 (13, 7, 'asdtgasedta', 'ar'),
 (14, 7, 'sedtastrqw', 'en'),
 (15, 8, 'qwe5rt5w', 'ar'),
-(16, 8, 'qwe54qw45', 'en');
+(16, 8, 'qwe54qw45', 'en'),
+(19, 10, 'تست123', 'ar'),
+(20, 10, 'test123', 'en');
 
 --
 -- Indexes for dumped tables
@@ -855,6 +785,22 @@ ALTER TABLE `category_translations`
 --
 ALTER TABLE `contact_messages`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `expectations`
+--
+ALTER TABLE `expectations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `expectations_surgery_id_foreign` (`surgery_id`),
+  ADD KEY `expectations_category_id_foreign` (`category_id`);
+
+--
+-- Indexes for table `expectation_translations`
+--
+ALTER TABLE `expectation_translations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `expectation_translations_expectation_id_locale_unique` (`expectation_id`,`locale`),
+  ADD KEY `expectation_translations_locale_index` (`locale`);
 
 --
 -- Indexes for table `images`
@@ -1020,13 +966,13 @@ ALTER TABLE `video_translations`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `category_translations`
 --
 ALTER TABLE `category_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `contact_messages`
@@ -1035,16 +981,28 @@ ALTER TABLE `contact_messages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `expectations`
+--
+ALTER TABLE `expectations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `expectation_translations`
+--
+ALTER TABLE `expectation_translations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1086,13 +1044,13 @@ ALTER TABLE `post_translations`
 -- AUTO_INCREMENT for table `question_answers`
 --
 ALTER TABLE `question_answers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `question_answer_translations`
 --
 ALTER TABLE `question_answer_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1104,25 +1062,25 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `setting_translations`
 --
 ALTER TABLE `setting_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `surgeries`
 --
 ALTER TABLE `surgeries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `surgery_translations`
 --
 ALTER TABLE `surgery_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1134,13 +1092,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `video_translations`
 --
 ALTER TABLE `video_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -1151,6 +1109,19 @@ ALTER TABLE `video_translations`
 --
 ALTER TABLE `category_translations`
   ADD CONSTRAINT `category_translations_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `expectations`
+--
+ALTER TABLE `expectations`
+  ADD CONSTRAINT `expectations_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `expectations_surgery_id_foreign` FOREIGN KEY (`surgery_id`) REFERENCES `surgeries` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `expectation_translations`
+--
+ALTER TABLE `expectation_translations`
+  ADD CONSTRAINT `expectation_translations_expectation_id_foreign` FOREIGN KEY (`expectation_id`) REFERENCES `expectations` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `images`
