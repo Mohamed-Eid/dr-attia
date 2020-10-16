@@ -4,12 +4,11 @@
 
 @include('layouts.frontend.includes.page_header')
 
-<section class="services page sec-padding " style="margin-bottom:50px"> 
+@foreach ($services as $index=>$service)
+@if (count($service->surgeries) > 0)            
+<section class="services {{ ($index%2)==0 ? 'page' : '' }} sec-padding {{ ($index%2)!=0 ? 'sec-bg' : '' }}" style="margin-bottom:50px"> 
     <div class="container">
-        @foreach ($services as $service)
-        <div class="row justify-content-center">
-            
-            @if (count($service->surgeries) > 0)            
+        <div class="row justify-content-center">           
             <div class="col-md-12 text-center m-b-25">
                     <h3  class="primary-color bold text-center m-0 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">{{$service->name}}</h3>
             </div>
@@ -25,14 +24,11 @@
                 </div>  
             </div>                
             @endforeach                
-            @endif
-        
         </div>            
-        @endforeach
-
-
     </div>
 </section>
+@endif
+@endforeach
 
 <section class="about  sec-padding">
     <div class="container">

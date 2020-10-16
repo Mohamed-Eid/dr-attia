@@ -37,8 +37,13 @@ Route::group(
         Route::get('/videos','VideosController@index')->name('videos.index');
 
         Route::get('/about','PagesController@about_page')->name('pages.about');
+
+        Route::get('/before_after','BeforeAfterController@index')->name('pages.before_after');
+        Route::get('/before_after/{surgery}','BeforeAfterController@show')->name('pages.before_after.show');
+
+
         
-        Route::get('/before_after','PagesController@before_after')->name('pages.before_after');
+        //Route::get('/before_after','PagesController@before_after')->name('pages.before_after');
 
         Route::get('/contact','ContactController@index')->name('contact.index');
         Route::post('/contact','ContactController@store')->name('contact.store');
