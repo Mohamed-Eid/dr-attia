@@ -84,7 +84,7 @@
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-share"></i> 
-                  <span>@lang('site.sittings')</span>
+                  <span>@lang('site.settings')</span>
                   <span class="pull-right-container">
                     <i class="fa fa-folder pull-right"></i>
                   </span>
@@ -97,7 +97,7 @@
                     </li>
                     <li class="page-list {{route('dashboard.settings.index')==url()->current() ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.all_settings') }}">
-                            <i class="fa fa-folder-open"></i> @lang('site.pages_index')
+                            <i class="fa  fa-gear"></i> @lang('site.settings')
                         </a>
                     </li>
                 </ul>
