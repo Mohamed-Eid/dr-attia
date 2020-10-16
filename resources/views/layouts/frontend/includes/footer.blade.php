@@ -70,6 +70,7 @@
     <script src="{{asset('frontend/Technomasr/js/script.js')}}"></script>
     
     <script>
+        //TODO : download owl carsoul v 2
         //------------- Owl Carousel  ------------
         $(document).ready(function () {
 

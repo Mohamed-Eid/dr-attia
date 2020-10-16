@@ -31,6 +31,12 @@
     
     @if (app()->getLocale() == 'ar')
     <link rel="stylesheet" href="{{asset('frontend/Technomasr/css/style-ar.css')}}" type="text/css" />
+    <style>
+        /* todo:delete after upgrade */
+        .owl-carousel,
+        .bx-wrapper { direction: ltr; }
+        .owl-carousel .owl-item { direction: rtl; }
+    </style>
     @endif
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="{{asset('frontend/Technomasr/owl-carousel/owl.carousel.css')}}" />
