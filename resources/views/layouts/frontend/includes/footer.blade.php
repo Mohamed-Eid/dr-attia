@@ -69,6 +69,74 @@
     <script src="{{asset('frontend/Technomasr/bootstrap4/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/Technomasr/js/script.js')}}"></script>
     
+    <script>
+        //------------- Owl Carousel  ------------
+        $(document).ready(function () {
+
+        $("#owl-demo").owlCarousel({
+        
+        rtl: {{ app()->getLocale() == 'ar' ? 'true' : 'false' }},
+
+        autoPlay: 3000,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true
+
+        // "singleItem:true" is a shortcut for:
+        // items : 1, 
+        // itemsDesktop : false,
+        // itemsDesktopSmall : false,
+        // itemsTablet: false,
+        // itemsMobile : false
+
+        });
+
+        $(".photos-owl-demo").owlCarousel({
+        
+        autoPlay: 5000, //Set AutoPlay to 3 seconds
+        rtl: {{ app()->getLocale() == 'ar' ? 'true' : 'false' }},
+
+        items : 3,
+        itemsDesktop : [1199,3],
+        itemsDesktopSmall : [900,2], // betweem 900px and 601px
+        itemsTablet: [640,2], //2 items between 600 and 0;
+        itemsMobile : [360,1] //
+
+        });
+        $(".Videos-owl-demo").owlCarousel({
+        
+        autoPlay: 5000, //Set AutoPlay to 3 seconds
+        rtl: {{ app()->getLocale() == 'ar' ? 'true' : 'false' }},
+
+        items : 3,
+        itemsDesktop : [1199,3],
+        itemsDesktopSmall : [900,2], // betweem 900px and 601px
+        itemsTablet: [640,2], //2 items between 600 and 0;
+        itemsMobile : [360,1] //
+
+        });
+
+        $(".blog-owl-demo").owlCarousel({
+        
+        autoPlay: 5000, //Set AutoPlay to 3 seconds
+        rtl: {{ app()->getLocale() == 'ar' ? 'true' : 'false' }},
+
+        items : 3,
+        itemsDesktop : [1199,3],
+        itemsDesktopSmall : [900,2], // betweem 900px and 601px
+        itemsTablet: [640,2], //2 items between 600 and 0;
+        itemsMobile : [360,1] //
+
+        });
+
+
+
+
+        });
+
+
+    </script>
+
     <!-- include Owl Carousel plugin js-->
     <script src="{{asset('frontend/Technomasr/owl-carousel/owl.carousel.min.js')}}"></script>
 

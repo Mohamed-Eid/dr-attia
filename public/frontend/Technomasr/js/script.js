@@ -58,63 +58,63 @@ function closeNav() {
 }
 
 
-//------------- Owl Carousel  ------------
-$(document).ready(function () {
+// //------------- Owl Carousel  ------------
+// $(document).ready(function () {
 
-  $("#owl-demo").owlCarousel({
+//   $("#owl-demo").owlCarousel({
 
-    autoPlay: 3000,
-    slideSpeed: 300,
-    paginationSpeed: 400,
-    singleItem: true
+//     autoPlay: 3000,
+//     slideSpeed: 300,
+//     paginationSpeed: 400,
+//     singleItem: true
 
-    // "singleItem:true" is a shortcut for:
-    // items : 1, 
-    // itemsDesktop : false,
-    // itemsDesktopSmall : false,
-    // itemsTablet: false,
-    // itemsMobile : false
+//     // "singleItem:true" is a shortcut for:
+//     // items : 1, 
+//     // itemsDesktop : false,
+//     // itemsDesktopSmall : false,
+//     // itemsTablet: false,
+//     // itemsMobile : false
 
-  });
+//   });
 
-  $(".photos-owl-demo").owlCarousel({
+//   $(".photos-owl-demo").owlCarousel({
    
-    autoPlay: 5000, //Set AutoPlay to 3 seconds
+//     autoPlay: 5000, //Set AutoPlay to 3 seconds
 
-    items : 3,
-    itemsDesktop : [1199,3],
-    itemsDesktopSmall : [900,2], // betweem 900px and 601px
-    itemsTablet: [640,2], //2 items between 600 and 0;
-    itemsMobile : [360,1] //
+//     items : 3,
+//     itemsDesktop : [1199,3],
+//     itemsDesktopSmall : [900,2], // betweem 900px and 601px
+//     itemsTablet: [640,2], //2 items between 600 and 0;
+//     itemsMobile : [360,1] //
 
-  });
-  $(".Videos-owl-demo").owlCarousel({
+//   });
+//   $(".Videos-owl-demo").owlCarousel({
    
-    autoPlay: 5000, //Set AutoPlay to 3 seconds
+//     autoPlay: 5000, //Set AutoPlay to 3 seconds
 
-    items : 3,
-    itemsDesktop : [1199,3],
-    itemsDesktopSmall : [900,2], // betweem 900px and 601px
-    itemsTablet: [640,2], //2 items between 600 and 0;
-    itemsMobile : [360,1] //
+//     items : 3,
+//     itemsDesktop : [1199,3],
+//     itemsDesktopSmall : [900,2], // betweem 900px and 601px
+//     itemsTablet: [640,2], //2 items between 600 and 0;
+//     itemsMobile : [360,1] //
 
-  });
+//   });
 
-  $(".blog-owl-demo").owlCarousel({
+//   $(".blog-owl-demo").owlCarousel({
    
-    autoPlay: 5000, //Set AutoPlay to 3 seconds
+//     autoPlay: 5000, //Set AutoPlay to 3 seconds
 
-    items : 3,
-    itemsDesktop : [1199,3],
-    itemsDesktopSmall : [900,2], // betweem 900px and 601px
-    itemsTablet: [640,2], //2 items between 600 and 0;
-    itemsMobile : [360,1] //
+//     items : 3,
+//     itemsDesktop : [1199,3],
+//     itemsDesktopSmall : [900,2], // betweem 900px and 601px
+//     itemsTablet: [640,2], //2 items between 600 and 0;
+//     itemsMobile : [360,1] //
 
-  });
+//   });
 
   
 
 
-});
+// });
 
 

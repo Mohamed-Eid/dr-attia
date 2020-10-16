@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" lang="en">
+<html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" lang="{{app()->getLocale()}}">
 
 <head>
     <meta charset="UTF-8" />
@@ -78,8 +78,18 @@
                                 <a class="nav-link" href="{{route('frontend.contact.index')}}">@lang('site.contact')</a>
                             </li> 
                         </ul>
-                        
-                        <a class="btn btn-site btn-lang" href="">ع</a>
+                        <li>
+                            @if (app()->getLocale() != 'ar')
+                            <a class="btn btn-site btn-lang" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
+                                ع
+                            </a>
+                            @else
+                            <a class="btn btn-site btn-lang" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                                E
+                            </a>
+                            @endif
+
+                        </li>
                             
                     </div>
                 </nav>
