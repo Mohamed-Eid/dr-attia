@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center m-b-25 m-t-25">
-                <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">Video Library</h3>
+                <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.video_library')</h3>
             </div>
         </div>
         <div class="owl-demo Videos-owl-demo wow zoomIn m-b-30" animation-delay="1s" data-wow-delay="0.4s">
@@ -30,7 +30,7 @@
         @endforeach
 
         <div class="col-md-12 text-center m-t-30">
-            <a href="{{ route('frontend.videos.index') }}" class="btn btn-site">View More Videos </a>
+            <a href="{{ route('frontend.videos.index') }}" class="btn btn-site" style="width: auto;">@lang('site.view_more_of') @lang('site.videos') </a>
         </div>
     </div>
 </section>

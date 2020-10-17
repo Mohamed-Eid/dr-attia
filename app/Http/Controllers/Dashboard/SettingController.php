@@ -42,7 +42,7 @@ class SettingController extends Controller
         //dd($data);
         return view('dashboard.settings.site_settings',compact('data'));
     }
-
+ 
 
     /**
      * Show the form for creating a new resource.
@@ -70,7 +70,7 @@ class SettingController extends Controller
         ];
 
         foreach (config('translatable.locales') as $locale){
-            $rules += [$locale.'.name' => ['required' ,Rule::unique('setting_translations','name')]];
+            $rules += [$locale.'.name' => ['required']];
             // $rules += [$locale.'.value' => ['required' ,Rule::unique('setting_translations','value')]];
         }
 

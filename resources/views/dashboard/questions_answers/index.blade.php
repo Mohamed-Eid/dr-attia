@@ -57,7 +57,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>@lang('site.question')</th>
-                                <th>@lang('site.view')</th>
+                                <th>@lang('site.created_at')</th>
                                 <th>@lang('site.surgery')</th>
                                 <th>@lang('site.action')</th>
                             </tr>
@@ -69,7 +69,7 @@
                                     <td>{{ $index +1 }}</td>
                                     <td>{!! $question->question !!}</td>
  
-                                    <td>view button here</td>
+                                    <td>{{ $question->created_at->diffForHumans() }}</td>
                                     <td>{{ $question->surgery->name }}</td>
 
                                     <td>

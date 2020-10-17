@@ -16,4 +16,4 @@ class Setting extends Model
         return asset('uploads/setting_images/'.$this->image);
     }
 
-}
+} 

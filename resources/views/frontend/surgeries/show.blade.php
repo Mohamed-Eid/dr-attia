@@ -21,11 +21,12 @@
     </div>
 </section>
 
+@if (count($surgery->images)>0)
 <section class="sec-padding beforeAfter">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center m-b-25 m-t-25">
-                <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">Patients Before and After</h3>
+                <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.patients') @lang('site.before_after')</h3>
             </div>
             <div class="owl-demo photos-owl-demo wow zoomIn m-b-30" animation-delay="1s" data-wow-delay="0.4s">
                 @foreach ($surgery->images as $image)
@@ -37,17 +38,19 @@
                 @endforeach    
             </div>
             <div class="col-md-12 text-center m-t-30">
-                <a href="before-after.php" class="btn btn-site">View Photo Album</a>
+                <a href="{{ route('frontend.pages.before_after') }}" class="btn btn-site">@lang('site.view') @lang('site.photo_album')</a>
             </div>
         </div>
     </div>
-</section>
+</section>    
+@endif
+
 
 <section class="about  sec-padding">
     <div class="container">
         <div class="row sec-padding justify-content-center">
             <div class="col-md-12 text-center m-b-25 m-t-25">
-                <h2 class="primary-color">What to expect following surgery</h2>
+                <h2 class="primary-color">@lang('site.surgery_expectation')</h2>
             </div>
             @foreach ($surgery->expectations as $item)
             <div class="col-md-3 col-sm-6 col-xs-6 col-6">
@@ -67,6 +70,7 @@
 <section class="faq">
     <div class="container">
         <div class="row">
+
             <div class="col-md-6">
                 <ul class="p-0">
                     @foreach ($surgery->question_answers as $faq)
@@ -76,7 +80,7 @@
                             {!! htmlspecialchars_decode(get_snippts($faq->question)) !!}
 
                         </a>
-                        <div class="collapse p-t-20" id="q{{$faq->id}}">
+                        <div class="collapse p-t-20" style="word-wrap: break-word" id="q{{$faq->id}}">
                             {!! htmlspecialchars_decode(get_snippts($faq->answer)) !!}
                         </div>
                     </li>                        
@@ -85,6 +89,7 @@
             
                 </ul>
             </div>
+
             <div class="col-md-6">
                 @if ($surgery->videos->first())
                 <div class="video">
@@ -92,11 +97,14 @@
                 </div>                   
                 @endif
             </div>
+
         </div>
     </div>
 </section>
 
-@include('frontend.includes.posts',['articles' => $surgery->posts])
+@if (count($surgery->posts) > 0)
+@include('frontend.includes.posts',['articles' => $surgery->posts])   
+@endif
 
 
 @include('frontend.pages.contact')

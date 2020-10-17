@@ -36,38 +36,18 @@
             <div class="col-md-12 text-center m-b-25 m-t-25">
                 <h2 class="primary-color"> Dr.Attia In Bariatric Surgeries</h2>
             </div>
+
+            @foreach (get_settings_by_class('service_features') as $index=> $setting)
             <div class="col-md-3 col-sm-6 col-xs-6 col-6">
                 <div class="icon text-center m-t-20 m-b-20">
                     <figure>
-                        <img src="Technomasr/images/icon2.png" class="w-auto h-100" alt="">
+                        <img src="{{$setting->image_path}}" class="w-auto h-100" alt="">
                     </figure> 
-                    <h4 class="primary-color m-t-15">Feature Title</h4>
+                    <h4 class="primary-color m-t-15">{{ $setting->value }}</h4>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                <div class="icon text-center m-t-20 m-b-20">
-                    <figure>
-                        <img src="Technomasr/images/icon1.png" class="w-auto h-100" alt="">
-                    </figure> 
-                    <h4 class="primary-color m-t-15">Feature Title</h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                <div class="icon text-center m-t-20 m-b-20">
-                    <figure>
-                        <img src="Technomasr/images/icon3.png" class="w-auto h-100" alt="">
-                    </figure> 
-                    <h4 class="primary-color m-t-15">Feature Title</h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                <div class="icon text-center m-t-20 m-b-20">
-                    <figure>
-                        <img src="Technomasr/images/icon4.png" class="w-auto h-100" alt="">
-                    </figure> 
-                    <h4 class="primary-color m-t-15">Feature Title</h4>
-                </div>
-            </div>
+            </div>                    
+            @endforeach
+
         </div>
     </div>
 </section>

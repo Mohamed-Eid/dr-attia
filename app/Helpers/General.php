@@ -56,14 +56,23 @@ function get_snippts($text , $wordCount = 30){
     //   );
 }
 
-
+ 
 //setings helpers
 function get_settings_by_class($class){
     return \App\Setting::where('class',$class)->get();
 }
 
+// function get_settings_by_class_with($class){
+//     return \App\Setting::where('class',$class);
+// }
+
 function get_setting_by_key($key){
     return \App\Setting::where('key',$key)->first();
+}
+
+use \App\Category;
+function serviecs(){
+    return Category::has('surgeries')->get();
 }
 
 ?>

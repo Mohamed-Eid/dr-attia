@@ -1,6 +1,6 @@
 <section class="blog sec-padding">
     <div class="container">
-        <h3 class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">Related Articles</h3>
+        <h3 class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.related_articles')</h3>
         <div class="row m-t-50 justify-content-center">
         <div class="owl-demo blog-owl-demo wow zoomIn m-b-30" animation-delay="1s" data-wow-delay="0.4s">
             @foreach ($articles as $article)
@@ -36,7 +36,7 @@
            
           
             <div class="text-center">
-                <a href="archive-blog.php" class="btn btn-site text-white m-t-20 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">View More Articles</a>
+                <a href="archive-blog.php" class="btn btn-site text-white m-t-20 wow zoomIn" style="width: auto;" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.view_more_of') @lang('site.articles')</a>
             </div>
         </div>
     </div>

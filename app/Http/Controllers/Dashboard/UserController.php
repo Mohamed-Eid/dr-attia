@@ -69,7 +69,7 @@ class UserController extends Controller
             'email' => 'required|unique:users',
             'image' => 'image',
             'password' => 'required|confirmed',
-            'permissions' => 'required|min:1',
+            //'permissions' => 'required|min:1',
         ]);
         $data = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
         $data['password'] = bcrypt($request->password);
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $user->attachRole('admin');
 
-        $user->syncPermissions($request->permissions);
+//        $user->syncPermissions($request->permissions);
 
         session()->flash('success', __('site.added_successfully'));
 
@@ -129,7 +129,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'email' => ['required', Rule::unique('users')->ignore($user->id)],
             'image' => 'image',
-            'permissions' => 'required|min:1',
+            //'permissions' => 'required|min:1',
 
         ]);
         $data = $request->except(['permissions', 'image']);
@@ -149,7 +149,7 @@ class UserController extends Controller
 
         $user->update($data);
         //dd($request->permissions);
-        $user->syncPermissions($request->permissions);
+        //$user->syncPermissions($request->permissions);
 
         session()->flash('success', __('site.updated_successfully'));
 

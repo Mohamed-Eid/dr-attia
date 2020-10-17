@@ -67,7 +67,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>@lang('site.permission')</label>
 
                             @php
@@ -96,11 +96,9 @@
                                 
                                 <div class="tab-content">
                                     @foreach($models as $index=>$model)
-                                    {{-- @php dd($value) @endphp --}}
                                         <div class="tab-pane {{ $index == 0 ? 'active' : '' }}" id="{{$model}}">
                                             @foreach($x as $model_name => $maps)
                                                 @foreach ($maps as $map)
-                                                    {{-- @php dd($map) @endphp     --}}
                                                     @if ($model == $model_name)
                                                     <label><input type="checkbox" name="permissions[]"
                                                         value="{{$data[$map].'_'.$model_name}}"> @lang("site.$data[$map]")</label>
@@ -115,7 +113,7 @@
                             </div>
                             <!-- nav-tabs-custom -->
 
-                        </div>
+                        </div> --}}
 
 
                         <div class="form-group">

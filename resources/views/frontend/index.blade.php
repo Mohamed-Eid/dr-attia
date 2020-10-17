@@ -6,23 +6,24 @@
     <section class="slider">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
+
                 @foreach (get_settings_by_class('slider') as $index=> $setting)
-                 <div class="carousel-item {{ $index==0 ? 'active' : ''}} ">
-                    <img class="d-block" src="{{$setting->image_path}}" alt="Second slide">
-                    <div class="carousel-caption">
-                        <h2 class="bold primary-color wow rotateInDownRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <span>{{ $setting->value }}</span>
-                        </h2>
-                        <div class="desc m-t-40 wow bounceInRight" data-wow-duration="1.8s" data-wow-delay="1s">
-                            <p>
-                                {{ $setting->description }}
-                            </p>
+                    <div class="carousel-item {{ $index==0 ? 'active' : ''}} ">
+                        <img class="d-block" src="{{$setting->image_path}}" alt="Second slide">
+                        <div class="carousel-caption">
+                            <h2 class="bold primary-color wow rotateInDownRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                <span>{{ $setting->value }}</span>
+                            </h2>
+                            <div class="desc m-t-40 wow bounceInRight" data-wow-duration="1.8s" data-wow-delay="1s">
+                                <p>
+                                    {{ $setting->description }}
+                                </p>
+                            </div>
+                            @if ($setting->link)
+                            <a href="{{$setting->link}}" class="btn btn-site m-t-20 text-white wow rotateInUpRight" data-wow-duration="1s" data-wow-delay="2.5s">@lang('site.read_more')</a>
+                            @endif
                         </div>
-                        @if ($setting->link)
-                        <a href="{{$setting->link}}" class="btn btn-site m-t-20 text-white wow rotateInUpRight" data-wow-duration="1s" data-wow-delay="2.5s">Read More</a>
-                        @endif
                     </div>
-                </div>
                 @endforeach                
        
             </div>
@@ -42,16 +43,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="txt  m-t-50 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                        <h3 class="primary-color bold m-t-10 m-b-20">Dr. Attia Khafaga Cosmetic Center</h3>
+                        <h3 class="primary-color bold m-t-10 m-b-20">{{ get_setting_by_key('about_center_image')->value }}</h3>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                            text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem Ipsum.
+                            {{ get_setting_by_key('about_center_image')->description }}
                         </p>
-                        <a href="about.php" class="btn btn-site2 m-t-30 pull-right">Read More</i>
+                        <a href="{{ route('frontend.pages.about') }}" class="btn btn-site2 m-t-30 pull-right">@lang('site.read_more')</i>
                         </a>
                     </div>
                 </div>
@@ -64,40 +60,21 @@
             </div>
             <div class="row sec-padding justify-content-center">
                 <div class="col-md-12 text-center m-b-25 m-t-25">
-                    <h2 class="primary-color">Why Dr.Attia Khafaga !?</h2>
+                    <h2 class="primary-color">@lang('site.why_dr_khafaga')</h2>
                 </div>
+                
+                @foreach (get_settings_by_class('features') as $index=> $setting)
                 <div class="col-md-3 col-sm-6 col-xs-6 col-6">
                     <div class="icon text-center m-t-20 m-b-20">
                         <figure>
-                            <img src="{{asset('frontend/Technomasr/images/icon2.png')}}" class="w-auto h-100" alt="">
+                            <img src="{{$setting->image_path}}" class="w-auto h-100" alt="">
                         </figure> 
-                        <h4 class="primary-color m-t-15">Feature Title</h4>
+                        <h4 class="primary-color m-t-15">{{ $setting->value }}</h4>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                    <div class="icon text-center m-t-20 m-b-20">
-                        <figure>
-                            <img src="{{asset('frontend/Technomasr/images/icon1.png')}}" class="w-auto h-100" alt="">
-                        </figure> 
-                        <h4 class="primary-color m-t-15">Feature Title</h4>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                    <div class="icon text-center m-t-20 m-b-20">
-                        <figure>
-                            <img src="{{asset('frontend/Technomasr/images/icon3.png')}}" class="w-auto h-100" alt="">
-                        </figure> 
-                        <h4 class="primary-color m-t-15">Feature Title</h4>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                    <div class="icon text-center m-t-20 m-b-20">
-                        <figure>
-                            <img src="{{asset('frontend/Technomasr/images/icon4.png')}}" class="w-auto h-100" alt="">
-                        </figure> 
-                        <h4 class="primary-color m-t-15">Feature Title</h4>
-                    </div>
-                </div>
+                </div>                    
+                @endforeach
+
+
             </div>
         </div>
     </section>
@@ -106,7 +83,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center m-b-25 m-t-25">
-                        <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">Our Services</h3>
+                        <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.our_services')</h3>
                 </div>
                 
                 @foreach ($services as $service)
@@ -130,20 +107,15 @@
     <section class="center" >
         <div class="row no-margin">
             <div class="col-md-5 p-0">
-                <img src="{{asset('frontend/Technomasr/images/img5.jpg')}}" class="w-100  h-auto" alt="Cosmatic">
+                <img src="{{get_setting_by_key('about_center_image_2')->image_path}}" class="w-100  h-auto" alt="Cosmatic">
             </div>
             <div class="col-md-7 p-5 about">
                 <div class="txt">
-                    <h2 class="primary-color">Dr.Attia Khafaga Center</h2>
+                    <h2 class="primary-color">{{get_setting_by_key('about_center_image_2')->value}}</h2>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
+                        {{get_setting_by_key('about_center_image_2')->description}}
                     </p>
-                    <a href="center.php" class="btn btn-site2 m-t-30 pull-right">Read More</i>
+                    <a href="{{ route('frontend.pages.about') }}" class="btn btn-site2 m-t-30 pull-right">@lang('site.read_more')</i>
                     </a>
                 </div>
             </div>
@@ -156,7 +128,7 @@
             <div class="row">
                 
                 <div class="col-md-12 text-center m-b-25 m-t-25">
-                    <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">Patients Before and After</h3>
+                    <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s"> @lang('site.patients') @lang('site.before_after')</h3>
                 </div>
                 
                 <div class="owl-demo photos-owl-demo wow zoomIn m-b-30" animation-delay="1s" data-wow-delay="0.4s">
@@ -170,7 +142,7 @@
                 </div>
 
                 <div class="col-md-12 text-center m-t-30">
-                    <a href="before-after.php" class="btn btn-site">View Photo Album</a>
+                    <a href="{{ route('frontend.pages.before_after') }}" class="btn btn-site">@lang('site.view') @lang('site.photo_album')</a>
                 </div>
 
             </div>

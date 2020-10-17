@@ -7,9 +7,10 @@
                 <div class="col-md-4">
                     <ul class="footer-menu"> 
                         <li><a href="#" class="text-white f-s-17">Home</a></li>
-                        <li><a href="#" class="text-white f-s-17">Medical surgeries</a></li>
-                        <li><a href="#" class="text-white f-s-17">Medical surgeries </a></li>
-                        <li><a href="#" class="text-white f-s-17">Medical surgeries </a></li>
+                        @foreach (serviecs() as $service)
+                        <li><a href="{{ route('frontend.services.show',$service)  }}" class="text-white f-s-17">{{ $service->name }}</a></li>    
+                        @endforeach
+                        
                         <li><a href="#" class="text-white f-s-17">Video Library </a></li>
                         <li><a href="#" class="text-white f-s-17">Blog </a></li>
                         <li><a href="#" class="text-white f-s-17">Video Library </a></li>
@@ -20,29 +21,29 @@
                     <h3 class="bold text-white">Reach Dr.Attia</h3>
                     <li>
                         <i class="fa fa-envelope text-white"></i>
-                        <span class="text-white m-r-5 m-l-5">info@yoursite.com</span>
+                        <span class="text-white m-r-5 m-l-5">{{get_setting_by_key('email')->value}}</span>
                     </li>
                 </div>
                 <div class="col-md-3">
                     <h3 class="bold text-white">Follow Dr.Attia</h3>
                     <ul class="social-icons m-t-20">
                             <li>
-                                <a href="https://www.facebook.com" target="_blank">
+                                <a href="{{get_setting_by_key('fb_link')->value}}" target="_blank">
                                     <i class="fa fa-facebook" id="facebook"></i>
                                 </a>
                             </li> 
                             <li>
-                                <a href="https://www..com" target="_blank">
+                                <a href="{{get_setting_by_key('youtube')->value}}" target="_blank">
                                     <i class="fa fa-youtube-play" id="youtube"></i>
                                 </a>
                             </li> 
                             <li>
-                                <a href="https://www..com" target="_blank">
+                                <a href="{{get_setting_by_key('instagram')->value}}" target="_blank">
                                     <i class="fa fa-instagram" id="instagram"></i>
                                 </a>
                             </li> 
                             <li>
-                                <a href="https://www..com" target="_blank">
+                                <a href="{{get_setting_by_key('twitter')->value}}" target="_blank">
                                     <i class="fa fa-twitter-square" id="twitter"></i>
                                 </a>
                             </li> 
@@ -149,6 +150,7 @@
             $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({ default_offset_pct: 0.3, orientation: 'vertical' });
         });
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="{{asset('frontend/Technomasr/js/wow.js')}}"></script>
     <script> wow = new WOW(
@@ -162,6 +164,17 @@
         )
         wow.init();
     </script>
+    
+    @if (session('success'))
+    <script>
+        swal({
+        title: "{{ session('success') }}",
+        icon: "success",
+        button: "Aww yiss!",
+        });
+    </script>
+    @endif
+
     @stack('scripts')
 </body>
 

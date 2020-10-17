@@ -41,7 +41,7 @@ return [
     'added_successfully' => 'Added successfully',
     'updated_successfully' => 'Updated successfully',
     'deleted_successfully' => 'Deleted successfully',
-
+    'save' => 'Save',
     'permission' => 'Permission',
     'categories' => 'Categories',
     'all_categories' => 'All',
@@ -56,16 +56,22 @@ return [
         'name' => 'Arabic Name',
         'description' => 'Description in Arabic',
         'about_us' => 'About Us in Arabic',
-        'currency' => 'Currency in Arabic',
-        'bank_name' => 'Bank name in Arabic',
+
+
+        'question' => 'Question In Arabic',
+        'answer'   => 'Answer In Arabic',
+        'title'    => 'Title In Arabic For : ',
+        'link'      =>'link In Arabic For : ',
     ],
 
     'en' => [
         'name' => 'English Name',
         'description' => 'Description in English',
         'about_us' => 'About Us in English',
-        'currency' => 'Currency in English',
-        'bank_name' => 'Bank name in English',
+        'question' => 'Question In Englsih',
+        'answer'   => 'Answer In English',
+        'title'    => 'Title In English For : ',
+        'link'      =>'link In Englsih For : ',
 
 
     ],
@@ -224,7 +230,7 @@ return [
     'read_more'     => 'Read More',
     'articles'      => 'Articles',
     'related_articles' => 'Related Articles',
-    'patients' => 'Patienrs',
+    'patients' => 'Patients',
     'our_services' => 'Our Services',
     'view_more_of' => 'View More ',
     //'videos'      => 'الفيديوهات', 
@@ -234,4 +240,28 @@ return [
     'question'    => 'Question',
     'answer'     => 'Answer',
     'settings'    => 'Setting',
+    'leave_message' => 'Leave us a message',
+    'write_message' => 'Write your message',
+    'send' => 'Send',
+    'get_in_touch'=>  'Get In Toutch With Us',
+    'surgery_expectation'   => 'What to expect following surgery',
+    'why_dr_khafaga' => 'Why Dr.Attia Khafaga !?',
+    'message_was_send' => 'Your message was sent successfully',
+
+    'slider_settings' => 'Slider settings',
+    'about_center_settings' => 'About center settings',
+    'features_settings' => 'اعداد الصور المصغرة',
+    'contact_settings' => 'إعدادات التواصل',
+    'service_features_settings' => 'إعدادات الصور المصغره في صفحه الخدمات',
+
+    'message' => 'Message',
+
+    'home'             => 'Home',
+
+    'view_message' => 'View Message',
+
+    'replay'        => 'Replay',
+    'link'            => 'URL',
+    'images'      => 'Images',
+
 ];

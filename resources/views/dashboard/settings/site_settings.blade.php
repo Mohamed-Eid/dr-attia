@@ -34,9 +34,9 @@
                                 @foreach ($data as $name=>$item)
 
                                 @if ($name=="social_links_settings")
-                                <li class="active"><a href="#tab_{{$name}}" data-toggle="tab">{{ $name}}</a></li>               
+                                <li class="active"><a href="#tab_{{$name}}" data-toggle="tab">@lang('site.'.$name)</a></li>               
                                 @else
-                                <li><a href="#tab_{{$name}}" data-toggle="tab">{{ $name }}</a></li>
+                                <li><a href="#tab_{{$name}}" data-toggle="tab">@lang('site.'.$name)</a></li>
                                 @endif
                                 @endforeach
                             </ul>
@@ -54,6 +54,14 @@
                                         <div class="form-group">
                                             <label>{{ $item->translate($locale)->name }}</label>
                                             <input type="text" name="{{$locale}}[value]" class="form-control" value="{{$item->translate($locale)->value}}" >
+                                        </div>
+                                        @endforeach
+                                        @foreach(config('translatable.locales') as $locale)                             
+                                        <div class="form-group">
+                                            <label>@lang('site.'.$locale.'.description')</label>
+                                            <textarea type="text" name="{{$locale}}[description]" class="form-control" > 
+                                                {{$item->translate($locale)->description}}
+                                            </textarea>
                                         </div>
                                         @endforeach
                                         <div class="form-group">
@@ -92,18 +100,24 @@
                                         @foreach(config('translatable.locales') as $locale)                             
                                         <div class="form-group">
                                             <label>@lang('site.'.$locale.'.description')</label>
-                                            <input type="text" name="{{$locale}}[description]" class="form-control" value="{{$item->translate($locale)->description}}" >
+                                            <textarea type="text" name="{{$locale}}[description]" class="form-control" > 
+                                                {{$item->translate($locale)->description}}
+                                            </textarea>                                        </div>
+                                        @endforeach
+
+                                        @foreach(config('translatable.locales') as $locale)                             
+                                        <div class="form-group">
+                                            <label>@lang('site.'.$locale.'.title') {{ $item->name }}</label>
+                                            <input type="text" name="{{$locale}}[value]" class="form-control" value="{{$item->translate($locale)->value}}" >
                                         </div>
                                         @endforeach
-                                        <div class="form-group">
-                                            <label>@lang('site.title')</label>
-                                            <input type="text" name="title" class="form-control" value="{{$item->title}}" >
-                                        </div>
 
+                                        @foreach(config('translatable.locales') as $locale)                             
                                         <div class="form-group">
-                                            <label>@lang('site.link')</label>
-                                            <input type="text" name="link" class="form-control" value="{{$item->link}}" >
+                                            <label>@lang('site.'.$locale.'.link') {{ $item->name }}</label>
+                                            <input type="text" name="{{$locale}}[link]" class="form-control" value="{{$item->translate($locale)->link}}" >
                                         </div>
+                                        @endforeach
 
                                         <div class="form-group">
                                             <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>@lang('site.save')

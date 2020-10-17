@@ -25,7 +25,7 @@ class ContactController extends Controller
 
         ContactMessage::create(request()->all());
 
-        session()->flash('success', __('site.added_successfully'));
+        session()->flash('success', __('site.message_was_send'));
 
         return redirect()->back();
     }
