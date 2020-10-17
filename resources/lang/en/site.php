@@ -203,4 +203,35 @@ return [
 
     'complete_payment'   => 'Complete Payment Process',
 
+
+    'surgeries'       => 'Surgeries',
+
+    'link'            => 'URL',
+    'photo_album'     => 'Photo Album',
+    'blog'           => 'Blog',
+    'question_answer' => 'Questions & Answers',
+    'videos'          => 'Videos',
+    'surgery'        => 'Surgery',
+    'pages'         => 'Pages',
+    'view_images'   => 'View Images',
+    'pages_index'   => 'All Pages',
+
+    'contact'      => 'Contact Us',
+    'before_after'      => 'Before & After',
+    'center_profile'      => 'Center Profile',
+    'video_library'      => 'Video Library',
+    'services'      => 'Services',
+    'read_more'     => 'Read More',
+    'articles'      => 'Articles',
+    'related_articles' => 'Related Articles',
+    'patients' => 'Patienrs',
+    'our_services' => 'Our Services',
+    'view_more_of' => 'View More ',
+    //'videos'      => 'الفيديوهات', 
+    'view'        => 'View ', 
+    'messages'    => 'Messages',
+    'icon'        => 'Icon',
+    'question'    => 'Question',
+    'answer'     => 'Answer',
+    'settings'    => 'Setting',
 ];

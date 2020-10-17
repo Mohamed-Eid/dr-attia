@@ -219,7 +219,7 @@ return [
     'donwload_app_now' => 'حمل التطبيق الآن',
     'tafsil'           => 'تفصيل',
 
-
+  
 
     'home'             => 'الرئيسية',
     'my_orders'        => 'طلباتي',
