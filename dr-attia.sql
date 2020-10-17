@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 11:59 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Oct 17, 2020 at 04:39 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dr-attia`
+-- Database: `dr-attia2`
 --
 
 -- --------------------------------------------------------
@@ -45,7 +44,10 @@ INSERT INTO `categories` (`id`, `image`, `created_at`, `updated_at`) VALUES
 (4, 'j7rJ7iejxLjtOluYUYxk5coU5mlX7w4LpG4IFPC4.png', '2020-10-13 23:11:07', '2020-10-13 23:11:07'),
 (5, 'x8N2xirJJ0BThyW9b9x8vD6rpFVRUssT8wXWB2Wo.jpeg', '2020-10-15 10:20:09', '2020-10-15 10:20:09'),
 (6, 'oFXrYQzKhRFwf3FKNDEw5mMionkxLJQVHJQrP6Tu.jpeg', '2020-10-15 10:20:28', '2020-10-15 10:20:28'),
-(7, 'BeZPuaeu2XrKNzy4g2Dt8ygHqyqz2ymbZyQ08APd.jpeg', '2020-10-16 20:18:44', '2020-10-16 20:18:44');
+(7, 'BeZPuaeu2XrKNzy4g2Dt8ygHqyqz2ymbZyQ08APd.jpeg', '2020-10-16 20:18:44', '2020-10-16 20:18:44'),
+(8, 'bwQHGfdIhEhUudsQ6XfIIG8WKcOGPXkaKY5W3wiY.jpeg', '2020-10-17 14:30:09', '2020-10-17 14:30:09'),
+(9, 'Z5ZQ2G6JJT6IiEyVvl2WAlCwOGuveZSSjmfzVdvg.png', '2020-10-17 14:31:20', '2020-10-17 14:31:20'),
+(10, 'LmOtk9FQXR6PyOCC1a4eo8lCgJKuEnHbEx9yplCE.jpeg', '2020-10-17 14:31:45', '2020-10-17 14:31:45');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,13 @@ INSERT INTO `category_translations` (`id`, `category_id`, `name`, `locale`) VALU
 (11, 6, 'تست 32asd', 'ar'),
 (12, 6, 'asfasdfasdf', 'en'),
 (13, 7, 'قسم', 'ar'),
-(14, 7, 'category', 'en');
+(14, 7, 'category', 'en'),
+(15, 8, 'تست 3', 'ar'),
+(16, 8, 'test 3', 'en'),
+(17, 9, 'سيباسيباسيبالسي', 'ar'),
+(18, 9, 'sdfgsdgsdgasdgasdg', 'en'),
+(19, 10, 'سيباسيباسيبالسيzxfdsa', 'ar'),
+(20, 10, 'sdfgsdgsdgasdgasdgشسبشسب', 'en');
 
 -- --------------------------------------------------------
 
@@ -93,6 +101,20 @@ CREATE TABLE `contact_messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact_messages`
+--
+
+INSERT INTO `contact_messages` (`id`, `name`, `phone`, `email`, `message`, `created_at`, `updated_at`) VALUES
+(2, 'تستستست', '01015960452', 'medoeid50@gmail.com', 'تست تست تست تست ستتس تست تست تست', '2020-10-17 08:31:13', '2020-10-17 08:31:13'),
+(3, 'تستستست', '1234124124', 'test@test.com', 'ewtgweryweryweyr', '2020-10-17 08:49:54', '2020-10-17 08:49:54'),
+(4, 'تستستست', '1234124124', 'test@test.com', 'تستستستستستستت', '2020-10-17 10:58:40', '2020-10-17 10:58:40'),
+(5, 'تستستست', '1234124124', 'test@test.com', 'QDAsf', '2020-10-17 11:00:09', '2020-10-17 11:00:09'),
+(6, 'تستستست', '1234124124', 'medoeid50@gmail.com', 'szdgasdgasdg', '2020-10-17 11:00:26', '2020-10-17 11:00:26'),
+(7, 'تستستست', '1234124124', 'test@test.com', 'qertyweryw', '2020-10-17 11:00:55', '2020-10-17 11:00:55'),
+(8, 'تستستست', '1234124124', 'test@test.com', 'zdfgafdgarfd', '2020-10-17 11:01:24', '2020-10-17 11:01:24'),
+(9, 'تستستست', '01015960452', 'medoeid50@gmail.com', 'zsdfgasdgsadfg', '2020-10-17 11:01:38', '2020-10-17 11:01:38');
 
 -- --------------------------------------------------------
 
@@ -121,7 +143,11 @@ INSERT INTO `expectations` (`id`, `image`, `surgery_id`, `category_id`, `created
 (12, 'YLzNMsLNzKASR86w9DxJQ8GjODLw64jBUln9FBUJ.png', NULL, 7, '2020-10-16 20:18:45', '2020-10-16 20:18:45'),
 (13, 'WCuD3q0TTwSZLs9L02OvV4x9WvRONGmE1cy59RbU.png', NULL, 7, '2020-10-16 20:18:45', '2020-10-16 20:18:45'),
 (14, 'fKbUm7nEcyU3y9JXV331XyMnRCXKq9mid9jtHLST.png', NULL, 7, '2020-10-16 20:18:46', '2020-10-16 20:18:46'),
-(15, 'bFMTOTGQPRplLGpRe3p6WUyXM30FZkEDGgijRIlM.png', NULL, 7, '2020-10-16 20:18:46', '2020-10-16 20:18:46');
+(15, 'bFMTOTGQPRplLGpRe3p6WUyXM30FZkEDGgijRIlM.png', NULL, 7, '2020-10-16 20:18:46', '2020-10-16 20:18:46'),
+(18, NULL, 13, NULL, '2020-10-17 14:35:33', '2020-10-17 14:35:33'),
+(19, NULL, 13, NULL, '2020-10-17 14:35:33', '2020-10-17 14:35:33'),
+(20, NULL, 13, NULL, '2020-10-17 14:35:33', '2020-10-17 14:35:33'),
+(21, NULL, 13, NULL, '2020-10-17 14:35:33', '2020-10-17 14:35:33');
 
 -- --------------------------------------------------------
 
@@ -132,7 +158,7 @@ INSERT INTO `expectations` (`id`, `image`, `surgery_id`, `category_id`, `created
 CREATE TABLE `expectation_translations` (
   `id` int(10) UNSIGNED NOT NULL,
   `expectation_id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -156,7 +182,15 @@ INSERT INTO `expectation_translations` (`id`, `expectation_id`, `name`, `locale`
 (27, 14, 'تست4', 'ar'),
 (28, 14, 'test 4', 'en'),
 (29, 15, 'تست2', 'ar'),
-(30, 15, 'test 2', 'en');
+(30, 15, 'test 2', 'en'),
+(31, 18, NULL, 'ar'),
+(32, 18, NULL, 'en'),
+(33, 19, NULL, 'ar'),
+(34, 19, NULL, 'en'),
+(35, 20, NULL, 'ar'),
+(36, 20, NULL, 'en'),
+(37, 21, NULL, 'ar'),
+(38, 21, NULL, 'en');
 
 -- --------------------------------------------------------
 
@@ -533,7 +567,9 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
-(2, 7, 'App\\User');
+(2, 7, 'App\\User'),
+(2, 8, 'App\\User'),
+(2, 9, 'App\\User');
 
 -- --------------------------------------------------------
 
@@ -556,16 +592,30 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `key`, `type`, `class`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'fb', 'text', 'social_links', NULL, '2020-10-14 23:25:48', '2020-10-14 23:25:48'),
-(2, 'tw', 'text', 'social_links', NULL, '2020-10-14 23:27:14', '2020-10-14 23:27:14'),
-(3, 'img_1', 'image', 'slider', 'hH3d9gzhT8naJ8dqF86O4ncXa33SpwzClgqGEnaT.jpeg', '2020-10-14 23:28:58', '2020-10-15 13:44:05'),
-(4, 'img_2', 'image', 'slider', 'qA0T9r2PZjMUEJognB4tnCIthK9NqUK5qK7KQiVN.jpeg', '2020-10-14 23:29:53', '2020-10-15 13:44:18'),
-(5, 'img_2', 'image', 'slider', '48R9UPtVYZRZPQEcnu4BqKTmjGUh6ymnOsTylNKl.jpeg', '2020-10-14 23:30:27', '2020-10-15 13:44:27'),
-(6, 'yt', 'text', 'social_links', NULL, '2020-10-15 13:05:24', '2020-10-15 13:05:24'),
-(7, 'aaa', 'text', 'social_links', NULL, '2020-10-15 13:11:52', '2020-10-15 13:11:52'),
-(8, 'instagram_link', 'text', 'social_links', NULL, '2020-10-16 21:56:51', '2020-10-16 21:56:51'),
-(9, 'email', 'text', 'social_links', NULL, '2020-10-16 21:57:38', '2020-10-16 21:57:38'),
-(10, 'about_center', 'text', 'general', NULL, '2020-10-16 21:58:31', '2020-10-16 21:58:31');
+(14, 'slider_image_1', 'image', 'slider', '7cc5UmLqDi7Yp2vGkVXCy4g3kUs8KZdNIPzaLCiy.jpeg', '2020-10-17 09:14:31', '2020-10-17 09:14:31'),
+(15, 'slider_image_2', 'image', 'slider', 'v6AluYcL4uwka7M6mXdSW9D60zpSUYvAZzSLGhd2.jpeg', '2020-10-17 09:26:24', '2020-10-17 09:26:24'),
+(16, 'slider_image_3', 'image', 'slider', 'UkoZMZcnAHu3Bu7akt5QgUt88ZOiHH7sMJe4SsjX.jpeg', '2020-10-17 09:27:05', '2020-10-17 09:27:05'),
+(17, 'about_center_image', 'image', 'about_center', '1XSJHXUYxreTNBLyZiGucmolc7Yl5rsD5WwoUVdy.jpeg', '2020-10-17 09:28:54', '2020-10-17 09:28:54'),
+(18, 'about_center_image_2', 'image', 'about_center', 'BZHA5lwBd4YPrg1MFLY85y60yXAfNUX5EDu7TkMF.jpeg', '2020-10-17 09:29:43', '2020-10-17 09:29:43'),
+(19, 'feature_1', 'image', 'features', 'zKU6nKfAlWWuJ4udgNWhGiimEjcT8csIF48s73Ql.png', '2020-10-17 09:40:48', '2020-10-17 09:40:48'),
+(20, 'feature_4', 'image', 'features', 'E2tt9f6FiYuv4IiO2GfrCVEHRG9E6CecSNBJAE9I.png', '2020-10-17 09:42:54', '2020-10-17 09:42:54'),
+(21, 'feature_3', 'image', 'features', 'GTLs76yTZrec4rAHoD1mqQCzk2nXGMN8aPMP2G9N.png', '2020-10-17 09:43:00', '2020-10-17 09:43:00'),
+(22, 'feature_2', 'image', 'features', '2KwXKYXfEWrvyyTin1UlUUWRTIwPOSJzDEBqoVMw.png', '2020-10-17 09:43:09', '2020-10-17 09:43:09'),
+(23, 'fb_link', 'text', 'contact', NULL, '2020-10-17 09:50:48', '2020-10-17 09:50:48'),
+(24, 'youtube', 'text', 'contact', NULL, '2020-10-17 09:51:42', '2020-10-17 09:51:42'),
+(25, 'instagram', 'text', 'contact', NULL, '2020-10-17 09:52:52', '2020-10-17 09:52:52'),
+(26, 'twitter', 'text', 'contact', NULL, '2020-10-17 09:54:03', '2020-10-17 09:54:03'),
+(27, 'email', 'text', 'contact', NULL, '2020-10-17 09:59:33', '2020-10-17 09:59:33'),
+(28, 'address', 'text', 'contact', NULL, '2020-10-17 10:13:49', '2020-10-17 10:13:49'),
+(29, 'phone', 'text', 'contact', NULL, '2020-10-17 10:19:49', '2020-10-17 10:19:49'),
+(33, 'service_feature_4', 'image', 'service_features', 'lEDO42k49wPzc0x9FrGW49GbgBPErFCX70YgDky8.png', '2020-10-17 10:42:47', '2020-10-17 10:42:47'),
+(34, 'service_feature_3', 'image', 'service_features', 'SYjD29NF4cw5Ly2PI7HeVuIJn9TfNKggKwn3qXtZ.png', '2020-10-17 10:42:49', '2020-10-17 10:42:49'),
+(35, 'service_feature_2', 'image', 'service_features', 'jt9HAKPfPvQEH4waz4RLbnphH7N2qpNtq4Utjqc2.png', '2020-10-17 10:42:51', '2020-10-17 10:42:51'),
+(36, 'service_feature_1', 'image', 'service_features', 'HFzbpz63fl3fzUIdpnaT3jimY7b6IjI55NKxovzP.png', '2020-10-17 10:42:53', '2020-10-17 10:42:53'),
+(37, 'map', 'text', 'contact', NULL, '2020-10-17 11:09:03', '2020-10-17 11:09:03'),
+(38, 'author', 'text', 'meta', NULL, '2020-10-17 14:17:13', '2020-10-17 14:17:13'),
+(39, 'keywords', 'text', 'meta', NULL, '2020-10-17 14:18:13', '2020-10-17 14:18:13'),
+(40, 'description', 'text', 'meta', NULL, '2020-10-17 14:20:24', '2020-10-17 14:20:24');
 
 -- --------------------------------------------------------
 
@@ -577,9 +627,9 @@ CREATE TABLE `setting_translations` (
   `id` int(10) UNSIGNED NOT NULL,
   `setting_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -589,26 +639,54 @@ CREATE TABLE `setting_translations` (
 --
 
 INSERT INTO `setting_translations` (`id`, `setting_id`, `name`, `value`, `title`, `description`, `link`, `locale`) VALUES
-(1, 1, 'fb', 'asdasfasdfasdfqwawrqwr', NULL, NULL, NULL, 'ar'),
-(2, 1, 'فيسبوك لينك', 'asasfas://www.youtube.com/watch?v=ASbnLcr1Umk', NULL, NULL, NULL, 'en'),
-(3, 2, 'tw', 'twitterlink', NULL, NULL, NULL, 'ar'),
-(4, 2, 'tw', 'twitterllll', NULL, NULL, NULL, 'en'),
-(5, 3, 'slider_image', 'قييممممهه', 'title123', 'وصف وصفوصفوصفوصف', 'link/ar123', 'ar'),
-(6, 3, 'slider_image', 'vallluuee', 'عنوان', 'desc desc desc desc', 'link/en', 'en'),
-(7, 4, 'slider_image_1', NULL, NULL, NULL, NULL, 'ar'),
-(8, 4, 'slider_image_1', NULL, NULL, NULL, NULL, 'en'),
-(9, 5, 'slider_image_2', NULL, NULL, NULL, NULL, 'ar'),
-(10, 5, 'slider_image_2', NULL, NULL, NULL, NULL, 'en'),
-(11, 6, 'لينك يوتويب', 'https://www.youtube.com/', NULL, NULL, NULL, 'ar'),
-(12, 6, 'youtube link', 'https://www.youtube.com/', NULL, NULL, NULL, 'en'),
-(13, 7, 'تست 3', 'https://www.youtube.com/', NULL, NULL, NULL, 'ar'),
-(14, 7, 'test 3', 'https://www.youtube.com/', NULL, NULL, NULL, 'en'),
-(15, 8, 'لينك الانستجرام', NULL, NULL, NULL, NULL, 'ar'),
-(16, 8, 'instgram link', NULL, NULL, NULL, NULL, 'en'),
-(17, 9, 'البريد الالكتروني', 'info@yoursite.com', NULL, NULL, NULL, 'ar'),
-(18, 9, 'Email', 'info@yoursite.com', NULL, NULL, NULL, 'en'),
-(19, 10, 'عن السنتر', NULL, NULL, NULL, NULL, 'ar'),
-(20, 10, 'About Center', NULL, NULL, NULL, NULL, 'en');
+(27, 14, 'صوره اسلايدر', 'تستستستتست', 'تستست', 'لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق \"ليتراسيت\" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل \"ألدوس بايج مايكر\" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.', 'https://ar.lipsum.com/', 'ar'),
+(28, 14, 'Slider Image', 'teset stetsetsest', NULL, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'https://en.lipsum.com/', 'en'),
+(29, 15, 'صوره سلايدر 2', NULL, NULL, NULL, NULL, 'ar'),
+(30, 15, 'Slider Image 2', NULL, NULL, NULL, NULL, 'en'),
+(31, 16, 'صورة سلادير 3', NULL, NULL, NULL, NULL, 'ar'),
+(32, 16, 'Slider Image 3', NULL, NULL, NULL, NULL, 'en'),
+(33, 17, 'صورة عن السنتر الصفحه الرئيسية', 'مركز د/ عطية خفاجه', NULL, 'لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق \"ليتراسيت\" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل \"ألدوس بايج مايكر\" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.', NULL, 'ar'),
+(34, 17, 'About Center Image In Home', 'Dr. Attia Khafaga Cosmetic Center', NULL, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', NULL, 'en'),
+(35, 18, 'صورة عن السنتر الصفحه الرئيسية 2', 'مركز د/ عطية خفاجه', NULL, 'لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق \"ليتراسيت\" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل \"ألدوس بايج مايكر\" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.', NULL, 'ar'),
+(36, 18, 'Dr. Attia Khafaga Cosmetic Center 2', 'Dr. Attia Khafaga Center', NULL, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', NULL, 'en'),
+(37, 19, 'صورة مصغره الصفحه الرئيسيه 1', 'فيتشر 1', NULL, NULL, NULL, 'ar'),
+(38, 19, 'Home Page Icon 1', 'feature 1', NULL, NULL, NULL, 'en'),
+(39, 20, 'صورة مصغره الصفحه الرئيسيه 4', 'فيتشر 2', NULL, NULL, NULL, 'ar'),
+(40, 20, 'Home page icon 4', 'فيتشر 2', NULL, NULL, NULL, 'en'),
+(41, 21, 'صورة مصغره الصفحه الرئيسيه 3', 'فيتشر 3', NULL, NULL, NULL, 'ar'),
+(42, 21, 'Home page icon 3', 'فيتشر 3', NULL, NULL, NULL, 'en'),
+(43, 22, 'صورة مصغره الصفحه الرئيسيه 2', 'فيتشر 4', NULL, NULL, NULL, 'ar'),
+(44, 22, 'Home page icon 2', 'فيتشر 4', NULL, NULL, NULL, 'en'),
+(45, 23, 'لينك الفيسبوك', 'https://ar-ar.facebook.com/', NULL, NULL, NULL, 'ar'),
+(46, 23, 'Facebook Link', 'https://ar-ar.facebook.com/', NULL, NULL, NULL, 'en'),
+(47, 24, 'رابط اليوتيوب', 'https://www.youtube.com/', NULL, NULL, NULL, 'ar'),
+(48, 24, 'youtube link', 'https://www.youtube.com/', NULL, NULL, NULL, 'en'),
+(49, 25, 'لينك الانستجرام', 'https://www.instagram.com/', NULL, NULL, NULL, 'ar'),
+(50, 25, 'Instagram Link', 'https://www.instagram.com/', NULL, NULL, NULL, 'en'),
+(51, 26, 'لينك تويتر', 'https://twitter.com/login?lang=ar', NULL, NULL, NULL, 'ar'),
+(52, 26, 'twitter link', 'https://twitter.com/login?lang=ar', NULL, NULL, NULL, 'en'),
+(53, 27, 'ايميل التواصل', 'info@example.com', NULL, NULL, NULL, 'ar'),
+(54, 27, 'Contact Email', 'info@example.com', NULL, NULL, NULL, 'en'),
+(55, 28, 'العنوان', 'Your Address , Nasr City Cairo', NULL, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13813.242678657061!2d31.321352830299766!3d30.05662818240419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e5d94c66301%3A0xddddf100de42206c!2sNasr%20City%2C%20Al%20Manteqah%20Al%20Oula%2C%20Nasr%20City%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1602933107952!5m2!1sen!2seg\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', NULL, 'ar'),
+(56, 28, 'Address', 'مدينه نصر', NULL, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13813.242678657061!2d31.321352830299766!3d30.05662818240419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e5d94c66301%3A0xddddf100de42206c!2sNasr%20City%2C%20Al%20Manteqah%20Al%20Oula%2C%20Nasr%20City%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1602933107952!5m2!1sen!2seg\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', NULL, 'en'),
+(57, 29, 'رقم الهاتف', '0101010101010101010', NULL, NULL, NULL, 'ar'),
+(58, 29, 'Phone Number', '0111000010001000001', NULL, NULL, NULL, 'en'),
+(62, 33, 'صوره صفحه الخدمات4', NULL, NULL, NULL, NULL, 'ar'),
+(63, 33, 'صوره صفحه الخدمات4', NULL, NULL, NULL, NULL, 'en'),
+(64, 34, 'صوره صفحه الخدمات3', NULL, NULL, NULL, NULL, 'ar'),
+(65, 34, 'صوره صفحه الخدمات3', NULL, NULL, NULL, NULL, 'en'),
+(66, 35, 'صوره صفحه الخدمات2', NULL, NULL, NULL, NULL, 'ar'),
+(67, 35, 'صوره صفحه الخدمات2', NULL, NULL, NULL, NULL, 'en'),
+(68, 36, 'صوره صفحه الخدمات', NULL, NULL, NULL, NULL, 'ar'),
+(69, 36, 'صوره صفحه الخدمات', NULL, NULL, NULL, NULL, 'en'),
+(70, 37, 'الخريطه', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110532.89549083744!2d31.30329406893522!3d30.032468600716175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583c1380cba7ef%3A0xd541260e9e06978d!2sNasr%20City%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1601175174423!5m2!1sen!2seg', NULL, NULL, NULL, 'ar'),
+(71, 37, 'Map', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110532.89549083744!2d31.30329406893522!3d30.032468600716175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583c1380cba7ef%3A0xd541260e9e06978d!2sNasr%20City%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1601175174423!5m2!1sen!2seg', NULL, NULL, NULL, 'en'),
+(72, 38, 'مالك الموقع', 'د/ عطية خفاجه', NULL, NULL, NULL, 'ar'),
+(73, 38, 'Author', 'Dr. Attia Khafaga', NULL, NULL, NULL, 'en'),
+(74, 39, 'الكلمات الدلالية', NULL, NULL, NULL, NULL, 'ar'),
+(75, 39, 'Key Words', NULL, NULL, NULL, NULL, 'en'),
+(76, 40, 'الوصف', NULL, NULL, NULL, NULL, 'ar'),
+(77, 40, 'Description', NULL, NULL, NULL, NULL, 'en');
 
 -- --------------------------------------------------------
 
@@ -634,7 +712,10 @@ INSERT INTO `surgeries` (`id`, `icon`, `image`, `category_id`, `created_at`, `up
 (3, 'Lg4W65x7HocY9qO73skllbEXvo3dQMpIx73jme0p.jpeg', 'XiKXWY7Awhl2LgAWspN3v5vvl9DaLLrOwuTgil3Y.jpeg', 3, '2020-10-12 09:17:18', '2020-10-12 09:17:18'),
 (5, 'fqx74cNcVSmbTb7vgMucHnolh25WjrXOlvSY4ysx.jpeg', 'UZyxGWifVwXeYdAIC8RXAqWPz6tLUuP2eJ8DoSH1.png', 2, '2020-10-13 23:29:29', '2020-10-13 23:29:29'),
 (9, 'YZqABTocpIBShvAwHkKP06l8iMGGUPFPIhx2so9B.png', 'JRBrmEXnPWsdtBOo4Z7BrmVcF3quKWKHtQvoLfth.jpeg', 6, '2020-10-16 18:48:41', '2020-10-16 18:48:41'),
-(10, 'GCwf0djyUesIXBoguUGDZZ3R68x6Bv4kpixzD2dZ.png', '79Jdn3z8FBsmpYV2M5LXM3VNL9kxlx5tX7mci5OV.png', 6, '2020-10-16 19:47:19', '2020-10-16 19:47:19');
+(10, 'GCwf0djyUesIXBoguUGDZZ3R68x6Bv4kpixzD2dZ.png', '79Jdn3z8FBsmpYV2M5LXM3VNL9kxlx5tX7mci5OV.png', 6, '2020-10-16 19:47:19', '2020-10-16 19:47:19'),
+(11, 'Ti0T39OTojAQRUHKH8xEbyxrrrPKiUr7kF971e0I.jpeg', 'YQqJhyF0NwT4HN8p45TDruC0nHfVXoIIYmf2IdLa.png', 7, '2020-10-17 14:32:53', '2020-10-17 14:32:53'),
+(12, 'default.png', 'default.png', 2, '2020-10-17 14:34:04', '2020-10-17 14:34:04'),
+(13, 'default.png', 'default.png', 2, '2020-10-17 14:35:33', '2020-10-17 14:35:33');
 
 -- --------------------------------------------------------
 
@@ -666,7 +747,13 @@ INSERT INTO `surgery_translations` (`id`, `surgery_id`, `name`, `body`, `locale`
 (17, 9, 'Rigel Wiggins', '<p>asfasdfgasd</p>', 'ar', NULL, NULL),
 (18, 9, 'Flynn Donovan', '<p>asdgasdgasdgasdg</p>', 'en', NULL, NULL),
 (19, 10, 'Kenyon Marquez', '<p>asdfasdfgasdg</p>', 'ar', NULL, NULL),
-(20, 10, 'Joelle Moran', '<p>asdgasdgasdg</p>', 'en', NULL, NULL);
+(20, 10, 'Joelle Moran', '<p>asdgasdgasdg</p>', 'en', NULL, NULL),
+(21, 11, 'تتستستستتست', '<p>dxzfcgsdfgs</p>', 'ar', NULL, NULL),
+(22, 11, 'tettet', '<p>sdfhsfdhs</p>', 'en', NULL, NULL),
+(23, 12, 'تتستستستتستaaaa', '<p>تتستستستتست</p>', 'ar', NULL, NULL),
+(24, 12, 'tettetaaaaaaa', '<p>tettet</p>', 'en', NULL, NULL),
+(25, 13, 'sdfgbhsedrhgbserghb', '<p>asdtgasdtgasd</p>', 'ar', NULL, NULL),
+(26, 13, 'dsafghadsygaewsdt', '<p>asedtasdtasd</p>', 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -694,7 +781,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `image`, `email_verified_at`, `password`, `api_token`, `fcm_token`, `remember_token`, `created_at`, `updated_at`) VALUES
-(7, 'Backend', 'Dev', 'test@test.com', 'default.png', NULL, '$2y$10$/m7n9TcXdvca5qhKJev14.oXutvJhSUKMW2GSw9FD/bU.9ba6ayPu', NULL, NULL, '99meiJQIXRJ54wPEgtcllddo8IgxTpf0lYa0wMWc32Z22XKsSxEyKU8ALwfo', '2020-06-16 21:49:58', '2020-10-16 21:54:16');
+(7, 'Backend', 'Dev', 'test@test.com', 'default.png', NULL, '$2y$10$/m7n9TcXdvca5qhKJev14.oXutvJhSUKMW2GSw9FD/bU.9ba6ayPu', NULL, NULL, '99meiJQIXRJ54wPEgtcllddo8IgxTpf0lYa0wMWc32Z22XKsSxEyKU8ALwfo', '2020-06-16 21:49:58', '2020-10-16 21:54:16'),
+(8, 'test', 'tets', 'test2@test.com', 'default.png', NULL, '$2y$10$pcQ2j7gwpcatrW1FHRUh6OnyXHGv9T83dOwyLppZBm/XM0bzwXGvO', NULL, NULL, NULL, '2020-10-17 11:26:56', '2020-10-17 11:26:56'),
+(9, 'test', 'tets', 'test3@test.com', 'default.png', NULL, '$2y$10$FAlI4GNV9L2FKKsCwLhXoO0/oTG8mYQMj8C96K1tzFrmF3HPZFnKC', NULL, NULL, NULL, '2020-10-17 14:29:07', '2020-10-17 14:29:07');
 
 -- --------------------------------------------------------
 
@@ -966,31 +1055,31 @@ ALTER TABLE `video_translations`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category_translations`
 --
 ALTER TABLE `category_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `expectations`
 --
 ALTER TABLE `expectations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `expectation_translations`
 --
 ALTER TABLE `expectation_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -1062,31 +1151,31 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `setting_translations`
 --
 ALTER TABLE `setting_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `surgeries`
 --
 ALTER TABLE `surgeries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `surgery_translations`
 --
 ALTER TABLE `surgery_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `videos`
