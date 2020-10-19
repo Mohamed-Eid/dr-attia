@@ -8,15 +8,19 @@ Route::group(
     ],
     
     function(){
-        Route::prefix('dashboard')->name('dashboard.')->group(function(){
-           
+        Route::prefix('AdminPanel')->name('dashboard.')->group(function(){
+            
             Auth::routes(['register' => false]);
+            
+            //Password reset link request routes...
+            Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
+            Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 
-
-            Route::get('get_video_ajax/', function () {
-                //return request()->all();
-                return get_video_id(request()->link);
-            })->name('get_video_id');
+            // Password reset routes...
+            Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
+            Route::post('password/reset', 'Auth\ResetPasswordController@postReset')->name('password.reset');
+ 
+            Route::get('test','Auth\ResetPasswordController@showResetForm');
 
             Route::middleware(['auth'])->group(function(){
                 Route::get('/','DashboardController@index')->name('index');

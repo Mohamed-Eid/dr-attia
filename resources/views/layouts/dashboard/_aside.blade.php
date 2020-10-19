@@ -26,6 +26,13 @@
             </li>
             {{-- @endif --}}
 
+            <li class="{{route('dashboard.settings.index')==url()->current() ? 'active' : '' }}">
+                <a href="{{ route('dashboard.settings.all_settings') }}">
+                    <i class="fa  fa-gear"></i> @lang('site.settings')
+                </a>
+            </li>
+
+
             {{-- @if(auth()->user()->hasPermission('read_categories')) --}}
             <li class="{{ route('dashboard.categories.index')==url()->current() ? 'active' : '' }}">
                 <a href="{{ route('dashboard.categories.index') }}"><i class="fa  fa-cube"></i><span>@lang('site.categories')</span></a>

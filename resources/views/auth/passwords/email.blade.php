@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +12,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('dashboard.password.email') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -44,4 +42,4 @@
         </div>
     </div>
 </div>
-@endsection
+

@@ -62,6 +62,8 @@
                 <label style="font-weight: normal;"><input type="checkbox" name="remember"> @lang('site.remember_me')</label>
             </div>
 
+            <a href="{{ route('dashboard.password.email') }}">I forgot my password</a><br>
+
             <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('site.login')</button>
 
         </form><!-- end of form -->

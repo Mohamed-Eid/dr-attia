@@ -40,7 +40,9 @@ class SettingController extends Controller
             } 
         }
         //dd($data);
-        return view('dashboard.settings.site_settings',compact('data'));
+        //return view('dashboard.settings.site_settings',compact('data'));
+        return view('dashboard.settings.all_settings',compact('data'));
+
     }
  
 

@@ -49,11 +49,65 @@
     {{--html in  ie--}}
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <style>
+        /*--------------------------------------------------------------
+        # Preloader
+        --------------------------------------------------------------*/
+        #preloader {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99999;
+        overflow: hidden;
+        background: #fff;
+        }
+
+        #preloader:before {
+        content: '';
+        position: fixed;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        border: 6px solid #50ACE4;
+        border-top-color: #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: animate-preloader 1s linear infinite;
+        animation: animate-preloader 1s linear infinite;
+        }
+
+        @-webkit-keyframes animate-preloader {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+
+        @keyframes animate-preloader {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+
+    </style>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
 <div class="wrapper">
+
+    <div id="preloader"></div>
+
 
     <header class="main-header">
 
@@ -239,6 +293,7 @@
 <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
 
 
+
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
@@ -249,7 +304,7 @@
             radioClass: 'iradio_minimal-blue'
         });
 
-        $('.delete').click(function (e) {
+        $('.delete2').click(function (e) {
 
             var that = $(this)
 
@@ -272,6 +327,28 @@
 
             n.show();
 
+        });//end of delete
+
+
+        $('.delete').click(function (e) {
+
+            var that = $(this)
+
+            e.preventDefault();
+
+            swal({
+                title: "@lang('site.confirm_delete')",
+                icon: "warning",
+                buttons: {
+                    cancel: true,
+                    confirm: true,
+                },
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    that.closest('form').submit();
+                }
+            });
         });//end of delete
 
         //image preview
@@ -319,9 +396,21 @@
 
     })
 
-
 </script>
 @stack('scripts')
+<script>
+    (function ($) {
+  'use strict';
 
+  // Preloader
+  $(window).on('load', function () {
+    $('#preloader')
+      .delay(2000)
+      .fadeOut('slow', function () {
+        $(this).remove();
+      });
+  });
+})(window.jQuery);
+</script>
 </body>
 </html>

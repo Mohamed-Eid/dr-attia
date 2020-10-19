@@ -31,4 +31,4 @@ class ForgetPasswordMail extends Mailable
     {
         return $this->subject('Forget Password')->markdown('emails.clients.forget-password-code');
     }
-}
+} 

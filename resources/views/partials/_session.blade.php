@@ -1,4 +1,4 @@
-@if (session('success'))
+@if (session('success-'))
 
     <script>
         new Noty({
@@ -11,3 +11,14 @@
     </script>
 
 @endif
+
+
+@if (session('success'))
+
+    <script>
+        swal("{{ session('success') }}", "", "success");
+    </script>
+
+@endif
+
+
