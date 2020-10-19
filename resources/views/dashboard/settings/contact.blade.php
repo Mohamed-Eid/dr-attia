@@ -25,7 +25,9 @@
                         <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>@lang('site.save')
                         </button>
                     </div>
-                </form>                                                    
+                </form>  
+                @include('dashboard.settings.delete_button')                                                   
+                                                  
             </div>
     @endforeach
 </div>
