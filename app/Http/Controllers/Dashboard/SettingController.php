@@ -136,6 +136,7 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
+        //dd(request()->all());
         $request->location = $request->lat.','.$request->lng;
         $rules = [
             //'lat' => 'required',
@@ -155,6 +156,11 @@ class SettingController extends Controller
             $data['image'] = upload_image_without_resize('setting_images',$request->image,null,null);
        }
 
+       if(isset($request->lang)){
+            unset($data['lang']);    
+            $data['image'] = $request->lang;
+       }
+
         $setting->update($data);
 
         session()->flash('success', __('site.updated_successfully'));
@@ -168,8 +174,23 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Setting $setting)
     {
-        //
+        if($setting->image != null){
+            delete_image('setting_images',$setting->image);
+        }
+
+        foreach (config('translatable.locales') as $locale){
+            $setting->image = NULL;
+            $setting->translate($locale)->value = NULL;
+            $setting->translate($locale)->title = NULL;
+            $setting->translate($locale)->description = NULL;
+            $setting->translate($locale)->link = NULL;
+        }
+        $setting->save();
+        
+        session()->flash('success', __('site.deleted_successfully'));
+
+        return redirect()->back();
     }
 }

@@ -12,6 +12,7 @@ use App\Video;
 class HomeController extends Controller
 {
     public function index(){
+
         $articles = Post::all();
         $videos = Video::all();
         $bf_images = Image::all();

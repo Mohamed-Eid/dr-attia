@@ -1,20 +1,20 @@
 <div class="row">                                    
     @foreach ($items as $item)
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <form action="{{ route('dashboard.settings.update',$item) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put') 
                     
 
-
+                    @if ($item->key=='description' || $item->key=='keywords')
                     @foreach(config('translatable.locales') as $locale)                             
                     <div class="form-group">
-                        <label>@lang('site.'.$locale.'.title') {{ $item->name }}</label>
-                        <input type="text" name="{{$locale}}[value]" class="form-control" value="{{$item->translate($locale)->value}}" >
-                    </div>
+                        <label>@lang('site.'.$locale.'.description')</label>
+                        <textarea type="text" name="{{$locale}}[description]" class="form-control" rows="4" cols="50" > 
+                            {{$item->translate($locale)->description}}
+                        </textarea>                                        </div>
                     @endforeach
-
-                    
+                    @elseif($item->type=='image')
                     <div class="form-group">
                         <label>{{ $item->name }}</label>
                         <input type="file" name="image" class="form-control" id="image-{{$item->id}}">
@@ -38,15 +38,21 @@
                         </script>
                     @endpush
                     </div>
+                    @else
+                    <div class="form-group">
+                        <label>{{ $item->name }}</label>
+                        <input type="text" name="ar[value]" class="form-control" value="{{$item->translate('ar')->value}}" >
+                    </div>
+                    @endif
 
 
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>@lang('site.save')
                         </button>
                     </div>
-                </form>   
+                </form>  
                 @include('dashboard.settings.delete_button')                                                   
-                                              
+                                                  
             </div>
     @endforeach
 </div>

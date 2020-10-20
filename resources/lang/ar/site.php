@@ -278,4 +278,6 @@ return [
     'service_features_settings' => 'إعدادات الصور المصغره في صفحه الخدمات', 
 
     'meta_settings' => 'إعدادات الارشفه',
+
+    'general_settings' => 'إعدادات عامة',
 ];

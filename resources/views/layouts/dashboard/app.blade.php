@@ -257,7 +257,6 @@
     
     @yield('content')
 
-    @include('partials._session')
 
     {{-- <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -292,6 +291,22 @@
 {{--<!-- AdminLTE App -->--}}
 <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
 
+<script>
+    (function ($) {
+    'use strict';
+
+    // Preloader
+    $(window).on('load', function () {
+            $('#preloader')
+            .delay(2000)
+            .fadeOut('slow', function () {
+                $(this).remove();
+            });
+        });
+    })(window.jQuery);
+</script>
+
+@include('partials._session')
 
 
 <script>
@@ -398,19 +413,6 @@
 
 </script>
 @stack('scripts')
-<script>
-    (function ($) {
-  'use strict';
 
-  // Preloader
-  $(window).on('load', function () {
-    $('#preloader')
-      .delay(2000)
-      .fadeOut('slow', function () {
-        $(this).remove();
-      });
-  });
-})(window.jQuery);
-</script>
 </body>
 </html>

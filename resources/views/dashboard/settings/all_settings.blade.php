@@ -67,6 +67,11 @@
 
                                     @elseif($name == 'service_features_settings')
                                     @include('dashboard.settings.features',['items' => $items])                                    
+                                    @elseif($name == 'meta_settings')
+                                    @include('dashboard.settings.meta',['items' => $items])                                    
+                                    @elseif($name == 'general_settings')
+                                    @include('dashboard.settings.general',['items' => $items])                                    
+
                                     @endif
                                 </div>
     
