@@ -20,7 +20,7 @@
             body, h1, h2, h3, h4, h5, h6 {
                 font-family: 'Cairo', sans-serif !important;
             }
-        </style>
+        </style> 
     @else
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <link rel="stylesheet" href="{{ asset('dashboard/css/font-awesome.min.css') }}">
@@ -36,7 +36,7 @@
 <div class="login-box">
 
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="#"><b>Admin</b>LTE</a>
     </div><!-- end of login lgo -->
 
     <div class="login-box-body">
