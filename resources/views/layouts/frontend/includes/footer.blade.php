@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-md-6 ">
                     <p class="text-white p-t-20 pull-right">
-                        ©  Dr.Attita Khafaga 2020
+                        {{ get_setting_by_key('copy_rights')->value }}
                     </p>
                 </div>
             </div>

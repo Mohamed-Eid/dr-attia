@@ -1,6 +1,7 @@
 <?php
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 // /*
 // |--------------------------------------------------------------------------
@@ -17,10 +18,17 @@ use Illuminate\Support\Facades\DB;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ],
     
     function(){
+
+        // Route::get('test',function(){
+        //     $lang =  Session::get('locale');
+        //     app()->setlocale('ar');
+        //     dd(app()->getLocale());
+        // });
+
         Route::name('frontend.')->group(function(){
         Route::get('/','HomeController@index')->name('index');
  

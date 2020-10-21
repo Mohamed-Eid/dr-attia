@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <meta name="description" content="{{ get_setting_by_key('description')->description }}" />
+    <meta name="keywords" content="{{ get_setting_by_key('keywords')->description }}">
+    <meta name="author" content="{{ get_setting_by_key('author')->value }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:url" content="" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
     <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:image" content="{{ get_setting_by_key('sharing_img')->image_path }}" />
     <title>Dr.Attia Khafaga</title>
- 
-    <link rel="shortcut icon" href="{{ asset('frontend/Technomasr/images/logo.png') }}" sizes="25x25">
+  
+    <link rel="shortcut icon" href="{{ get_setting_by_key('fav_icon')->image_path }}" sizes="25x25">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('frontend/Technomasr/bootstrap4/css/bootstrap.min.css') }}" />
@@ -53,7 +53,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     <a class="navbar-brand" href="{{ route('frontend.index') }}">
-                        <img src="{{asset('frontend/Technomasr/images/logo.png')}}" id="logo" alt="logo">
+                        <img src="{{ get_setting_by_key('logo')->image_path }}" id="logo" alt="logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                         aria-label="Toggle navigation">

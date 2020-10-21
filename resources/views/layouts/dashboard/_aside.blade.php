@@ -72,11 +72,11 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="page-list {{route('dashboard.pages.index')==url()->current() ? 'active' : '' }}">
+                    {{-- <li class="page-list {{route('dashboard.pages.index')==url()->current() ? 'active' : '' }}">
                         <a href="{{ route('dashboard.pages.index') }}">
                             <i class="fa fa-folder-open"></i> @lang('site.pages_index')
                         </a>
-                    </li>
+                    </li> --}}
                     @foreach (pages() as $page)
                     <li class="page-list {{route('dashboard.pages.edit',$page->id)==url()->current() ? 'active' : '' }}">
                         <a href="{{ route('dashboard.pages.edit',$page->id) }}">
@@ -85,16 +85,16 @@
                     </li>
                     @endforeach
                 </ul>
-              </li>
+            </li>
 
 
-              <li class="treeview">
+            {{-- <li class="treeview">
                 <a href="#">
-                  <i class="fa fa-share"></i> 
-                  <span>@lang('site.settings')</span>
-                  <span class="pull-right-container">
+                    <i class="fa fa-share"></i> 
+                    <span>@lang('site.settings')</span>
+                    <span class="pull-right-container">
                     <i class="fa fa-folder pull-right"></i>
-                  </span>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class="page-list {{route('dashboard.settings.index')==url()->current() ? 'active' : '' }}">
@@ -108,7 +108,7 @@
                         </a>
                     </li>
                 </ul>
-              </li>
+            </li> --}}
 
         </ul>
 

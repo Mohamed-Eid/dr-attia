@@ -9,7 +9,7 @@
                     @if ($item->key=='description' || $item->key=='keywords')
                     @foreach(config('translatable.locales') as $locale)                             
                     <div class="form-group">
-                        <label>@lang('site.'.$locale.'.description')</label>
+                        <label>@lang('site.'.$locale.'.'.$item->key)</label>
                         <textarea type="text" name="{{$locale}}[description]" class="form-control" rows="4" cols="50" > 
                             {{$item->translate($locale)->description}}
                         </textarea>                                        </div>
