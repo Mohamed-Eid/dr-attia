@@ -20,14 +20,9 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ],
-    
-    function(){
 
-        // Route::get('test',function(){
-        //     $lang =  Session::get('locale');
-        //     app()->setlocale('ar');
-        //     dd(app()->getLocale());
-        // });
+     
+    function(){
 
         Route::name('frontend.')->group(function(){
         Route::get('/','HomeController@index')->name('index');

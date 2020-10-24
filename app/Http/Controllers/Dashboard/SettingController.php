@@ -168,6 +168,47 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function update_contact(){
+        //dd(request()->all());
+        foreach (request()->except(['_token','_method']) as $key => $value) {
+            //dd($key);
+            $setting = Setting::find($key);
+            $setting->update($value);
+        }
+
+        session()->flash('success', __('site.updated_successfully'));
+
+        return redirect()->back();
+    }
+
+
+    public function delete_meta_image(Setting $setting){
+        //dd($setting);
+        delete_image('setting_images',$setting->image);
+        $setting->image = null;
+        $setting->save();
+        session()->flash('success', __('site.deleted_successfully'));
+
+        return redirect()->back();
+    }
+
+    public function update_meta(){
+        //dd(request()->all());
+        foreach (request()->except(['_token','_method']) as $key => $value) {
+            //dd($key);
+            $setting = Setting::find($key);
+            if(isset($value['image'])){
+                //todo : delete image first
+                delete_image('setting_images',$setting->image);
+                $value['image'] = upload_image_without_resize('setting_images',$value['image']);
+            }
+            $setting->update($value);
+        }
+
+        session()->flash('success', __('site.updated_successfully'));
+
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      *

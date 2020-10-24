@@ -3,13 +3,13 @@
 
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'prefix' => '',
     ],
     
     function(){
         Route::prefix('AdminPanel')->name('dashboard.')->group(function(){
             
+
             Auth::routes(['register' => false]);
             
             //Password reset link request routes...
@@ -43,6 +43,11 @@ Route::group(
 
 
                 Route::get('settings/all','SettingController@all')->name('settings.all_settings');
+                
+                Route::put('/setting/contact','SettingController@update_contact')->name('setting.update_contact');
+                Route::put('/setting/meta','SettingController@update_meta')->name('setting.update_meta');
+                Route::get('/setting/delete_image/{setting}','SettingController@delete_meta_image')->name('setting.delete_meta_image');
+
 
                 Route::resource('/settings','SettingController');
 
