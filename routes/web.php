@@ -14,15 +14,43 @@ use Illuminate\Support\Facades\Session;
 // |
 // */
 
+Route::get('change_language/{locale}',function($locale){
+    
+    app()->setLocale($locale);
+    session()->put('locale',$locale);
+    // dd(LaravelLocalization::getCurrentLocaleDirection());
+    return redirect()->back();
+
+})->name('change_language');
 
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        //'prefix' => LaravelLocalization::setLocale(),
+        //'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'middleware' => [ 'change_lang' ]
+
     ],
 
-     
+      
     function(){
+
+
+        // Route::get('change_language',function(){
+        //     if(app()->getLocale() == 'ar'){
+        //         app()->setLocale('en');
+        //         session()->put('locale','en');
+        //     }else{
+        //         app()->setLocale('ar');
+        //         session()->put('locale','ar');
+
+        //     }
+        //     //return redirect()->route('frontend.index');
+        //     return app()->getLocale().'  -  '.session()->get('locale');
+        // });
+
+        // Route::get('test',function(){
+        //     return app()->getLocale();
+        // });
 
         Route::name('frontend.')->group(function(){
         Route::get('/','HomeController@index')->name('index');

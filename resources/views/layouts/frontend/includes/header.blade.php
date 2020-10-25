@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" lang="{{app()->getLocale()}}">
+{{-- <html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" lang="{{app()->getLocale()}}"> --}}
+<html dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" lang="{{app()->getLocale()}}">
 
 <head>
     <meta charset="UTF-8" />
@@ -86,11 +87,18 @@
                         </ul>
                         <li>
                             @if (app()->getLocale() != 'ar')
-                            <a class="btn btn-site btn-lang" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
+                            {{-- <a class="btn btn-site btn-lang" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
                                 ع
                             </a>
                             @else
                             <a class="btn btn-site btn-lang" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                                E
+                            </a> --}}
+                            <a class="btn btn-site btn-lang" href="{{ route('change_language','ar') }}">
+                                ع
+                            </a>
+                            @else
+                            <a class="btn btn-site btn-lang" href="{{ route('change_language','en') }}">
                                 E
                             </a>
                             @endif
