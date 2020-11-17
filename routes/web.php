@@ -69,6 +69,9 @@ Route::group(
 
         Route::get('/about','PagesController@about_page')->name('pages.about');
 
+        Route::get('/about_dr_attia','PagesController@about_dr_attia_page')->name('pages.about_dr_attia');
+
+
         Route::get('/before_after','BeforeAfterController@index')->name('pages.before_after');
         Route::get('/before_after/{surgery}','BeforeAfterController@show')->name('pages.before_after.show');
 

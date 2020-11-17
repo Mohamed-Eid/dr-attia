@@ -26,7 +26,7 @@
             </li>
             {{-- @endif --}}
 
-            <li class="{{route('dashboard.settings.index')==url()->current() ? 'active' : '' }}">
+            <li class="{{route('dashboard.settings.all_settings')==url()->current() ? 'active' : '' }}">
                 <a href="{{ route('dashboard.settings.all_settings') }}">
                     <i class="fa  fa-gear"></i> @lang('site.settings')
                 </a>

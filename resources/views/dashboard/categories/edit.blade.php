@@ -35,7 +35,32 @@
                                 <input type="text" name="{{$locale}}[name]" class="form-control" value="{{ $category->translate($locale)->name }}" >
                             </div>
                         @endforeach
-
+                        
+                        <div class="form-group">
+                            <label>@lang('site.color')</label>
+                            <!--<input type="color" name="color" value="{{$category->color ? $category->color : '' }}">-->
+                            @php 
+                                $colors = [
+                                    [
+                                    'color' => '#0a285a',
+                                    'category' => 'Bariatric Surgeries',
+                                    ],
+                                    [
+                                    'color' => '#bf1533',
+                                    'category' => 'Plastic Surgeries',
+                                    ],
+                                    [
+                                    'color' => '#168bac',
+                                    'category' => 'Oncology Surgeries',
+                                    ],
+                                ];
+                            @endphp
+                            <select name="color" class="form-control" style="color:{{$category->color}}">
+                                @foreach($colors as $color)
+                                <option value="{{ $color['color'] }}" {{ $category->color == $color['color']  ? 'selected' : '' }} style="color:{{$color['color']}};">{{$color['category'] .' - '.$color['color']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <label>@lang('site.image')</label>
@@ -58,15 +83,18 @@
                                         <div class="box-header with-border">
                                           <h4 class="box-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                              What To Expect from Category
+                                              What To Expect from surgery
                                             </a>
                                           </h4>
                                         </div>
                                         <div id="collapseOne" class="panel-collapse collapse in">
-                                          <div class="box-body">
-                                            @foreach ($category->expectations as $expectation)
+                                          
+                                          
+                                          @if(count($category->expectations) > 0)
+                                            <div class="box-body">
+                                            @foreach ($category->expectations()->take(3)->get() as $expectation)
                                             
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 
                                                 @foreach(config('translatable.locales') as $locale)
                                                 <div class="form-group">
@@ -84,6 +112,10 @@
                                                 <div class="form-group">
                                                     <img src="{{ $expectation->image_path }}"
                                                          class="img-thumbnail" id="image-preview-{{$expectation->id}}" style="width: 100px;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <a class="btn btn-danger" href="{{ route('dashboard.expectation.delete_expectation',$expectation) }}"><i class="fa fa-trash"></i>@lang('site.delete')
+                                                    </a>
                                                 </div>
                                             </div> 
                                             @push('scripts')
@@ -104,6 +136,51 @@
                                             @endforeach
 
                                           </div>
+
+                                          @else
+                                          <div class="box-body">
+                                            @for ($i = 0; $i < 3; $i++)
+                                            
+                                            <div class="col-md-4">
+                                                
+                                                @foreach(config('translatable.locales') as $locale)
+                                                <div class="form-group">
+                                                    <label>@lang('site.'.$locale.'.name')</label>
+                                                    <input type="text" name="expectation[{{$i}}][{{$locale}}][name]" class="form-control" value="{{ old($locale.'.name') }}" >
+                                                </div>
+                                                @endforeach
+
+                                                <div class="form-group">
+                                                    <label>@lang('site.image')</label>
+                                                    <input type="file" name="expectation[{{$i}}][image]" class="form-control" id="image-{{$i}}">
+                                                </div>
+                                                <input type="hidden" name="expectation[{{$i}}][key]" value="{{$i}}" class="form-control"  />
+
+                                                <div class="form-group">
+                                                    <img src="{{ asset('uploads/category_images/default.png') }}"
+                                                         class="img-thumbnail" id="image-preview-{{$i}}" style="width: 100px;">
+                                                </div>
+                                            </div> 
+                                            @push('scripts')
+                                            <script>
+                                                $("#image-{{$i}}").change(function() {
+                                                    if (this.files && this.files[0]) {
+                                                        var reader = new FileReader();
+                                        
+                                                        reader.onload = function(e) {
+                                                            $('#image-preview-{{$i}}').attr('src', e.target.result);
+                                                        }
+                                        
+                                                        reader.readAsDataURL(this.files[0]); // convert to base64 string
+                                                    }
+                                                });
+                                            </script>
+                                            @endpush                                              
+                                            @endfor
+
+                                          </div>
+                                          @endif
+                                          
                                         </div>
                                       </div>
     

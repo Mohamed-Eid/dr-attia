@@ -10,7 +10,7 @@
                         <img src="{{$article->image_path}}" class="h-auto w-100" alt="">
                     </div>
                     <div class="txt">
-                        <a href="single-blog.php" class="primary-color primary-color-hover">
+                        <a href="{{ route('frontend.blog.show',$article) }}" class="primary-color primary-color-hover">
                             {{$article->name}}
                         </a>
                         <ul class="p-0 m-t-10">  
@@ -36,7 +36,7 @@
            
           
             <div class="text-center">
-                <a href="archive-blog.php" class="btn btn-site text-white m-t-20 wow zoomIn" style="width: auto;" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.view_more_of') @lang('site.articles')</a>
+                <a href="{{ route('frontend.blog.index') }}" class="btn btn-site text-white m-t-20 wow zoomIn" style="width: auto;" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.view_more_of') @lang('site.articles')</a>
             </div>
         </div>
     </div>

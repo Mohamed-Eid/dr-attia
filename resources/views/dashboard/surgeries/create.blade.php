@@ -58,7 +58,7 @@
 
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>@lang('site.image')</label>
                                     <input type="file" name="image" class="form-control image-ar">
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>@lang('site.icon')</label>
                                     <input type="file" name="icon" class="form-control image-en">
@@ -81,6 +81,32 @@
                                          class="img-thumbnail image-preview-en" style="width: 100px;">
                                 </div>
                             </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('site.header')</label>
+                                    <input type="file" name="header" class="form-control image-header">
+                                </div>
+        
+                                <div class="form-group">
+                                    <img src="{{ asset('uploads/category_images/default.png') }}"
+                                         class="img-thumbnail image-preview-header" style="width: 100px;">
+                                </div>
+                            </div>
+                            <script>
+                                $(".image-header").change(function() {
+                                    if (this.files && this.files[0]) {
+                                        var reader = new FileReader();
+                        
+                                        reader.onload = function(e) {
+                                            $('.image-preview-header').attr('src', e.target.result);
+                                        }
+                        
+                                        reader.readAsDataURL(this.files[0]); // convert to base64 string
+                                    }
+                                });
+                            </script>
+                            
                         </div>
 
                         <div class="row">

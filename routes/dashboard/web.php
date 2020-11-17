@@ -41,6 +41,8 @@ Route::group(
 
                 Route::delete('/pages/{page}/delete_image/{id}','PageController@delete_image')->name('pages.delete_image');
 
+                Route::get('expectation/{expectation}','SurgeryController@delete_expectation')->name('expectation.delete_expectation');
+
 
                 Route::get('settings/all','SettingController@all')->name('settings.all_settings');
                 

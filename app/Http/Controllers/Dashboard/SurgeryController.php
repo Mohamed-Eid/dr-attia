@@ -69,13 +69,18 @@ class SurgeryController extends Controller
 
         $data['image'] = 'default.png';
         $data['icon'] = 'default.png';
+        $data['header'] = 'default.png';
+
 
         if( isset($request->image)) {
-             $data['image'] = upload_image('surgery_images',$request->image);
+             $data['image'] = upload_image_without_resize('surgery_images',$request->image);
         }
 
         if( isset($request->icon)) {
-            $data['icon'] = upload_image('surgery_images',$request->icon);
+            $data['icon'] = upload_image_without_resize('surgery_images',$request->icon);
+        }
+        if( isset($request->header)) {
+            $data['header'] = upload_image_without_resize('surgery_images',$request->header);
         }
         //dd($data);
 
@@ -129,13 +134,16 @@ class SurgeryController extends Controller
         $data = $request->except(['expectation']);
 
         if( isset($request->image)) {
-            $data['image'] = upload_image('surgery_images',$request->image);
+            $data['image'] = upload_image_without_resize('surgery_images',$request->image);
         }
 
         if( isset($request->icon)) {
-           $data['icon'] = upload_image('surgery_images',$request->icon);
+           $data['icon'] = upload_image_without_resize('surgery_images',$request->icon);
         }
         
+       if( isset($request->header)) {
+            $data['header'] = upload_image_without_resize('surgery_images',$request->header);
+        }
         
         $surgery->update($data);
 
@@ -165,13 +173,15 @@ class SurgeryController extends Controller
     public function destroy(Surgery $surgery)
     {
         if ($surgery->image != 'default.png') {
-            //Storage::disk('public_uploads')->delete('/category_images/' . $surgery->image);
             delete_image('surgery_images',$surgery->image);
         } 
 
         if ($surgery->icon != 'default.png') {
-            //Storage::disk('public_uploads')->delete('/category_images/' . $surgery->image);
             delete_image('surgery_images',$surgery->icon);
+        } 
+        
+        if ($surgery->header != 'default.png') {
+            delete_image('surgery_images',$surgery->header);
         } 
 
         $surgery->delete();
@@ -180,4 +190,14 @@ class SurgeryController extends Controller
 
         return redirect()->route('dashboard.surgery.index');
     } 
+    
+    public function delete_expectation(Expectation $expectation){
+        // dd($expectation);
+        delete_image('surgery_images',$expectation->image);
+        $expectation->translate('ar')->name = null;
+        $expectation->translate('en')->name = null;
+        $expectation->image = null;
+        $expectation->save();
+        return redirect()->back()->with('success','تم الحذف بنجاح');
+    }
 }

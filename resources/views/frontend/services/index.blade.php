@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.frontend.includes.page_header')
+@include('layouts.frontend.includes.page_header',['header'=>get_setting_by_key('services_header')->image_path])
 
 @foreach ($services as $index=>$service)
 @if (count($service->surgeries) > 0)            
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row justify-content-center">           
             <div class="col-md-12 text-center m-b-25">
-                    <h3  class="primary-color bold text-center m-0 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">{{$service->name}}</h3>
+                    <h3  class="primary-color bold text-center m-0 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s" style="color:{{ $service->color }};">{{$service->name}}</h3>
             </div>
             @foreach ($service->surgeries as $surgery)
             <div class="col-md-4 text-center"> 
@@ -20,7 +20,7 @@
                             <img alt src='{{ $surgery->icon_path }}' />
                         </figure>
                     </div>
-                    <h3 ><a href="{{ route('frontend.services.get_surgery',$surgery) }}" class="primary-color f-s-25"> {{ $surgery->name }}</a></h3>  
+                    <h3 ><a style="color:{{ $surgery->category->color }};" href="{{ route('frontend.services.get_surgery',$surgery) }}" class="primary-color f-s-25"> {{ $surgery->name }}</a></h3>  
                 </div>  
             </div>                
             @endforeach                
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row sec-padding justify-content-center">
             <div class="col-md-12 text-center m-b-25 m-t-25">
-                <h2 class="primary-color"> Dr.Attia In Bariatric Surgeries</h2>
+                <h2 class="primary-color"> {{get_setting_by_key('services_icons_title')->value}} </h2>
             </div>
 
             @foreach (get_settings_by_class('service_features') as $index=> $setting)

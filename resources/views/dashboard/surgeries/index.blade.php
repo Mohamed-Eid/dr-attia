@@ -62,6 +62,7 @@
                                 <th>@lang('site.name')</th>
                                 <th>@lang('site.image')</th>
                                 <th>@lang('site.icon')</th>
+                                <th>@lang('site.header')</th>
                                 <th>@lang('site.category')</th>
                                 <th>@lang('site.created_at')</th>
                                 <th>@lang('site.action')</th>
@@ -78,6 +79,9 @@
                                     </td>
                                     <td>
                                         <img src="{{ $surgery->icon_path }}" class="img-thumbnail" style="width: 50px;">
+                                    </td>
+                                    <td>
+                                        <img src="{{ $surgery->header_path }}" class="img-thumbnail" style="width: 50px;">
                                     </td>
                                     <td>{{ $surgery->category->name }}</td>
 

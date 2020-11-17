@@ -55,10 +55,6 @@
                                     <input type="text" id="link" name="link" class="form-control">
                                 </div>
 
-                                <div class="form-group col-lg-4" style="margin-top: 25px">
-                                    <button class="btn btn-success" id="check" type="button"> <i class="fa fa-search"></i> @lang('site.check')
-                                    </button>
-                                </div>
                             </div>
                         </div>
 
@@ -89,40 +85,6 @@
 @push('scripts')
 <script>
 
-   $("#check").click(
-      function(event) {
-            event.preventDefault();
-            link = $('#link').val();
-            //console.log(link);
-            url = '{{ route("dashboard.get_video_id") }}'
-            //console.log('clicked');
-            $.ajax({
-                type : 'GET',
-                url : url,
-                data :{
-                    link : link,
-                },
-                dataType : 'json',
-                success : function(data){
-                    console.log(data);
-                }
-            });
-      }
-   );
 
-   $(document).ready(function(){
-        // link = $('#link').val();
-        // url = {{ route('dashboard.get_video_id',':link') }}
-        // url = url.replace(':link',link)
-
-        // $.ajax({
-        //     type : 'GET',
-        //     url : url,
-        //     dataType : 'json',
-        //     success : function(data){
-        //         console.log(data)
-        //     }
-        // });
-   });
 </script>
 @endpush 

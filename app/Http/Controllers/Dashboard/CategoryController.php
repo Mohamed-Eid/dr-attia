@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
+use App\Expectation;
 
 class CategoryController extends Controller
 {
@@ -71,6 +72,13 @@ class CategoryController extends Controller
 
         $category = Category::create($data);
 
+        foreach(request()->expectation as $expectation){
+            $additional_data = $expectation;
+            if( isset($expectation['image'])) {
+                $additional_data['image'] = upload_image_without_resize('surgery_images',$additional_data['image']);
+            }
+            $category->expectations()->create($additional_data);
+        }
 
         session()->flash('success', __('site.added_successfully'));
 
@@ -132,6 +140,21 @@ class CategoryController extends Controller
         
         $category->update($data);
 
+        foreach(request()->expectation as $request_expectation){
+            $additional_data = $request_expectation;
+            
+            if(isset($request_expectation['image'])) {
+                delete_image('surgery_images',$request_expectation['image']);
+                $additional_data['image'] = upload_image_without_resize('surgery_images',$additional_data['image']);
+            } 
+            $expectation = Expectation::find($request_expectation['key']);
+            unset($additional_data['key']);
+            if($expectation){
+               $expectation->update($additional_data);
+            }else{
+                $category->expectations()->create($additional_data);
+            }
+        }
 
         session()->flash('success', __('site.updated_successfully'));
 

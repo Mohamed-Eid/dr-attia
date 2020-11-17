@@ -10,7 +10,7 @@ class Surgery extends Model
 
     public $translatedAttributes = ['name','body'];
     public $guarded = [];
-    protected  $appends = ['image_path','icon_path'];
+    protected  $appends = ['image_path','icon_path' , 'header_path'];
 
 
     public  function getImagePathAttribute(){
@@ -19,6 +19,10 @@ class Surgery extends Model
 
     public  function getIconPathAttribute(){
         return asset('uploads/surgery_images/'.$this->icon);
+    }
+    
+        public  function getHeaderPathAttribute(){
+        return asset('uploads/surgery_images/'.$this->header);
     }
 
     //==================relations===================//

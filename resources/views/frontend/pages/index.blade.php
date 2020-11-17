@@ -2,8 +2,11 @@
 
 @section('content')
 
-@include('layouts.frontend.includes.page_header')
-
+@if($page->id == 1)
+@include('layouts.frontend.includes.page_header',['header'=>get_setting_by_key('about_page_header')->image_path])
+@else
+@include('layouts.frontend.includes.page_header',['header'=>get_setting_by_key('center_page_header')->image_path])
+@endif
 <section class="sec-padding ">
     <div class="container">
         <div class="row ">
@@ -17,6 +20,8 @@
                 </div>
             </div>
             
+            @if(count($page->page_images)>0)
+
             <div class="col-md-12 text-center m-t-20">
                 <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">Center Photo Album</h3>
             </div>
@@ -30,7 +35,10 @@
                 </div>                        
                 @endforeach 
             </section>
+            @endif
+
         </div>
+        
     </div>
 </section>
 

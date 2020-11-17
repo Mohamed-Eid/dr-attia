@@ -14,6 +14,12 @@ class PagesController extends Controller
         $page = Page::first();
         return view('frontend.pages.index',compact('page'));
     }
+    
+    public function about_dr_attia_page()
+    {
+        $page = Page::find(4);
+        return view('frontend.pages.index',compact('page'));
+    }
 
     public function before_after(){
         $images = Image::all();

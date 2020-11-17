@@ -59,7 +59,7 @@
 
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>@lang('site.image')</label>
                                     <input type="file" name="image" class="form-control image-ar">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>@lang('site.icon')</label>
                                     <input type="file" name="icon" class="form-control image-en">
@@ -82,6 +82,31 @@
                                          class="img-thumbnail image-preview-en" style="width: 100px;">
                                 </div>
                             </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('site.header')</label>
+                                    <input type="file" name="header" class="form-control image-header">
+                                </div>
+        
+                                <div class="form-group">
+                                    <img src="{{ $surgery->header_path }}"
+                                         class="img-thumbnail image-preview-header" style="width: 100px;">
+                                </div>
+                            </div>
+                            <script>
+                                $(".image-header").change(function() {
+                                    if (this.files && this.files[0]) {
+                                        var reader = new FileReader();
+                        
+                                        reader.onload = function(e) {
+                                            $('.image-preview-header').attr('src', e.target.result);
+                                        }
+                        
+                                        reader.readAsDataURL(this.files[0]); // convert to base64 string
+                                    }
+                                });
+                            </script>
                         </div>
 
 
@@ -122,6 +147,10 @@
                                                 <div class="form-group">
                                                     <img src="{{ $expectation->image_path }}"
                                                          class="img-thumbnail" id="image-preview-{{$expectation->id}}" style="width: 100px;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <a class="btn btn-danger" href="{{ route('dashboard.expectation.delete_expectation',$expectation) }}"><i class="fa fa-trash"></i>@lang('site.delete')
+                                                    </a>
                                                 </div>
                                             </div> 
                                             @push('scripts')

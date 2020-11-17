@@ -47,20 +47,20 @@
                         <p>
                             {{ get_setting_by_key('about_center_image')->description }}
                         </p>
-                        <a href="{{ route('frontend.pages.about') }}" class="btn btn-site2 m-t-30 pull-right">@lang('site.read_more')</i>
+                        <a href="{{ route('frontend.pages.about_dr_attia') }}" class="btn btn-site2 m-t-30 pull-right">@lang('site.read_more')</i>
                         </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="image wow fadeIn" data-wow-duration="1.5s" data-wow-delay="1s">
-                        <img src="{{asset('frontend/Technomasr/images/about.jpg')}}" alt="about" class="mw-100 h-auto" />
+                        <img src="{{get_setting_by_key('about_center_image')->image_path}}" alt="about" class="mw-100 h-auto" />
                     </div>
                 </div>
               
             </div>
             <div class="row sec-padding justify-content-center">
                 <div class="col-md-12 text-center m-b-25 m-t-25">
-                    <h2 class="primary-color">@lang('site.why_dr_khafaga')</h2>
+                    <h2 class="primary-color">{{ get_setting_by_key('home_section_2')->value }}</h2>
                 </div>
                 
                 @foreach (get_settings_by_class('features') as $index=> $setting)
@@ -83,7 +83,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center m-b-25 m-t-25">
-                        <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">@lang('site.our_services')</h3>
+                        <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">{{ get_setting_by_key('home_section_3')->value }}</h3>
                 </div>
                 
                 @foreach ($services as $service)
@@ -94,7 +94,7 @@
                                 <img alt src='{{ $service->image_path }}' />
                             </figure>
                         </div>
-                        <h3 > <a href="{{ route('frontend.services.show',$service) }}" class="primary-color f-s-25"> {{$service->name}}</a></h3>  
+                        <h3> <a style="color:{{ $service->color }};" href="{{ route('frontend.services.show',$service) }}" class="primary-color f-s-25"> {{$service->name}}</a></h3>  
                     </div>  
                 </div>                   
                 @endforeach
@@ -123,12 +123,13 @@
 
     </section>
     
+    @if(count($bf_images)>0)
     <section class=" sec-padding beforeAfter">
         <div class="container">
             <div class="row">
                 
                 <div class="col-md-12 text-center m-b-25 m-t-25">
-                    <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s"> @lang('site.patients') @lang('site.before_after')</h3>
+                    <h3  class="primary-color bold text-center m-b-30 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s"> {{ get_setting_by_key('home_section_5')->value }}</h3>
                 </div>
                 
                 <div class="owl-demo photos-owl-demo wow zoomIn m-b-30" animation-delay="1s" data-wow-delay="0.4s">
@@ -148,10 +149,15 @@
             </div>
         </div>
     </section>
+    @endif
     
+    @if(count($videos)>0)
     @include('frontend.includes.videos')
-
+    @endif
+    
+    @if(count($articles)>0)
     @include('frontend.includes.posts')
+    @endif
 </main>
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.frontend.includes.page_header')
+@include('layouts.frontend.includes.page_header',['header'=>get_setting_by_key('before_after_header')->image_path])
 
 @foreach ($services as $index=>$service)
 @if (count($service->surgeries) > 0)            

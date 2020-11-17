@@ -19,7 +19,14 @@ class CategoryController extends Controller
     }
 
     public function show(Category $service){
-        return view('frontend.services.show',compact('service'));
+        $surgeries_ids = Surgery::where('category_id',$service->id)->pluck('id')->toArray();;
+    //    dd($surgeries_ids);
+        
+        $videos = Video::whereIn('surgery_id',$surgeries_ids)->get();
+       // dd($videos);
+        $articles = Post::whereIn('surgery_id',$surgeries_ids)->get();
+       // dd($articles);
+        return view('frontend.services.show',compact('service','videos','articles'));
     }
 
     public function get_surgery(Surgery $surgery){

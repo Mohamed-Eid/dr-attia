@@ -74,6 +74,11 @@
                             <li class="nav-item {{ route('frontend.videos.index')==url()->current() ? 'active' : ''  }}">
                                 <a class="nav-link " href="{{ route('frontend.videos.index') }}">@lang('site.video_library')</a>
                             </li>
+                            
+                            <li class="nav-item {{ route('frontend.pages.about')==url()->current() ? 'active' : ''  }}">
+                                <a class="nav-link " href=" {{ route('frontend.pages.about_dr_attia') }} ">@lang('site.about_dr_attia')</a>
+                            </li>
+                            
                             <li class="nav-item {{ route('frontend.pages.about')==url()->current() ? 'active' : ''  }}">
                                 <a class="nav-link " href=" {{ route('frontend.pages.about') }} ">@lang('site.center_profile')</a>
                             </li>
@@ -92,14 +97,14 @@
                             </a>
                             @else
                             <a class="btn btn-site btn-lang" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
-                                E
+                                En
                             </a> --}}
                             <a class="btn btn-site btn-lang" href="{{ route('change_language','ar') }}">
                                 ع
                             </a>
                             @else
                             <a class="btn btn-site btn-lang" href="{{ route('change_language','en') }}">
-                                E
+                                En
                             </a>
                             @endif
 

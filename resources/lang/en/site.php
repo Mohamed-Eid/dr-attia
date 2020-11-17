@@ -263,5 +263,6 @@ return [
     'replay'        => 'Replay',
     'link'            => 'URL',
     'images'      => 'Images',
-
+    'about_dr_attia' => 'About Dr.Attia',
+    'category_expectation' => 'Dr.Attia in ',
 ];

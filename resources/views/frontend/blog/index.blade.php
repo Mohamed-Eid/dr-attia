@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.frontend.includes.page_header')
+@include('layouts.frontend.includes.page_header',['header'=>get_setting_by_key('blog_header')->image_path])
 
 
 <section class="sec-padding blog">
@@ -17,7 +17,7 @@
                         <img src="{{$article->image_path}}" class="h-auto w-100" alt="">
                     </div>
                     <div class="txt">
-                        <a href="single-blog.php" class="primary-color primary-color-hover">
+                        <a href="{{ route('frontend.blog.show',$article) }}" class="primary-color primary-color-hover">
                             {{$article->name}}
                         </a>
                         <ul class="p-0 m-t-10">  

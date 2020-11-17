@@ -280,7 +280,13 @@ return [
     'service_features_settings' => 'إعدادات الصور المصغره في صفحه الخدمات', 
 
     'meta_settings' => 'إعدادات الارشفه',
+    'header' => 'صورة الهيدر',
+    'page_headers_settings' => 'إعدادات هيدر الصفحات',
 
     'general_settings' => 'إعدادات عامة',
-
+    'about_dr_attia' => 'عن د/عطيه',
+    'category_expectation' => 'د/عطيه في ',
+    'titles_settings' => 'إعدادات العناويين',
+    'in_ar' => 'باللغة العربيه',
+    'in_en' => 'باللغة الانجليزيه',
 ];

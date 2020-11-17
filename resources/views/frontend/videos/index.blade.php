@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.frontend.includes.page_header')
+@include('layouts.frontend.includes.page_header',['header'=>get_setting_by_key('video_library_header')->image_path])
 
 <section class="sec-padding  videos ">
     <div class="container">

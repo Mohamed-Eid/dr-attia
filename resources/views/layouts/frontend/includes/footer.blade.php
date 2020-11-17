@@ -2,30 +2,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 ">
-                    <img src="{{asset('frontend/Technomasr/images/logo.png')}}" class="logo" />
+                    <img src="{{ get_setting_by_key('logo')->image_path }}" class="logo" />
                 </div>
                 <div class="col-md-4">
                     <ul class="footer-menu"> 
-                        <li><a href="#" class="text-white f-s-17">Home</a></li>
+                        <li><a href="#" class="text-white f-s-17">@lang('site.home')</a></li>
                         @foreach (serviecs() as $service)
                         <li><a href="{{ route('frontend.services.show',$service)  }}" class="text-white f-s-17">{{ $service->name }}</a></li>    
                         @endforeach
                         
-                        <li><a href="#" class="text-white f-s-17">Video Library </a></li>
-                        <li><a href="#" class="text-white f-s-17">Blog </a></li>
-                        <li><a href="#" class="text-white f-s-17">Video Library </a></li>
-                        <li><a href="#" class="text-white f-s-17">Before and After Photos</a></li>
+                        <li><a href="#" class="text-white f-s-17">@lang('site.video_library') </a></li>
+                        <li><a href="#" class="text-white f-s-17">@lang('site.blog') </a></li>
+                        <li><a href="#" class="text-white f-s-17">@lang('site.before_after')</a></li>
                     </ul>
                 </div> 
                 <div class="col-md-3">
-                    <h3 class="bold text-white">Reach Dr.Attia</h3>
+                    <h3 class="bold text-white">{{get_setting_by_key('footer_email_title')->value}}</h3>
                     <li>
                         <i class="fa fa-envelope text-white"></i>
                         <span class="text-white m-r-5 m-l-5">{{get_setting_by_key('email')->value}}</span>
                     </li>
                 </div>
                 <div class="col-md-3">
-                    <h3 class="bold text-white">Follow Dr.Attia</h3>
+                    <h3 class="bold text-white">{{get_setting_by_key('footer_follow_title')->value}}</h3>
                     <ul class="social-icons m-t-20">
                             <li>
                                 <a href="{{get_setting_by_key('fb_link')->value}}" target="_blank">

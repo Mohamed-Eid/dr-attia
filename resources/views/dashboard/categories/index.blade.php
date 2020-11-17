@@ -54,16 +54,31 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>@lang('site.name')</th>
+                                <th>@lang('site.color')</th>
                                 <th>@lang('site.image')</th>
                                 <th>@lang('site.action')</th>
                             </tr>
                             </thead>
+
+                            <style>
+                                .foo {
+                                      float: left;
+                                      width: 20px;
+                                      height: 20px;
+                                      margin: 5px;
+                                      border: 1px solid rgba(0, 0, 0, .2);
+                                    }
+                            </style>
 
                             <tbody>
                             @foreach($categories as $index => $category)
                                 <tr>
                                     <td>{{ $index +1 }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td style="background: {{$category->color}}; ">
+                                        <!--<div class="foo" style=" background: {{$category->color}};"></div>-->
+
+                                    </td>
                                     <td>
                                         <img src="{{ $category->image_path }}" class="img-thumbnail" style="width: 50px;">
                                     </td>
