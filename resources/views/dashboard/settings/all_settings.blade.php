@@ -55,18 +55,12 @@
                                     @if ($name == 'slider_settings')
                                     
                                     @include('dashboard.settings.slider',['items' => $items])
-                                    
                                     @elseif($name == 'about_center_settings')
-                                    
-                                    @include('dashboard.settings.about_center',['items' => $items])                                    
-                                    
+                                    @include('dashboard.settings.about_center',['items' => $items])
                                     @elseif($name == 'features_settings')
-                                    
-                                    @include('dashboard.settings.features',['items' => $items])                                    
-                                    
+                                    @include('dashboard.settings.features',['items' => $items])
                                     @elseif($name == 'contact_settings')
                                     @include('dashboard.settings.contact',['items' => $items])                                    
-
                                     @elseif($name == 'service_features_settings')
                                     @include('dashboard.settings.features',['items' => $items])                                    
                                     @elseif($name == 'meta_settings')
