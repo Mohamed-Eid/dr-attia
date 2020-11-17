@@ -139,6 +139,11 @@
                                                 @endforeach
 
                                                 <div class="form-group">
+                                                    <label>@lang('site.number')</label>
+                                                    <input type="text" name="expectation[{{$expectation->id}}][number]" class="form-control" value="{{ $expectation->number }}" >
+                                                </div>
+
+                                                <div class="form-group">
                                                     <label>@lang('site.image')</label>
                                                     <input type="file" name="expectation[{{$expectation->id}}][image]" class="form-control" id="image-{{$expectation->id}}">
                                                 </div>

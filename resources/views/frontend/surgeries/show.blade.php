@@ -58,7 +58,7 @@
                     <figure>
                         <img src="{{$item->image_path}}" class="w-auto h-100" alt="">
                     </figure> 
-                    {{-- <h5 class="bold primary-color">3 - 4</h5> --}}
+                    <h5 class="bold primary-color">{{$item->number}}</h5>
                     <h4 class="primary-color m-t-15"  style="color:{{ $surgery->category->color }};">{{$item->name}}</h4>
                 </div>
             </div>
